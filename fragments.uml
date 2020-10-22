@@ -1,0 +1,29 @@
+@startmindmap
+* Main Layout
+** Top bar
+** Sub bar
+** Container (ConstraintLayout)(fragment)
+*** Forsiden (ScrollView)
+**** Slider
+**** NavigationsKnapper
+**** AnbefaletTildig (ListView/)
+*** LigeNu/Resultater (ScrollView)
+**** TopPanel
+**** Container (fragments)
+***** Listview
+****** eventCardListType
+***** Gridview
+****** eventCardGridType
+***** Mapview 
+*** Find Event (VENTER)
+*** Kallender (Scrollview)
+**** KallenderModel
+**** ListView
+*** MinProfil
+**** Title
+**** Listview x 3
+*** Event
+**** ImageView
+**** InfoView
+
+@endmindmap
