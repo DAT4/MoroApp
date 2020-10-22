@@ -6,13 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:background=""
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="MORO"
+                />
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:textColor="#FFFFFF"
+                android:layout_weight="4"
+                android:layout_height="match_parent"
+                android:text="SØG"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            >
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Kalender"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Nu"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Profil"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="#000000"
+                android:textColor="#FFFFFF"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="Andet"/>
+        </LinearLayout>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
