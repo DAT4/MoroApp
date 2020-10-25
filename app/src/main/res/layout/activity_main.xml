@@ -40,11 +40,9 @@
             >
             <FrameLayout
                 android:id="@+id/mainFragment"
+                android:name="dtu.android.moroapp.FrontPageFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
-                android:name="dtu.android.moroapp.FrontPageFragment"
-
                 />
 
         </LinearLayout>
