@@ -33,6 +33,7 @@
                     android:text="lige nu"
                     android:layout_height="match_parent"/>
                 <Button
+                    android:id="@+id/find_event_button"
                     android:layout_marginTop="10dp"
                     android:layout_marginHorizontal="20dp"
                     android:layout_weight="1"
