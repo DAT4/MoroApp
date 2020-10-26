@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".findEvent_what_fragment"
     android:orientation="vertical"
-    android:background="#F7F5BD"
+    android:background="#E3B9D6"
     android:padding="16dp"
     >
 
@@ -52,7 +52,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HVAD"
+            android:text="HVOR"
             android:textSize="20dp"
             android:fontFamily="@font/anton_regular"
             android:textColor="#000000"
@@ -72,125 +72,126 @@
         >
 
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
-            android:text="Koncert"
+            android:text="NØRREBRO"
 
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Udstilling"
+            android:text="ISLANDS BRYGGE"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
 
-            android:text="Litteratur"
+            android:text="INDRE BY"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Film"
+            android:text="ØSTERBRO"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Comedy"
+            android:text="NORDVEST"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Talk"
+            android:text="VALBY"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Teater"
+            android:text="BRØNSHØJ &amp; &#10; HUSUM"
+
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Fest"
+            android:text="AMAR"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Gratis"
+            android:text="VESTERBRO"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Sport og Spil"
+            android:text="VANLØSE"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Mad Og drikke"
+            android:text="CHRISTIANSHAVN"
             />
         <Button
-            android:background="@drawable/box_bg"
+            android:background="@drawable/box_red_bg"
             android:layout_margin="5dp"
             android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+            android:textColor="#991917"
 
             android:textSize="15sp"
 
-            android:text="Mode"
+            android:text="REFSHALEØEN"
             />
     </GridLayout>
 
