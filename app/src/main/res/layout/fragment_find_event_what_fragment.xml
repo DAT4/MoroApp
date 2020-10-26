@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".findEvent_what_fragment"
+    android:orientation="vertical"
+    android:background="#F7F5BD"
+    android:padding="16dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/topButtons"
+        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:text="Tilbage"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Op"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Kryds"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/Titel"
+        android:layout_marginTop="16dp"
+
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HVAD"
+            android:textSize="20dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#000000"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:layout_weight="4"
+
+
+        >
+
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+            android:text="Koncert"
+
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Udstilling"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+
+            android:text="Litteratur"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Film"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Comedy"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Talk"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Teater"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Fest"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Gratis"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Sport og Spil"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Mad Og drikke"
+            />
+        <Button
+            android:background="@drawable/box_bg"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/anton_regular"
+            android:textColor="#F6A31A"
+
+            android:textSize="15sp"
+
+            android:text="Mode"
+            />
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        >
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ned"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
+
