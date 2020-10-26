@@ -19,11 +19,38 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-               <fragment
-                   android:layout_height="0dp"
-                    android:id="@+id/event_card"
-                    android:name="dtu.android.moroapp.RightNowFragment"
+                <TextView
+                    android:layout_width="288dp"
+                    android:layout_height="62dp"
+                    android:text="Lige Nu"
+                    android:textSize="40sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="164dp"
+                    android:layout_height="34dp"
+                    android:text="Tilbage"
+                    android:background="#1F3A7D"
+                    android:textColor="#FFFFFF" />
+
+
+                <fragment
+                android:layout_height="match_parent"
+                android:id="@+id/event_card"
+                android:name="dtu.android.moroapp.EventCardFragment"
+                android:layout_width="match_parent"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginHorizontal="5dp"
+                android:layout_weight="2" />
+
+                <fragment
+                    android:layout_height="match_parent"
+                    android:id="@+id/event_cardone"
+                    android:name="dtu.android.moroapp.EventCardFragment"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginHorizontal="5dp"
                     android:layout_weight="2" />
 
 

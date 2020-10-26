@@ -4,17 +4,66 @@
     android:layout_width="340dp"
     android:layout_height="89dp"
     tools:context=".EventCardFragment"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:background="#C4C4C4">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Test Test" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="TITLE PÅ EVENT"
+            android:textAlignment="center"
+            android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <GridLayout
+            android:id="@+id/GridLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:columnCount="3"
+            android:rowCount="1"
+            android:orientation="horizontal"
+            tools:context=".GridXMLActivity"
+            android:background="#1F3A7D">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_columnWeight="1"
+                android:textColor="#FFFFFF"
+                android:text="10,1 km"
+                android:textAlignment="viewStart" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_columnWeight="1"
+                android:textColor="#FFFFFF"
+                android:text="DATO"
+                android:textAlignment="center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_columnWeight="1"
+                android:textColor="#FFFFFF"
+                android:text="00:00 - 00:00"
+                android:textAlignment="textEnd" />
+
+        </GridLayout>
+
+
+
+    </LinearLayout>
+
 </FrameLayout>
