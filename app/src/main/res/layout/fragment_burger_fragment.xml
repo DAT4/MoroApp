@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#D2C8E4"
+    android:padding="16dp"
+    tools:context=".Burger_fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        >
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/burger_close"
+            android:background="@android:color/transparent"
+            android:textSize="15sp"
+
+            android:text="X"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/burger_tip_os"
+        android:textColor="#000000"
+        android:fontFamily="@font/anton_regular"
+        android:layout_margin="10dp"
+        android:text="TIP OS"
+        android:background="?android:attr/selectableItemBackground"
+        android:textSize="25sp"
+        android:gravity="end"
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:fontFamily="@font/anton_regular"
+        android:layout_margin="10dp"
+        android:textSize="25sp"
+        android:background="?android:attr/selectableItemBackground"
+
+        android:gravity="end"
+
+
+        android:id="@+id/burger_om_os"
+        android:text="OM OS"
+
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:fontFamily="@font/anton_regular"
+        android:textSize="25sp"
+        android:id="@+id/burger_kontakt_os"
+        android:background="?android:attr/selectableItemBackground"
+
+        android:layout_margin="10dp"
+        android:gravity="end"
+
+
+        android:text="KONTAKT OS"
+        />
+
+
+
+
+</LinearLayout>

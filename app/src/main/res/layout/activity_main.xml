@@ -59,14 +59,7 @@
                 android:textColor="#000000"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="Kalender"/>
-            <Button
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
+                android:id="@+id/nav_now"
                 android:text="Nu"/>
             <Button
                 android:layout_margin="10dp"
@@ -75,6 +68,16 @@
                 android:textColor="#000000"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:id="@+id/nav_home"
+                android:text="Hjem"/>
+            <Button
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:background="#FFFFFF"
+                android:textColor="#000000"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:id="@+id/nav_profile"
                 android:text="Profil"/>
             <Button
                 android:layout_margin="10dp"
@@ -83,7 +86,8 @@
                 android:textColor="#000000"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:text="Andet"/>
+                android:id="@+id/nav_burger"
+                android:text="Burger"/>
         </LinearLayout>
     </LinearLayout>
 

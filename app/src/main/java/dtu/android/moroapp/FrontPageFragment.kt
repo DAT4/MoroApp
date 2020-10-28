@@ -22,6 +22,7 @@ class FrontPageFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var liste: View
     private lateinit var findeventButton: Button
+    private lateinit var ligenuButton: Button
     private var param1: String? = null
     private var param2: String? = null
 
@@ -40,6 +41,8 @@ class FrontPageFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_front_page, container, false)
         liste = view.findViewById(R.id.liste)
         findeventButton = view.findViewById(R.id.find_event_button)
+        ligenuButton = view.findViewById(R.id.frag_front_now)
+
 
 
         return view
@@ -50,6 +53,14 @@ class FrontPageFragment : Fragment() {
 
         findeventButton.setOnClickListener {
             val newFragment = findEvent_interface_Fragment()
+            val transaction = fragmentManager!!.beginTransaction()
+            transaction.replace(R.id.mainFragment, newFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+        ligenuButton.setOnClickListener {
+            val newFragment = RightNowFragment()
             val transaction = fragmentManager!!.beginTransaction()
             transaction.replace(R.id.mainFragment, newFragment)
             transaction.addToBackStack(null)

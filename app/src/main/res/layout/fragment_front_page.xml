@@ -28,6 +28,7 @@
                     android:textColor="#FFFFFF"
                     android:layout_width="match_parent"
                     android:text="lige nu"
+                    android:id="@+id/frag_front_now"
                     android:layout_height="match_parent"/>
                 <Button
                     android:id="@+id/find_event_button"
