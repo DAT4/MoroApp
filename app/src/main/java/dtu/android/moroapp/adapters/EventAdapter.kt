@@ -1,11 +1,15 @@
 package sh.mama.hangman.adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import dtu.android.moroapp.R
+import dtu.android.moroapp.SingleEventFragment
+import dtu.android.moroapp.findEvent_interface_Fragment
 import dtu.android.moroapp.models.Event
 import kotlinx.android.synthetic.main.event_card_fragment.view.*
 import java.text.SimpleDateFormat
@@ -37,7 +41,15 @@ class EventAdapter(
             event_card_long_date.text = date
             event_card_long_place.text = events[position].location.place
             event_card_long.setOnClickListener {
-                Toast.makeText(event_card_long.context, "HEJSA", Toast.LENGTH_SHORT).show()
+                val f = SingleEventFragment()
+                val fm = (context as AppCompatActivity).supportFragmentManager
+                val args = Bundle()
+                args.putSerializable("event",events[position])
+                f.arguments = args
+                fm.beginTransaction()
+                        .replace(R.id.mainFragment, f)
+                        .addToBackStack(null)
+                        .commit()
             }
         }
     }

@@ -5,6 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import dtu.android.moroapp.models.Event
+import kotlinx.android.synthetic.main.fragment_single_event.view.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,15 +23,12 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SingleEventFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var event : Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        arguments!!.let {
+            event = it.get("event") as Event
         }
     }
 
@@ -35,16 +38,36 @@ class SingleEventFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_single_event, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.apply {
+
+            val timeStamp = Date(event.time * 1000)
+
+            val timeFormat = SimpleDateFormat("HH:mm")
+            val dateFormat = SimpleDateFormat("dd/mm/yy")
+
+            val time = timeFormat.format(timeStamp)
+            val date = dateFormat.format(timeStamp)
+            event_single_title.text = event.title
+            event_single_description.text = event.text
+            event_single_date.text = date
+            event_single_time.text = time
+            event_single_price.text = "${event.price} DKK"
+            event_single_place.text = event.location.place
+            event_single_address.text = "${event.location.address.street} ${event.location.address.no}"
+            event_single_city.text = "${event.location.address.zip} ${event.location.address.city}"
+            event_single_link.setOnClickListener{
+                Toast.makeText(context,"link",Toast.LENGTH_SHORT).show()
+            }
+            event_single_ticket.setOnClickListener{
+                Toast.makeText(context,"ticket",Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SingleEventFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+        //Factory stuff
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
                 SingleEventFragment().apply {

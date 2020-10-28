@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
@@ -83,19 +84,17 @@ class FrontPageFragment : Fragment() {
 
         view.apply {
             find_event_button.setOnClickListener {
-                val newFragment = findEvent_interface_Fragment()
-                val transaction = fragmentManager!!.beginTransaction()
-                transaction.replace(R.id.mainFragment, newFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                (context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.mainFragment, findEvent_interface_Fragment())
+                        .addToBackStack(null)
+                        .commit()
             }
 
             lige_nu.setOnClickListener {
-                val newFragment = RightNowFragment()
-                val transaction = fragmentManager!!.beginTransaction()
-                transaction.replace(R.id.mainFragment, newFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
+                (context as AppCompatActivity).supportFragmentManager.beginTransaction()
+                        .replace(R.id.mainFragment, RightNowFragment())
+                        .addToBackStack(null)
+                        .commit()
             }
 
             printEvents();
@@ -164,9 +163,7 @@ class FrontPageFragment : Fragment() {
   }
 } 
         """.trimIndent()))
-        println(json)
         val data = (json).toByteArray()
-        con.setRequestProperty("User-Agent", "Your-Mom")
         con.setRequestProperty("Content-Type", "application/json")
 
         val request = DataOutputStream(con.outputStream)
@@ -179,7 +176,6 @@ class FrontPageFragment : Fragment() {
                 response.append(inputLine)
                 inputLine = it.readLine()
             }
-            println("DATA=$response.toString()")
             val gson = Gson()
             val eventsType = object : TypeToken<data>() {}.type
             val out = gson.fromJson(response.toString(), eventsType) as data
