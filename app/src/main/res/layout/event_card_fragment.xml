@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="20dp"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    tools:context=".EventCardFragment"
-    >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#C4C4C4"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/event_card_long"
+    android:background="#C4C4C4"
+    android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/event_card_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TITLE PÅ EVENT"
@@ -43,14 +35,15 @@
             tools:context=".GridXMLActivity">
 
             <TextView
+                android:id="@+id/event_card_long_place"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_columnWeight="1"
                 android:text="10,1 km"
                 android:textAlignment="viewStart"
                 android:textColor="#FFFFFF" />
-
             <TextView
+                android:id="@+id/event_card_long_date"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_columnWeight="1"
@@ -59,6 +52,7 @@
                 android:textColor="#FFFFFF" />
 
             <TextView
+                android:id="@+id/event_card_long_time"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_columnWeight="1"
@@ -71,4 +65,3 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
