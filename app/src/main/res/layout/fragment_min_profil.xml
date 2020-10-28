@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MinProfilFragment">
+    tools:context=".MinProfilFragment"
+    tools:visibility="visible">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAB96B"
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/min_profil"
+            android:textSize="30sp"></TextView>
 
-</FrameLayout>
+        <fragment
+            android:id="@+id/MineGemteFragment"
+            android:name="dtu.android.moroapp.MinProfilFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="6">
+        </fragment>
+
+        <fragment
+            android:id="@+id/AnbefaletTilDig"
+            android:name="dtu.android.moroapp.MinProfilFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight="6">
+        </fragment>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

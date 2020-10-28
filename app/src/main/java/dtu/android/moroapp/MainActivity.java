@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState == null){
-            Fragment fragment = new MinKalenderFragment();
+            Fragment fragment = new MinProfilFragment();
             getSupportFragmentManager().beginTransaction().add(R.id.mainFragment, fragment).commit();
 
         }
