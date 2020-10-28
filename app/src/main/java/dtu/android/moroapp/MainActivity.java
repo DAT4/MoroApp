@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button bRightNow, bHome;
+    private Button bRightNow, bHome, bBurger;
 
 
 
@@ -24,12 +24,24 @@ public class MainActivity extends AppCompatActivity {
 
         bRightNow = (Button) findViewById(R.id.nav_now);
         bHome = (Button) findViewById(R.id.nav_home);
+        bBurger = (Button) findViewById(R.id.nav_burger);
 
 
         bRightNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 rightNow();
+            }
+        });
+
+        bBurger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new Burger_fragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.mainFragment, fragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
