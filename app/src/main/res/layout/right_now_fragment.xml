@@ -43,6 +43,7 @@
                             android:layout_width="164dp"
                             android:layout_height="34dp"
                             android:text="Tilbage"
+                            android:id="@+id/right_now_back"
                             android:background="#1F3A7D"
                             android:textColor="#FFFFFF" />
 
