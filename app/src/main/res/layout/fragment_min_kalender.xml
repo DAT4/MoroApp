@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDDC39"
-    android:backgroundTint="#3F51B5"
-    android:foregroundTint="#673AB7"
-    android:outlineAmbientShadowColor="#3F51B5"
-    android:outlineSpotShadowColor="#9C27B0"
     tools:context=".MinKalenderFragment"
     tools:visibility="visible">
 
