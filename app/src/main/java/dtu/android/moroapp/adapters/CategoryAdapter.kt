@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import dtu.android.moroapp.R
 import dtu.android.moroapp.models.Event
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.*
 
@@ -25,10 +26,17 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         holder.itemView.apply {
+            val timeStamp = Date(events[position].time * 1000)
 
-            val time = Date(events[position].time)
-            println(time)
+            val timeFormat = SimpleDateFormat("HH:mm")
+            val dateFormat = SimpleDateFormat("dd/mm/yy")
+
+            val time = timeFormat.format(timeStamp)
+            val date = dateFormat.format(timeStamp)
+
             event_card_title.text = events[position].title
+            event_card_long_time.text = time
+            event_card_long_date.text = date
             event_card_long_place.text = events[position].location.place
             event_card_long.setOnClickListener {
                 Toast.makeText(event_card_long.context,"HEJSA",Toast.LENGTH_SHORT)
