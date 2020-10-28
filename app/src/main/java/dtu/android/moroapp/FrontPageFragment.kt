@@ -1,13 +1,10 @@
 package dtu.android.moroapp
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -20,7 +17,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import sh.mama.hangman.adapters.EventAdapter
 import java.io.DataOutputStream
-import java.lang.Exception
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -48,7 +44,7 @@ class FrontPageFragment : Fragment() {
         }
     }
 
-    private fun printEvents(){
+    private fun printEvents() {
         GlobalScope.launch(Dispatchers.IO) {
             val events = getEvents()
             for (event in events) {
@@ -66,7 +62,7 @@ class FrontPageFragment : Fragment() {
                     val adapter = EventAdapter(events)
                     front_page_list.adapter = adapter
                     front_page_list.layoutManager = LinearLayoutManager(activity)
-                } catch (e: Exception){
+                } catch (e: Exception) {
                     print("Fejlet")
                 }
             }
@@ -93,7 +89,7 @@ class FrontPageFragment : Fragment() {
                 transaction.commit()
             }
 
-            lige_nu.setOnClickListener{
+            lige_nu.setOnClickListener {
                 printEvents();
             }
         }
@@ -122,7 +118,7 @@ class FrontPageFragment : Fragment() {
                 }
     }
 
-    private fun getEvents(): List<Event>{
+    private fun getEvents(): List<Event> {
         val url = "https://mama.sh/moro/api"
         val req = URL(url)
         val con = req.openConnection() as HttpURLConnection
@@ -179,7 +175,7 @@ class FrontPageFragment : Fragment() {
             println("DATA=$response.toString()")
             val gson = Gson()
             val eventsType = object : TypeToken<data>() {}.type
-            val out = gson.fromJson(response.toString(),eventsType ) as data
+            val out = gson.fromJson(response.toString(), eventsType) as data
             return out.data.allEvents
         }
     }

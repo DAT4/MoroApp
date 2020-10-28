@@ -1,7 +1,5 @@
 package sh.mama.hangman.adapters
 
-import android.content.Intent
-import kotlinx.android.synthetic.main.event_card_fragment.view.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +7,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import dtu.android.moroapp.R
 import dtu.android.moroapp.models.Event
+import kotlinx.android.synthetic.main.event_card_fragment.view.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.*
 
 class EventAdapter(
@@ -20,7 +18,7 @@ class EventAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.event_card_fragment, parent, false)
+                .inflate(R.layout.event_card_fragment, parent, false)
         return EventViewHolder(view)
     }
 
@@ -39,7 +37,7 @@ class EventAdapter(
             event_card_long_date.text = date
             event_card_long_place.text = events[position].location.place
             event_card_long.setOnClickListener {
-                Toast.makeText(event_card_long.context,"HEJSA",Toast.LENGTH_SHORT)
+                Toast.makeText(event_card_long.context, "HEJSA", Toast.LENGTH_SHORT)
             }
         }
     }
