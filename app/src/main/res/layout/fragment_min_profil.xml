@@ -19,18 +19,24 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:text="@string/min_profil"
-            android:textSize="30sp">
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:fontFamily="@font/anton_regular">
         </TextView>
 
-        <LinearLayout
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"/>
+            android:layout_weight="4"
+            android:name="dtu.android.moroapp.SavedEventsFragment"
+            android:id="@+id/fragment1"/>
 
-        <LinearLayout
+        <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"/>
+            android:layout_weight="4"
+            android:name="dtu.android.moroapp.AnbefaledeFragment"
+            android:id="@+id/fragment2"/>
 
     </LinearLayout>
 

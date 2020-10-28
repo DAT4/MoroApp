@@ -5,4 +5,6 @@
     <string name="min_kalender">MIN KALENDER</string>
     <string name="min_profil">MIN PROFIL</string>
     <string name="mine_gemte_events">Mine Gemte Events</string>
+    <string name="anbefalede_events">Anbefalede Events</string>
+    <string name="kommende_events">Kommende Events</string>
 </resources>
