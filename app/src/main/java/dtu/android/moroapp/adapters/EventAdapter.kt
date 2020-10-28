@@ -37,7 +37,7 @@ class EventAdapter(
             event_card_long_date.text = date
             event_card_long_place.text = events[position].location.place
             event_card_long.setOnClickListener {
-                Toast.makeText(event_card_long.context, "HEJSA", Toast.LENGTH_SHORT)
+                Toast.makeText(event_card_long.context, "HEJSA", Toast.LENGTH_SHORT).show()
             }
         }
     }
