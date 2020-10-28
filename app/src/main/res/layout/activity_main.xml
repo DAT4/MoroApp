@@ -39,8 +39,8 @@
             android:layout_weight="1"
             >
             <fragment
-                android:name="dtu.android.moroapp.FrontPageFragment"
-                android:id="@+id/mainFragment"
+                android:name="dtu.android.moroapp.MinProfilFragment"
+                android:id="@+id/fragmentMinProfil"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 />
