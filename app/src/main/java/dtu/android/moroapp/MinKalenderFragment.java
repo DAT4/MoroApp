@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 
 public class MinKalenderFragment extends Fragment implements View.OnClickListener {
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -27,4 +29,6 @@ public class MinKalenderFragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
     //TO-DO
     }
+
+
 }
