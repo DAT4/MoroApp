@@ -17,28 +17,21 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/min_profil"
-            android:textSize="30sp"></TextView>
+            android:textSize="30sp">
+        </TextView>
 
-        <fragment
-            android:id="@+id/MineGemteFragment"
-            android:name="dtu.android.moroapp.MinProfilFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="6">
-        </fragment>
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
 
-        <fragment
-            android:id="@+id/AnbefaletTilDig"
-            android:name="dtu.android.moroapp.MinProfilFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="6">
-        </fragment>
+            android:layout_height="match_parent"
+            android:layout_weight="4"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
