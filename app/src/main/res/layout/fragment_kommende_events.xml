@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KommendeEventsFragment"
+    android:background="#FAB96B">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:id="@+id/gemte_liste"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="62dp"
+                        android:fontFamily="@font/anton_regular"
+                        android:text="@string/kommende_events"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="L"
+                        />
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="G"
+                        />
+
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:text="M"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <fragment
+                        android:layout_height="match_parent"
+                        android:id="@+id/event_card_5"
+                        android:name="dtu.android.moroapp.EventCardFragment"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="13dp"
+                        android:layout_weight="2" />
+
+                    <fragment
+                        android:layout_height="match_parent"
+                        android:id="@+id/event_card_6"
+                        android:name="dtu.android.moroapp.EventCardFragment"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="13dp"
+                        android:layout_weight="2" />
+
+                    <Space
+                        android:layout_width="1dp"
+                        android:layout_height="30dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

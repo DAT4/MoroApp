@@ -10,9 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button bRightNow, bHome, bBurger;
-
-
+    private Button bRightNow, bHome, bMyProfile, bBurger;
 
     @Override
 
@@ -24,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         bRightNow = (Button) findViewById(R.id.nav_now);
         bHome = (Button) findViewById(R.id.nav_home);
+        bMyProfile = (Button) findViewById(R.id.nav_profile);
         bBurger = (Button) findViewById(R.id.nav_burger);
 
 
@@ -45,6 +44,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bMyProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Fragment fragment = new MinProfilFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainFragment, fragment)
+                    .addToBackStack(null)
+                    .commit();
+            }
+        });
+
         bHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                         .commit();
             }
         });
-
 
 
 

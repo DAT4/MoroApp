@@ -20,7 +20,10 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/min_kalender"
-            android:textSize="30sp"></TextView>
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:fontFamily="@font/anton_regular">
+        </TextView>
 
         <CalendarView
             android:id="@+id/calendarView"
