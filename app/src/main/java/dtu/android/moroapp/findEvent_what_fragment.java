@@ -14,7 +14,7 @@ import android.widget.Button;
 
 public class findEvent_what_fragment extends Fragment implements View.OnClickListener {
 
-    private Button ButtonOp_what, ButtonDown_what;
+    private Button buttonOp_what, buttonDown_what, back;
     private View root;
 
     public findEvent_what_fragment() {
@@ -26,11 +26,13 @@ public class findEvent_what_fragment extends Fragment implements View.OnClickLis
         // Inflate the layout for this fragment
         root =inflater.inflate(R.layout.fragment_find_event_what_fragment, container, false);
 
-        ButtonOp_what = root.findViewById(R.id.button_Op_what);
-        ButtonDown_what = root.findViewById(R.id.button_Down_what);
+        buttonOp_what = root.findViewById(R.id.button_Op_what);
+        buttonDown_what = root.findViewById(R.id.button_Down_what);
+        back = root.findViewById(R.id.what_back);
 
-        ButtonOp_what.setOnClickListener(this);
-        ButtonDown_what.setOnClickListener(this);
+        buttonOp_what.setOnClickListener(this);
+        buttonDown_what.setOnClickListener(this);
+        back.setOnClickListener(this);
 
         return root;
     }
@@ -43,15 +45,21 @@ public class findEvent_what_fragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View view){
-        if(view == ButtonOp_what){
+        if(view == buttonOp_what){
             FindEvent_when_fragment newFragment = new FindEvent_when_fragment();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.mainFragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         }
-        else if(view == ButtonDown_what){
+        else if(view == buttonDown_what){
             FindEvent_where_fragment newFragment = new FindEvent_where_fragment();
+            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.mainFragment, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if(view == back) {
+            findEvent_interface_Fragment newFragment = new findEvent_interface_Fragment();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.mainFragment, newFragment);
             transaction.addToBackStack(null);

@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:id="@+id/where_back"
 
         android:text="Tilbage"
         />
@@ -63,7 +64,7 @@
 
     <GridLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:columnCount="3"
         android:layout_gravity="center"
         android:layout_margin="16dp"
@@ -141,7 +142,7 @@
 
             android:textSize="15sp"
 
-            android:text="BRØNSHØJ &amp; &#10; HUSUM"
+            android:text="BRØNSHØJ"
 
             />
         <Button
@@ -208,6 +209,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/button_Down_where"
             android:text="Ned"
             />
 

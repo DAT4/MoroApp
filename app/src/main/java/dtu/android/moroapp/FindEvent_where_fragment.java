@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class FindEvent_where_fragment extends Fragment implements View.OnClickListener{
 
-    private Button ButtonOp_where, ButtonDown_where;
+    private Button ButtonOp_where, ButtonDown_where, back;
     private View root;
 
     public FindEvent_where_fragment() {
@@ -26,10 +26,12 @@ public class FindEvent_where_fragment extends Fragment implements View.OnClickLi
         root = inflater.inflate(R.layout.fragment_find_event_where_fragment, container, false);
 
         ButtonOp_where = root.findViewById(R.id.button_Op_where);
-        ButtonDown_where = root.findViewById(R.id.button_Down_what);
+        ButtonDown_where = root.findViewById(R.id.button_Down_where);
+        back = root.findViewById(R.id.where_back);
 
         ButtonOp_where.setOnClickListener(this);
         ButtonDown_where.setOnClickListener(this);
+        back.setOnClickListener(this);
 
         return root;
     }
@@ -42,12 +44,18 @@ public class FindEvent_where_fragment extends Fragment implements View.OnClickLi
 
     @Override
     public void onClick(View view){
-        if(view == ButtonOp_where) {
+         if(view == ButtonOp_where) {
             findEvent_what_fragment newFragment = new findEvent_what_fragment();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.mainFragment, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-        }
+        } else if(view == back) {
+             findEvent_interface_Fragment newFragment = new findEvent_interface_Fragment();
+             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+             transaction.replace(R.id.mainFragment, newFragment);
+             transaction.addToBackStack(null);
+             transaction.commit();
+         }
     }
 }
