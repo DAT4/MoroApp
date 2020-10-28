@@ -19,7 +19,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/min_kalender"
+            android:text="@string/kalender"
             android:textStyle="bold"
             android:textSize="30sp"
             android:fontFamily="@font/anton_regular">
