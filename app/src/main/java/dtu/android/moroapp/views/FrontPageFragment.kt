@@ -1,4 +1,4 @@
-package dtu.android.moroapp
+package dtu.android.moroapp.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import dtu.android.moroapp.R
 import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.models.Query
 import dtu.android.moroapp.models.data
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_front_page.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import sh.mama.hangman.adapters.EventAdapter
+import dtu.android.moroapp.adapters.EventAdapter
 import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URL

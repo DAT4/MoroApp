@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="160dp"
     android:layout_height="160dp"
-    tools:context=".EventCardBlockFragment"
+    tools:context=".views.EventCardBlockFragment"
     >
 
     <LinearLayout

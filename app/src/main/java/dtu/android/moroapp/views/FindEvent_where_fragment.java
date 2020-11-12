@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import dtu.android.moroapp.R;
 
 public class FindEvent_where_fragment extends Fragment implements View.OnClickListener{
 

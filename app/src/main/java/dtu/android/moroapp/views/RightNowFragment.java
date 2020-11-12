@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
+import dtu.android.moroapp.R;
 
 public class RightNowFragment extends Fragment {
 

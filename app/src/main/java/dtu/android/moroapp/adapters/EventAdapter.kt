@@ -1,4 +1,4 @@
-package sh.mama.hangman.adapters
+package dtu.android.moroapp.adapters
 
 import android.view.LayoutInflater
 import android.view.View

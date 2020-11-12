@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+
+import dtu.android.moroapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,33 +29,22 @@ public class MainActivity extends AppCompatActivity {
         bBurger = (Button) findViewById(R.id.nav_burger);
 
 
-        bRightNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rightNow();
-            }
+        bRightNow.setOnClickListener(view -> rightNow());
+
+        bBurger.setOnClickListener(view -> {
+            Fragment fragment = new Burger_fragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainFragment, fragment)
+                    .addToBackStack(null)
+                    .commit();
         });
 
-        bBurger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new Burger_fragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.mainFragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        bHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new FrontPageFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.mainFragment, fragment)
-                        .addToBackStack(null)
-                        .commit();
-            }
+        bHome.setOnClickListener(view -> {
+            Fragment fragment = new FrontPageFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.mainFragment, fragment)
+                    .addToBackStack(null)
+                    .commit();
         });
 
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".findEvent_interface_Fragment"
+    tools:context=".views.findEvent_interface_Fragment"
     android:background="#D2C8E4">
 
     <LinearLayout

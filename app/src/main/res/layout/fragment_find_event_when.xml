@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindEvent_when_fragment"
+    tools:context=".views.FindEvent_when_fragment"
     android:padding="16dp"
     android:background="#E95634"
     android:orientation="vertical">

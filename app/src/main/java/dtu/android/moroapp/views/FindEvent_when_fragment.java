@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.views;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import dtu.android.moroapp.R;
 
 
 public class FindEvent_when_fragment extends Fragment implements View.OnClickListener {
