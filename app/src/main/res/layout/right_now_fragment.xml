@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,24 +56,26 @@
                         android:layout_weight="1"
                         android:gravity="left">
 
-                    <Button
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginLeft="10dp"
-                        android:text="L"
-                       />
+                        <Button
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_list_view"
+                            />
 
-                    <Button
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:text="G"
-                        />
 
-                    <Button
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:text="M"
-                       />
+
+                        <Button
+                            android:layout_width="32dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/ic_grid_view" />
+
+                        <Button
+                            android:layout_width="32dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/ic_map_view" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -130,5 +133,4 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
 </FrameLayout>
