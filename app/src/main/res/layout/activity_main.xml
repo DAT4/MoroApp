@@ -18,20 +18,16 @@
             android:background="#000000"
             >
             <TextView
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="MORO"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_moro_logo"
                 />
             <Button
                 android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
-                android:layout_weight="4"
-                android:layout_height="match_parent"
-                android:text="SØG"/>
+                android:layout_width="wrap_content"
+                android:background="@drawable/ic_search_button"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,43 +47,42 @@
             android:layout_height="200dp"
             android:layout_weight="1"
             android:background="#000000"
+            android:orientation="horizontal"
+            android:paddingHorizontal="30dp"
             >
             <Button
+                android:paddingHorizontal="40dp"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
+                android:background="@drawable/ic_lige_nu_navbar"
                 android:layout_weight="1"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/nav_now"
-                android:text="Nu"/>
+                tools:ignore="NestedWeights" />
             <Button
+                android:paddingHorizontal="40dp"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
+                android:background="@drawable/ic_home_navbar"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:id="@+id/nav_home"
-                android:text="Hjem"/>
+                android:id="@+id/nav_home" />
             <Button
+                android:paddingHorizontal="40dp"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
+                android:background="@drawable/ic_min_profil_navbar"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:id="@+id/nav_profile"
-                android:text="Profil"/>
+                android:id="@+id/nav_profile" />
             <Button
+                android:paddingHorizontal="40dp"
                 android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
+                android:background="@drawable/ic_burger_meneu"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:id="@+id/nav_burger"
-                android:text="Burger"/>
+                android:id="@+id/nav_burger" />
         </LinearLayout>
     </LinearLayout>
 
