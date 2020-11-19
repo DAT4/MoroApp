@@ -7,7 +7,7 @@
 
 - Fragment_burger_fragment
 - Fragment_find_event_interface
-- Fragment_front_page
+- Fragment_front_page (Thomas)
 - fragment_kommende_events
 - fragment_kontakt_os
 - fragment_min_profil
