@@ -6,10 +6,10 @@
 ## TODO
 
 - Fragment_burger_fragment (Done)
-- Fragment_find_event_interface (Oliver)
+- Fragment_find_event_interface (Done)
 - Fragment_front_page (Done)
 - fragment_kommende_events (Thomas)
-- fragment_kontakt_os
+- fragment_kontakt_os (Oliver)
 - fragment_min_profil
 - fragment_min_profil_kalender
 - fragment_om_os
