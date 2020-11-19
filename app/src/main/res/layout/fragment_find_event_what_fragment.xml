@@ -9,234 +9,221 @@
     android:padding="16dp"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/topButtons"
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        >
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center">
-        <Button
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:id="@+id/what_back"
-            android:background="@drawable/ic_arrow_back"
-            android:backgroundTint="@color/colorFindEventWhat"
-            />
-    </LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center">
-
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:background="@drawable/ic_arrow_up"
-            android:id="@+id/button_Op_what"
-            android:backgroundTint="@color/colorFindEventWhat"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center">
-
-        <Button
-            android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/colorFindEventWhat"
-            android:text="X"
-            />
-
-    </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/Titel"
-        android:layout_marginTop="16dp"
-
-        >
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HVAD"
-            android:textSize="20dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#000000"
-            android:gravity="center"
-            />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:layout_weight="4"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/topButtons"
+                android:orientation="horizontal"
+                android:layout_margin="16dp"
+                >
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:id="@+id/what_back"
+                        android:background="@drawable/ic_arrow_back"
+                        android:backgroundTint="@color/colorFindEventWhat"
+                        />
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-        >
+                    <Button
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_arrow_up"
+                        android:id="@+id/button_Op_what"
+                        android:backgroundTint="@color/colorFindEventWhat"
+                        />
 
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+                </LinearLayout>
 
-            android:textSize="15sp"
-            android:text="Koncert"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
 
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
+                        android:background="@android:color/transparent"
+                        android:textColor="@color/colorFindEventWhat"
+                        android:text="X"
+                        />
 
-            android:textSize="15sp"
-
-            android:text="Udstilling"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-
-            android:text="Litteratur"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Film"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Comedy"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Talk"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Teater"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Fest"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Gratis"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Sport og Spil"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Mad Og drikke"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Mode"
-            />
-    </GridLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-
-        >
+                </LinearLayout>
 
 
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:background="@drawable/ic_arrow_down"
-            android:id="@+id/button_Down_what"
-            android:backgroundTint="@color/colorFindEventWhat"
-            />
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/Titel"
+                android:layout_marginTop="5dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HVAD"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    />
+            </LinearLayout>
+
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="450dp"
+                android:columnCount="3"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                >
+
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Koncert"
+
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Udstilling"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Litteratur"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Film"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Comedy"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Talk"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Teater"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Fest"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Gratis"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Sport og Spil"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Mad Og drikke"
+                    />
+                <Button
+                    android:background="@drawable/box_bg"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:text="Mode"
+                    />
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/ic_arrow_down"
+                    android:id="@+id/button_Down_what"
+                    android:backgroundTint="@color/colorFindEventWhat"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
 
 
 </LinearLayout>
