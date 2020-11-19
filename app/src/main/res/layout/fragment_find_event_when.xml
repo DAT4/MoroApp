@@ -23,6 +23,7 @@
             android:id="@+id/when_back"
             android:background="@drawable/ic_arrow_back"
             android:layout_gravity="center"
+            android:backgroundTint="@color/colorFindEventWhen"
             />
 
         <LinearLayout
@@ -35,7 +36,7 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:textColor="#000000"
+                android:textColor="@color/colorFindEventWhen"
                 android:text="x"
                 />
         </LinearLayout>
@@ -80,6 +81,7 @@
             android:layout_height="20dp"
             android:id="@+id/button_Down_when"
             android:background="@drawable/ic_arrow_down"
+            android:backgroundTint="@color/colorFindEventWhen"
             />
 
     </LinearLayout>
