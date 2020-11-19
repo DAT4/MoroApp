@@ -44,8 +44,10 @@
                             android:layout_width="164dp"
                             android:layout_height="34dp"
                             android:text="Tilbage"
+                            android:paddingBottom="5dp"
                             android:id="@+id/right_now_back"
-                            android:background="#1F3A7D"
+                            android:background="@drawable/ic_button"
+                            android:backgroundTint="@color/colorIconBlue"
                             android:textColor="#FFFFFF" />
 
                     </LinearLayout>
