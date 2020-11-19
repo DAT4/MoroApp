@@ -14,8 +14,8 @@
 - fragment_min_profil_kalender (Thomas Skal lige snakkes igennem med gruppen)
 - fragment_om_os 
 - fragment_saved_events (Done)
-- fragment_single_event (Oliver)
+- fragment_single_event (Done)
 - fragment_tip_os (Thomas)
-- right_now_fragment
+- right_now_fragment (Oliver)
 
 - Anbefalet og Mine Gemte fragmenter skal laves til recycler views istedet for fragmenter
