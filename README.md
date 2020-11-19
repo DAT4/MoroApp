@@ -18,3 +18,4 @@
 - fragment_tip_os
 - right_now_fragment
 
+- Anbefalet og Mine Gemte fragmenter skal laves til recycler views istedet for fragmenter
