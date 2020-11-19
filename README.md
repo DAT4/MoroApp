@@ -18,4 +18,4 @@
 - fragment_tip_os (Thomas)
 - right_now_fragment (Done)
 
-- Anbefalet og Mine Gemte fragmenter skal laves til recycler views istedet for fragmenter (Oliver)
+- Anbefalet og Mine Gemte fragmenter skal laves til recycler views istedet for fragmenter (Done)
