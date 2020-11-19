@@ -9,11 +9,11 @@
 - Fragment_find_event_interface (Done)
 - Fragment_front_page (Done)
 - fragment_kommende_events (Done)
-- fragment_kontakt_os (Oliver)
+- fragment_kontakt_os (Done)
 - fragment_min_profil (Done)
 - fragment_min_profil_kalender (Thomas)
-- fragment_om_os
-- fragment_saved_events
+- fragment_om_os 
+- fragment_saved_events (Oliver)
 - fragment_single_event
 - fragment_tip_os
 - right_now_fragment
