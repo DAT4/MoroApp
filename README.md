@@ -16,6 +16,6 @@
 - fragment_saved_events (Done)
 - fragment_single_event (Done)
 - fragment_tip_os (Thomas)
-- right_now_fragment (Oliver)
+- right_now_fragment (Done)
 
-- Anbefalet og Mine Gemte fragmenter skal laves til recycler views istedet for fragmenter
+- Anbefalet og Mine Gemte fragmenter skal laves til recycler views istedet for fragmenter (Oliver)
