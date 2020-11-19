@@ -69,28 +69,14 @@
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical" >
 
-                    <fragment
-                        android:layout_height="match_parent"
-                        android:id="@+id/event_card_5"
-                        android:name="dtu.android.moroapp.EventCardFragment"
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
+                        android:layout_height="wrap_content"
+                        />
 
-                    <fragment
-                        android:layout_height="match_parent"
-                        android:id="@+id/event_card_6"
-                        android:name="dtu.android.moroapp.EventCardFragment"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
-
-                    <Space
-                        android:layout_width="1dp"
-                        android:layout_height="30dp"/>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
