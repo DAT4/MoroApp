@@ -10,8 +10,8 @@
 - Fragment_front_page (Done)
 - fragment_kommende_events (Done)
 - fragment_kontakt_os (Oliver)
-- fragment_min_profil (Thomas)
-- fragment_min_profil_kalender
+- fragment_min_profil (Done)
+- fragment_min_profil_kalender (Thomas)
 - fragment_om_os
 - fragment_saved_events
 - fragment_single_event
