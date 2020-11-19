@@ -5,7 +5,7 @@
 
 ## TODO
 
-- Fragment_burger_fragment
+- Fragment_burger_fragment (Oliver)
 - Fragment_find_event_interface
 - Fragment_front_page (Thomas)
 - fragment_kommende_events
