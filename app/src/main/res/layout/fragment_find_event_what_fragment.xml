@@ -16,30 +16,53 @@
         android:orientation="horizontal"
         android:layout_margin="16dp"
         >
-
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/what_back"
+        android:gravity="center">
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/what_back"
+            android:background="@drawable/ic_arrow_back"
+            android:backgroundTint="@color/colorFindEventWhat"
+            />
+    </LinearLayout>
 
-        android:text="Tilbage"
-        />
-
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Op"
-        android:id="@+id/button_Op_what"
-        />
+        android:gravity="center">
 
-    <Button
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_arrow_up"
+            android:id="@+id/button_Op_what"
+            android:backgroundTint="@color/colorFindEventWhat"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Kryds"
-        />
+        android:gravity="center">
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/colorFindEventWhat"
+            android:text="X"
+            />
+
+    </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -206,10 +229,11 @@
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ned"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_arrow_down"
             android:id="@+id/button_Down_what"
+            android:backgroundTint="@color/colorFindEventWhat"
             />
 
     </LinearLayout>
