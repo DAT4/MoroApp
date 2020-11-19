@@ -13,8 +13,8 @@
 - fragment_min_profil (Done)
 - fragment_min_profil_kalender (Thomas)
 - fragment_om_os 
-- fragment_saved_events (Oliver)
-- fragment_single_event
+- fragment_saved_events (Done)
+- fragment_single_event (Oliver)
 - fragment_tip_os
 - right_now_fragment
 
