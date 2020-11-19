@@ -8,9 +8,9 @@
 - Fragment_burger_fragment (Done)
 - Fragment_find_event_interface (Done)
 - Fragment_front_page (Done)
-- fragment_kommende_events (Thomas)
+- fragment_kommende_events (Done)
 - fragment_kontakt_os (Oliver)
-- fragment_min_profil
+- fragment_min_profil (Thomas)
 - fragment_min_profil_kalender
 - fragment_om_os
 - fragment_saved_events
