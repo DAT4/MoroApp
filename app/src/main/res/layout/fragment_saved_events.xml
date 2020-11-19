@@ -36,17 +36,6 @@
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
-             <!--   <Button
-                    android:layout_width="40dp"
-                    android:id="@+id/list_view"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/ic_list_view"
-
-                    android:text=""
-                    >
-                </Button> -->
-
                     <Button
                         android:id="@+id/savedEvents_list_view"
                         android:layout_width="40dp"
@@ -84,25 +73,10 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
 
-                    <fragment
-                        android:layout_height="match_parent"
-                        android:id="@+id/event_card_1"
-                        android:name="dtu.android.moroapp.EventCardFragment"
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
-
-                    <fragment
-                        android:layout_height="match_parent"
-                        android:id="@+id/event_card_2"
-                        android:name="dtu.android.moroapp.EventCardFragment"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
-
-                    <Space
-                        android:layout_width="1dp"
-                        android:layout_height="30dp"/>
+                        android:layout_height="wrap_content"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
