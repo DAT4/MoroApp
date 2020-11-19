@@ -16,30 +16,52 @@
         android:orientation="horizontal"
         android:layout_margin="16dp"
         >
-
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/where_back"
+        android:gravity="center">
 
-        android:text="Tilbage"
-        />
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:id="@+id/where_back"
+            android:background="@drawable/ic_arrow_back"
+            />
 
-    <Button
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Op"
-        android:id="@+id/button_Op_where"
-        />
+        android:gravity="center">
 
-    <Button
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_arrow_up"
+            android:id="@+id/button_Op_where"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Kryds"
-        />
+        android:gravity="center">
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:background="@android:color/transparent"
+            android:textColor="#000000"
+            android:text="X"
+            />
+
+    </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -204,7 +226,6 @@
         android:orientation="vertical"
 
         >
-
 
         <Button
             android:layout_width="wrap_content"
