@@ -50,17 +50,6 @@ class FrontPageFragment : Fragment() {
                     .filter(PRICELT, 50)
                     .build()
             val events = postStuff<Response>(q,url)
-            for (event in events.data.events) {
-                println(event.title)
-                println(event.time)
-                println(event.link)
-                println(event.tickets)
-                println(event.image)
-                println(event.genre)
-                println(event.location.address.city)
-                println(event.location.place)
-            }
-
             launch(Dispatchers.Main) {
                 try {
                     val adapter = EventAdapter(events.data.events)
