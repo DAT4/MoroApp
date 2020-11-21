@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".FrontPageFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -41,6 +42,34 @@
                 android:layout_width="match_parent"
                 android:text="find event"
                 android:layout_height="match_parent"/>
+            <com.appyvet.materialrangebar.RangeBar
+                android:id="@+id/rangebar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                app:mrb_barWeight="2dp"
+                app:mrb_connectingLineWeight="4dp"
+                app:mrb_leftThumbColor="#FFB300"
+                app:mrb_minThumbDistance="-1"
+                app:mrb_pinColor="#6c3f6a"
+                app:mrb_pinMaxFont="15sp"
+                app:mrb_pinMinFont="12sp"
+                app:mrb_pinRadius="14dp"
+                app:mrb_pinTextColor="@color/colorAccent"
+                app:mrb_rangeBar="true"
+                app:mrb_rangeBarPaddingBottom="30dp"
+                app:mrb_rangeBar_rounded="true"
+                app:mrb_rightThumbColor="#1E88E5"
+                app:mrb_thumbBoundarySize="2dp"
+                app:mrb_thumbSize="10dp"
+                app:mrb_temporaryPins="true"
+                app:mrb_tickDefaultLabel="label"
+                app:mrb_tickEnd="10"
+                app:mrb_tickHeight="4dp"
+                app:mrb_tickInterval="1"
+                app:mrb_tickLabelSize="4sp"
+                app:mrb_tickStart="1"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:id="@+id/front_page_list"
