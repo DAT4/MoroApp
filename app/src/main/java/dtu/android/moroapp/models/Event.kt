@@ -1,8 +1,5 @@
 package dtu.android.moroapp.models
 
-import org.bson.BsonDocument
-import org.bson.BsonInt32
-import org.bson.BsonString
 import java.io.Serializable
 
 data class Event(
