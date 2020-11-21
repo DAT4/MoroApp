@@ -1,10 +1,9 @@
 package dtu.android.moroapp.models
 
+import org.bson.BsonDocument
+import org.bson.BsonInt32
+import org.bson.BsonString
 import java.io.Serializable
-
-data class data(val data: allEvents)
-
-data class allEvents(val allEvents: List<Event>)
 
 data class Event(
         val title :String,
@@ -39,6 +38,3 @@ data class Location(
         val coordinates: Coordinates,
 )
 
-data class Query(
-        val query: String,
-)

@@ -4,23 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import dtu.android.moroapp.models.Event
-import dtu.android.moroapp.models.Query
-import dtu.android.moroapp.models.data
+import dtu.android.moroapp.utils.Query
+import dtu.android.moroapp.utils.Query.Filter.*
+import dtu.android.moroapp.utils.Response
+import dtu.android.moroapp.utils.postStuff
 import kotlinx.android.synthetic.main.fragment_front_page.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import sh.mama.hangman.adapters.EventAdapter
-import java.io.DataOutputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,8 +44,13 @@ class FrontPageFragment : Fragment() {
 
     private fun printEvents() {
         GlobalScope.launch(Dispatchers.IO) {
-            val events = getEvents()
-            for (event in events) {
+            val url = "https://mama.sh/moro/api"
+            val q = Query.Builder()
+                    .filter(PLACE, "HUSET")
+                    .filter(PRICELT, 50)
+                    .build()
+            val events = postStuff<Response>(q,url)
+            for (event in events.data.events) {
                 println(event.title)
                 println(event.time)
                 println(event.link)
@@ -59,9 +60,10 @@ class FrontPageFragment : Fragment() {
                 println(event.location.address.city)
                 println(event.location.place)
             }
+
             launch(Dispatchers.Main) {
                 try {
-                    val adapter = EventAdapter(events)
+                    val adapter = EventAdapter(events.data.events)
                     front_page_list.adapter = adapter
                     front_page_list.layoutManager = LinearLayoutManager(activity)
                 } catch (e: Exception) {
@@ -122,64 +124,5 @@ class FrontPageFragment : Fragment() {
                         putString(ARG_PARAM2, param2)
                     }
                 }
-    }
-
-    private fun getEvents(): List<Event> {
-        val url = "https://mama.sh/moro/api"
-        val req = URL(url)
-        val con = req.openConnection() as HttpURLConnection
-        con.requestMethod = "POST"
-        con.connectTimeout = 300000
-        con.doOutput = true
-        val gson = Gson()
-        val json = gson.toJson(Query("""
-{
-  allEvents{
-    title
-    genre
-    image
-    link
-    other
-    price
-    text
-    tickets
-    time
-    location{
-      area
-      place
-      address{
-        city
-        street
-        no
-        state
-        street
-        zip
-      }
-      coordinates{
-        longitude
-        latitude
-      }
-    }
-  }
-} 
-        """.trimIndent()))
-        val data = (json).toByteArray()
-        con.setRequestProperty("Content-Type", "application/json")
-
-        val request = DataOutputStream(con.outputStream)
-        request.write(data)
-        request.flush()
-        con.inputStream.bufferedReader().use {
-            val response = StringBuffer()
-            var inputLine = it.readLine()
-            while (inputLine != null) {
-                response.append(inputLine)
-                inputLine = it.readLine()
-            }
-            val gson = Gson()
-            val eventsType = object : TypeToken<data>() {}.type
-            val out = gson.fromJson(response.toString(), eventsType) as data
-            return out.data.allEvents
-        }
     }
 }
