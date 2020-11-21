@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.utils.Query
 import dtu.android.moroapp.utils.Query.Filter.*
 import dtu.android.moroapp.utils.Response
@@ -49,7 +48,7 @@ class FrontPageFragment : Fragment() {
                     .filter(PLACE, "HUSET")
                     .filter(PRICELT, 50)
                     .build()
-            val events = postStuff<Response>(q,url)
+            val events = postStuff<Response>(q, url)
             launch(Dispatchers.Main) {
                 try {
                     val adapter = EventAdapter(events.data.events)
