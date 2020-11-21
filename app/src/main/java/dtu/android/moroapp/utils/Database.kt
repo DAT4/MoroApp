@@ -90,6 +90,7 @@ class Query private constructor(val query: String) {
         TIMELT("timeLT"),
         TIMEGT("timeGT"),
         AREA("area"),
+        TITLE("title")
     }
 }
 
