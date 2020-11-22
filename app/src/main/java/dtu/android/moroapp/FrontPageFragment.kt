@@ -15,7 +15,11 @@ import kotlinx.android.synthetic.main.fragment_front_page.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import me.bendik.simplerangeview.SimpleRangeView
 import sh.mama.hangman.adapters.EventAdapter
+import java.sql.Timestamp
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,13 +45,16 @@ class FrontPageFragment : Fragment() {
         }
     }
 
+
     private fun printEvents() {
         GlobalScope.launch(Dispatchers.IO) {
             val url = "https://mama.sh/moro/api"
+            val time = System.currentTimeMillis()/1000
+            println(time)
             val q = Query.Builder()
-                    .filter(PLACE, "HUSET")
-                    .filter(PRICELT, 50)
+                    .filter(TIMEGT, time)
                     .build()
+            println(q)
             val events = postStuff<Response>(q, url)
             launch(Dispatchers.Main) {
                 try {

@@ -72,7 +72,7 @@ class Query private constructor(val query: String) {
             if (!filters.isEmpty()) {
                 this.query += "("
                 filters.forEach {
-                    this.query += if (it.value is Int) it.key.str+ ":" + it.value + "," else {
+                    this.query += if (it.value is Int || it.value is Long) it.key.str+ ":" + it.value + "," else {
                         it.key.str+ ":\"" + it.value + "\","
                     }
                 }
@@ -87,8 +87,8 @@ class Query private constructor(val query: String) {
         PLACE("place"),
         PRICELT("priceLT"),
         PRICEGT("priceGT"),
-        TIMELT("timeLT"),
-        TIMEGT("timeGT"),
+        TIMELT("timestampLT"),
+        TIMEGT("timestampGT"),
         AREA("area"),
         TITLE("title")
     }
