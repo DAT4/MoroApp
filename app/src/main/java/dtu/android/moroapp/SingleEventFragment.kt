@@ -45,11 +45,9 @@ class SingleEventFragment : Fragment() {
 
             val timeStamp = Date(event.time * 1000)
 
-            val timeFormat = SimpleDateFormat("HH:mm")
-            val dateFormat = SimpleDateFormat("dd/mm/yy")
+            val time = SimpleDateFormat("HH:mm").format(timeStamp)
+            val date = SimpleDateFormat("dd/MM/yy").format(timeStamp)
 
-            val time = timeFormat.format(timeStamp)
-            val date = dateFormat.format(timeStamp)
             event_single_title.text = event.title
             event_single_description.text = event.text
             event_single_date.text = date

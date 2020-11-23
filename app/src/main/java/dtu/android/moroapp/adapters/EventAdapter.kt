@@ -31,7 +31,7 @@ class EventAdapter(
             val timeStamp = Date(events[position].time * 1000)
 
             val timeFormat = SimpleDateFormat("HH:mm")
-            val dateFormat = SimpleDateFormat("dd/mm/yy")
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy")
 
             val time = timeFormat.format(timeStamp)
             val date = dateFormat.format(timeStamp)
