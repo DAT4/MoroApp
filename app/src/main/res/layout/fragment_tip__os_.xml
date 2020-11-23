@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#D2C8E4"
-    tools:context=".Kontakt_Os_Fragment">
+    tools:context=".Kontakt_Os_Fragment"
+    android:padding="20dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +17,136 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="25sp"
-            android:textColor="#000000"
+            android:textSize="50sp"
+            android:textColor="@color/colorBlack"
             android:fontFamily="@font/anton_regular"
             android:text="TIP OS"
             >
-
         </TextView>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="16dp">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="TITEL PÅ EVENT"
+            android:fontFamily="@font/anton_regular"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="16dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_about_us_dropdown"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_about_us_dropdown"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Spinner
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:spinnerMode="dropdown"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_about_us_dropdown"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_map_view"
+            android:backgroundTint="@color/colorAboutUs"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="HVOR AFHOLDES EVENTET"
+            android:fontFamily="@font/anton_regular"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="LINK TIL EVENTET"
+            android:paddingTop="16dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/ic_button"
+        android:backgroundTint="@color/colorAboutUs"
+        android:layout_marginTop="20sp"
+        android:text="SEND"
+        android:textColor="@color/colorWhite"
+        android:paddingBottom="10dp"
+        android:textSize="20sp"/>
 
 
 </LinearLayout>

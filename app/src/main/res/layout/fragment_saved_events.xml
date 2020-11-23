@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,53 +32,51 @@
                         android:layout_height="62dp"
                         android:fontFamily="@font/anton_regular"
                         android:text="@string/mine_gemte_events"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorIconOrange"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
-                <Button
+                    <Button
+                        android:id="@+id/savedEvents_list_view"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="-10dp"
+                        android:background="@drawable/ic_list_view"
+                        android:backgroundTint="@color/colorIconOrange" />
+
+                    <Button
+                        android:id="@+id/savedEvents_grid_view"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:text="L"
+                    android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-10dp"
+                    android:background="@drawable/ic_grid_view"
+                        android:backgroundTint="@color/colorIconOrange"
+                        android:text=""
                     />
 
                 <Button
+                    android:id="@+id/savedEvents_map_view"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:text="G"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="-10dp"
+                    android:background="@drawable/ic_map_view"
+                    android:backgroundTint="@color/colorIconOrange"
+                    android:text=""
                     />
 
-                <Button
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:text="M"
-                    />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
 
-                    <fragment
-                        android:layout_height="match_parent"
-                        android:id="@+id/event_card_1"
-                        android:name="dtu.android.moroapp.EventCardFragment"
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
-
-                    <fragment
-                        android:layout_height="match_parent"
-                        android:id="@+id/event_card_2"
-                        android:name="dtu.android.moroapp.EventCardFragment"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
-
-                    <Space
-                        android:layout_width="1dp"
-                        android:layout_height="30dp"/>
+                        android:layout_height="wrap_content"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

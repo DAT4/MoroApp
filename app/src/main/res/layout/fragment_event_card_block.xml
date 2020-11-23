@@ -30,7 +30,8 @@
                 android:layout_columnWeight="1"
                 android:layout_marginBottom="1dp"
                 android:text="DATO"
-                android:textColor="#FFFFFF" />
+                android:fontFamily="@font/anton_regular"
+                android:textColor="@color/colorWhite" />
 
         </LinearLayout>
 
@@ -38,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_gravity="bottom"
-            android:background="#1F3A7D"
+            android:background="@color/colorIconBlue"
             android:orientation="vertical">
 
             <LinearLayout
@@ -52,8 +53,9 @@
                     android:layout_weight="1"
                     android:gravity="left"
                     android:layout_marginLeft="2dp"
+                    android:fontFamily="@font/anton_regular"
                     android:text="Titel PÅ EVENT"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,7 +64,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="+"
-                    android:textColor="#FFFFFF" />
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 
@@ -79,7 +82,8 @@
                     android:gravity="left"
                     android:layout_marginLeft="2dp"
                     android:text="2,3 km"
-                    android:textColor="#FFFFFF" />
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -88,7 +92,8 @@
                     android:gravity="right"
                     android:layout_marginRight="3dp"
                     android:text="00:00 - 00:00"
-                    android:textColor="#FFFFFF" />
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 
