@@ -1,5 +1,7 @@
 package dtu.android.moroapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -57,10 +59,10 @@ class SingleEventFragment : Fragment() {
             event_single_address.text = "${event.location.address.street} ${event.location.address.no}"
             event_single_city.text = "${event.location.address.zip} ${event.location.address.city}"
             event_single_link.setOnClickListener{
-                Toast.makeText(context,"link",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.link)))
             }
             event_single_ticket.setOnClickListener{
-                Toast.makeText(context,"ticket",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.tickets)))
             }
             println(event.image)
             Picasso.get()
