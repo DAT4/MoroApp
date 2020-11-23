@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
 import dtu.android.moroapp.models.Event
 import kotlinx.android.synthetic.main.fragment_single_event.view.*
 import java.text.SimpleDateFormat
@@ -63,6 +64,12 @@ class SingleEventFragment : Fragment() {
             event_single_ticket.setOnClickListener{
                 Toast.makeText(context,"ticket",Toast.LENGTH_SHORT).show()
             }
+            println(event.image)
+            Picasso.get()
+                    .load(event.image)
+                    .fit()
+                    .centerCrop()
+                    .into(image)
         }
     }
 
