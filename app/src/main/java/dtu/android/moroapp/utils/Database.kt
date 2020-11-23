@@ -6,7 +6,7 @@ import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-inline fun <reified T> postStuff(query: Any, url: String): T {
+inline fun <reified T> postStuff(query: Any, url: String): T{
     val req = URL(url)
     val con = req.openConnection() as HttpURLConnection
     con.requestMethod = "POST"
@@ -79,7 +79,6 @@ class Query private constructor(val query: String) {
                 this.query = this.query.dropLast(1) + ")"
             }
             this.query += "{$elements}}"
-            println(this.query)
             return this.query
         }
     }
@@ -94,6 +93,6 @@ class Query private constructor(val query: String) {
     }
 }
 
-data class Response(val data: Data, val errors: List<GQLError>)
-data class Data(val events: List<Event>)
+data class Response(val data: Data, val errors: MutableList<GQLError>)
+data class Data(val events: MutableList<Event>)
 data class GQLError(val message: String)

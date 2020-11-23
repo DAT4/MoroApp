@@ -65,7 +65,6 @@ class FrontPageFragment : Fragment() {
                     print("Fejlet")
                 }
             }
-
         }
     }
 
