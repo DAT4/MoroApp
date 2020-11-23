@@ -25,10 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ConcreteEvents c = ConcreteEvents.INSTANCE;
-        int t = (int) System.currentTimeMillis();
+        long t = System.currentTimeMillis()/1000;
         Query q = new Query.Builder()
-                .filter(Filter.TIMEGT,t)
+                .filter(Filter.TIMEGT, t)
                 .build();
+        System.out.println(q.getQuery());
         c.cache(q);
 
         bRightNow = (Button) findViewById(R.id.nav_now);
