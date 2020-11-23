@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import dtu.android.moroapp.adapters.Frontpage_Adapter
 import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.observer.ConcreteEvents
 import dtu.android.moroapp.observer.IObserver
 import kotlinx.android.synthetic.main.fragment_front_page.*
+import kotlinx.android.synthetic.main.fragment_view_pager.*
 import sh.mama.hangman.adapters.EventAdapter
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,6 +47,17 @@ class FrontPageFragment : Fragment(), IObserver {
             val adapter = EventAdapter(events as List<Event>)
             front_page_list.adapter = adapter
             front_page_list.layoutManager = LinearLayoutManager(activity)
+        } catch (e: Exception) {
+            print("Fejlet")
+        }
+    }
+
+    private fun printBanner() {
+        val events = ConcreteEvents.getAllEvents()
+        try {
+            val adapter = Frontpage_Adapter(this.context, events as ArrayList<Event>)
+            viewPager.adapter = adapter
+
         } catch (e: Exception) {
             print("Fejlet")
         }

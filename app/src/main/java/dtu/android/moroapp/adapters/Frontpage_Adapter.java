@@ -4,12 +4,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,12 +24,13 @@ import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.Frontpage_Event_Model;
 
-public class Frontpage_Adapter extends PagerAdapter {
+public class Frontpage_Adapter extends FragmentStatePagerAdapter {
 
     private Context context;
     private ArrayList<Event> modelArrayList;
 
     public Frontpage_Adapter(Context context, ArrayList<Event> modelArrayList) {
+        super(context);
         this.context = context;
         this.modelArrayList = modelArrayList;
     }
@@ -36,6 +43,12 @@ public class Frontpage_Adapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         return view.equals(object);
+    }
+
+    @NonNull
+    @Override
+    public Fragment getItem(int position) {
+            return null;
     }
 
     @NonNull
