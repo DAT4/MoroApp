@@ -61,21 +61,23 @@
                         android:gravity="left">
 
                         <Button
+                            android:id="@+id/viewList"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_list_view"
+                            android:onClick="viewList"
                             />
 
-
-
                         <Button
+                            android:id="@+id/viewGrid"
                             android:layout_width="32dp"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="5dp"
                             android:background="@drawable/ic_grid_view" />
 
                         <Button
+                            android:id="@+id/viewMap"
                             android:layout_width="32dp"
                             android:layout_marginLeft="5dp"
                             android:layout_height="match_parent"
@@ -89,6 +91,7 @@
                     android:orientation="vertical" >
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
                         android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />

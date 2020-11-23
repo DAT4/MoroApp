@@ -7,13 +7,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-public class RightNowFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.GridViewAdapter;
+import dtu.android.moroapp.adapters.ListViewAdapter;
+import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.Location;
+
+public class RightNowFragment extends Fragment implements View.OnClickListener {
 
     private Button back;
+    Button btnList, btnGrid, btnMap;
     private View root;
+    RecyclerView listview;
+    EventsViewManager viewManager;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +51,66 @@ public class RightNowFragment extends Fragment {
             }
         );
 
+        // BTN setup
+        btnList = root.findViewById(R.id.viewList);
+        btnList.setOnClickListener(this);
+
+        btnGrid = root.findViewById(R.id.viewGrid);
+        btnGrid.setOnClickListener(this);
+
+        btnMap = root.findViewById(R.id.viewMap);
+        btnMap.setOnClickListener(this);
+
+        // Test values
+        String[] events = new String[]{"TEst 1", "Test2"};
+
+        // Manger setup
+        viewManager = new EventsViewManager(events);
+
+        // recycler view setup
+        listview = root.findViewById(R.id.recyclerView);
+        updateView();
+
         return root;
+    }
+
+    public void viewList(View view) {
+        // Change View
+        viewManager.viewList();
+
+        // Update to screen
+        updateView();
+    }
+
+    public void viewGrid(View view) {
+        viewManager.viewGrid();
+        updateView();
+    }
+
+    public void viewMap(View view) {
+        viewManager.viewMap();
+        updateView();
+    }
+
+    void updateView () {
+        listview.setAdapter(viewManager.getAdapter());
+        listview.setLayoutManager(viewManager.getLayoutManager(this.getContext()));
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.viewList:
+                viewList(v);
+                break;
+            case R.id.viewGrid:
+                viewGrid(v);
+                break;
+            case R.id.viewMap:
+                viewMap(v);
+                break;
+            default:
+                break;
+        }
     }
 }
