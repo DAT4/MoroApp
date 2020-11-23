@@ -7,19 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import dtu.android.moroapp.utils.Query
-import dtu.android.moroapp.utils.Query.Filter.*
-import dtu.android.moroapp.utils.Response
-import dtu.android.moroapp.utils.postStuff
+import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.observer.ConcreteEvents
+import dtu.android.moroapp.observer.IObserver
 import kotlinx.android.synthetic.main.fragment_front_page.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import me.bendik.simplerangeview.SimpleRangeView
 import sh.mama.hangman.adapters.EventAdapter
-import java.sql.Timestamp
-import java.time.Instant
-import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +24,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FrontPageFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FrontPageFragment : Fragment() {
+class FrontPageFragment : Fragment(), IObserver {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -43,28 +35,18 @@ class FrontPageFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        ConcreteEvents.add(this)
     }
 
 
     private fun printEvents() {
-        GlobalScope.launch(Dispatchers.IO) {
-            val url = "https://mama.sh/moro/api"
-            val time = System.currentTimeMillis()/1000
-            println(time)
-            val q = Query.Builder()
-                    .filter(TIMEGT, time)
-                    .build()
-            println(q)
-            val events = postStuff<Response>(q, url)
-            launch(Dispatchers.Main) {
-                try {
-                    val adapter = EventAdapter(events.data.events)
-                    front_page_list.adapter = adapter
-                    front_page_list.layoutManager = LinearLayoutManager(activity)
-                } catch (e: Exception) {
-                    print("Fejlet")
-                }
-            }
+        val events = ConcreteEvents.getAllEvents()
+        try {
+            val adapter = EventAdapter(events as List<Event>)
+            front_page_list.adapter = adapter
+            front_page_list.layoutManager = LinearLayoutManager(activity)
+        } catch (e: Exception) {
+            print("Fejlet")
         }
     }
 
@@ -99,6 +81,11 @@ class FrontPageFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        ConcreteEvents.remove(this)
+    }
+
 
     companion object {
         /**
@@ -118,5 +105,9 @@ class FrontPageFragment : Fragment() {
                         putString(ARG_PARAM2, param2)
                     }
                 }
+    }
+
+    override fun update() {
+        printEvents()
     }
 }
