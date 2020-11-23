@@ -74,11 +74,8 @@ class FrontPageFragment : Fragment(), IObserver {
                         .addToBackStack(null)
                         .commit()
             }
-
             printEvents();
         }
-
-
     }
 
     override fun onDestroy() {
