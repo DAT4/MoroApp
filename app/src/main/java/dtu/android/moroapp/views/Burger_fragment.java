@@ -65,7 +65,7 @@ public class Burger_fragment extends Fragment {
         bClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment newFragment = new FrontPageFragment();
+                Fragment newFragment = new jFrontPageFragment();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.mainFragment, newFragment);
                 transaction.addToBackStack(null);

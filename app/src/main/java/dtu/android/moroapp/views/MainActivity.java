@@ -39,19 +39,19 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         });
 
-        bHome.setOnClickListener(view -> {
-            Fragment fragment = new FrontPageFragment();
+        /*bHome.setOnClickListener(view -> {
+            Fragment fragment = new jFrontPageFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.mainFragment, fragment)
                     .addToBackStack(null)
                     .commit();
-        });
+        }); */
 
 
 
 
         if (savedInstanceState == null) {
-            Fragment fragment = new FrontPageFragment();
+            Fragment fragment = new jFrontPageFragment();
             getSupportFragmentManager().beginTransaction().add(R.id.mainFragment, fragment).commit();
 
         }

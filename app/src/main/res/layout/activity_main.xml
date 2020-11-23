@@ -38,8 +38,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             >
-            <fragment
-                android:name="dtu.android.moroapp.views.FrontPageFragment"
+            <androidx.fragment.app.FragmentContainerView
+                android:name="dtu.android.moroapp.views.jFrontPageFragment"
                 android:id="@+id/mainFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
