@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -90,49 +89,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-                <!--
-                                   <fragment
-                                       android:layout_height="match_parent"
-                                       android:id="@+id/event_card"
-                                       android:name="dtu.android.moroapp.EventCardFragment"
-                                       android:layout_width="match_parent"
-                                       android:layout_marginTop="13dp"
-                                       android:layout_weight="2" />
-
-                                   <fragment
-                                       android:layout_height="match_parent"
-                                       android:id="@+id/event_cardone"
-                                       android:name="dtu.android.moroapp.EventCardFragment"
-                                       android:layout_width="match_parent"
-                                       android:layout_marginTop="13dp"
-                                       android:layout_weight="2" />
-
-                                   <LinearLayout
-                                       android:layout_width="match_parent"
-                                       android:layout_height="match_parent"
-                                       android:orientation="horizontal">
-
-                                       <fragment
-
-                                           android:layout_height="match_parent"
-                                           android:id="@+id/event_cardtwo"
-                                           android:name="dtu.android.moroapp.EventCardBlockFragment"
-                                           android:layout_width="160dp"
-                                           android:layout_columnWeight="1"
-                                           android:layout_marginTop="13dp"
-                                           android:layout_marginRight="15dp"
-                                           android:layout_weight="2" />
-
-                                       <fragment
-                                           android:layout_height="match_parent"
-                                           android:id="@+id/event_cardthree"
-                                           android:name="dtu.android.moroapp.EventCardBlockFragment"
-                                           android:layout_width="160dp"
-                                           android:layout_columnWeight="1"
-                                           android:layout_marginTop="13dp"
-                                           android:layout_weight="2" />
-                                   </LinearLayout>
-               -->
 
             </LinearLayout>
 
