@@ -23,15 +23,24 @@ public class EventsViewManager {
         this.state = listState;
     }
 
-    public void viewGrid() {
-        this.state.viewGrid();
+    public void viewGrid(RecyclerView view, Context context) {
+        this.state.viewGrid(view, context);
+        updateView(view, context);
     }
 
-    public void viewList() {
-        this.state.viewList();
+    public void viewList(RecyclerView view, Context context) {
+        this.state.viewList(view, context);
+        updateView(view, context);
     }
-    public void viewMap() {
-        this.state.viewMap();
+    public void viewMap(RecyclerView view, Context context) {
+        this.state.viewMap(view, context);
+        updateView(view, context);
+    }
+
+
+    public void updateView(RecyclerView view, Context context) {
+        view.setAdapter(getAdapter());
+        view.setLayoutManager(getLayoutManager(context));
     }
 
     public RecyclerView.Adapter getAdapter() {

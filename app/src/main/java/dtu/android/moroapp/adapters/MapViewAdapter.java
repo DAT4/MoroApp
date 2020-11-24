@@ -14,17 +14,17 @@ public class MapViewAdapter implements IListState {
     }
 
     @Override
-    public void viewGrid() {
+    public void viewGrid(RecyclerView view, Context context) {
         this.manager.changeState(new GridViewAdapter(this.manager));
     }
 
     @Override
-    public void viewList() {
+    public void viewList(RecyclerView view, Context context) {
         this.manager.changeState(new ListViewAdapter(this.manager));
     }
 
     @Override
-    public void viewMap() {
+    public void viewMap(RecyclerView view, Context context) {
         // Do nothing
     }
 

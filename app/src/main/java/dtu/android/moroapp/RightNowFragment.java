@@ -77,20 +77,15 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
     public void viewList(View view) {
         // Change View
-        viewManager.viewList();
-
-        // Update to screen
-        updateView();
+        viewManager.viewList(listview,this.getContext());
     }
 
     public void viewGrid(View view) {
-        viewManager.viewGrid();
-        updateView();
+        viewManager.viewGrid(listview,this.getContext());
     }
 
     public void viewMap(View view) {
-        viewManager.viewMap();
-        updateView();
+        viewManager.viewMap(listview,this.getContext());
     }
 
     void updateView () {

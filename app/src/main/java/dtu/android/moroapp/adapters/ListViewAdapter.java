@@ -27,26 +27,26 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     @Override
-    public void viewGrid() {
+    public void viewGrid(RecyclerView view, Context context) {
         this.manager.changeState(new GridViewAdapter(this.manager));
     }
 
     @Override
-    public void viewList() {
+    public void viewList(RecyclerView view, Context context) {
 
     }
 
     @Override
-    public void viewMap() {
+    public void viewMap(RecyclerView view, Context context) {
         this.manager.changeState(new MapViewAdapter(this.manager));
+
     }
 
-    @Override
+
     public RecyclerView.Adapter getAdapter() {
         return this;
     }
 
-    @Override
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
         return new LinearLayoutManager(context);
     }
