@@ -11,138 +11,132 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:id="@+id/liste"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp">
+
+            <TextView
+                android:layout_width="288dp"
+                android:layout_height="62dp"
+                android:text="LIGE NU"
+                android:fontFamily="@font/anton_regular"
+                android:textSize="40sp"
+                android:textColor="#000000"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="10dp">
-
-                <TextView
-                    android:layout_width="288dp"
-                    android:layout_height="62dp"
-                    android:text="LIGE NU"
-                    android:fontFamily="@font/anton_regular"
-                    android:textSize="40sp"
-                    android:textColor="#000000"
-                    android:textStyle="bold" />
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="left">
+                    <Button
+                        android:layout_width="164dp"
+                        android:layout_height="34dp"
+                        android:text="Tilbage"
+                        android:fontFamily="@font/anton_regular"
+                        android:paddingBottom="10dp"
+                        android:id="@+id/right_now_back"
+                        android:background="@drawable/ic_button"
+                        android:backgroundTint="@color/colorIconBlue"
+                        android:textColor="@color/colorWhite" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:layout_gravity="left">
-                        <Button
-                            android:layout_width="164dp"
-                            android:layout_height="34dp"
-                            android:text="Tilbage"
-                            android:fontFamily="@font/anton_regular"
-                            android:paddingBottom="10dp"
-                            android:id="@+id/right_now_back"
-                            android:background="@drawable/ic_button"
-                            android:backgroundTint="@color/colorIconBlue"
-                            android:textColor="@color/colorWhite" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="left">
-
-                        <Button
-                            android:id="@+id/viewList"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/ic_list_view"
-                            android:onClick="viewList"
-                            />
-
-                        <Button
-                            android:id="@+id/viewGrid"
-                            android:layout_width="32dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:background="@drawable/ic_grid_view" />
-
-                        <Button
-                            android:id="@+id/viewMap"
-                            android:layout_width="32dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/ic_map_view" />
-                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical" >
+                    android:layout_weight="1"
+                    android:gravity="left">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
- <!--
-                    <fragment
+                    <Button
+                        android:id="@+id/viewList"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/ic_list_view"
+                        android:onClick="viewList"
+                        />
+
+                    <Button
+                        android:id="@+id/viewGrid"
+                        android:layout_width="32dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/event_card"
-                        android:name="dtu.android.moroapp.EventCardFragment"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/ic_grid_view" />
 
-                    <fragment
+                    <Button
+                        android:id="@+id/viewMap"
+                        android:layout_width="32dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/event_cardone"
-                        android:name="dtu.android.moroapp.EventCardFragment"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="13dp"
-                        android:layout_weight="2" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <fragment
-
-                            android:layout_height="match_parent"
-                            android:id="@+id/event_cardtwo"
-                            android:name="dtu.android.moroapp.EventCardBlockFragment"
-                            android:layout_width="160dp"
-                            android:layout_columnWeight="1"
-                            android:layout_marginTop="13dp"
-                            android:layout_marginRight="15dp"
-                            android:layout_weight="2" />
-
-                        <fragment
-                            android:layout_height="match_parent"
-                            android:id="@+id/event_cardthree"
-                            android:name="dtu.android.moroapp.EventCardBlockFragment"
-                            android:layout_width="160dp"
-                            android:layout_columnWeight="1"
-                            android:layout_marginTop="13dp"
-                            android:layout_weight="2" />
-                    </LinearLayout>
--->
-
+                        android:background="@drawable/ic_map_view" />
                 </LinearLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <!--
+                                   <fragment
+                                       android:layout_height="match_parent"
+                                       android:id="@+id/event_card"
+                                       android:name="dtu.android.moroapp.EventCardFragment"
+                                       android:layout_width="match_parent"
+                                       android:layout_marginTop="13dp"
+                                       android:layout_weight="2" />
+
+                                   <fragment
+                                       android:layout_height="match_parent"
+                                       android:id="@+id/event_cardone"
+                                       android:name="dtu.android.moroapp.EventCardFragment"
+                                       android:layout_width="match_parent"
+                                       android:layout_marginTop="13dp"
+                                       android:layout_weight="2" />
+
+                                   <LinearLayout
+                                       android:layout_width="match_parent"
+                                       android:layout_height="match_parent"
+                                       android:orientation="horizontal">
+
+                                       <fragment
+
+                                           android:layout_height="match_parent"
+                                           android:id="@+id/event_cardtwo"
+                                           android:name="dtu.android.moroapp.EventCardBlockFragment"
+                                           android:layout_width="160dp"
+                                           android:layout_columnWeight="1"
+                                           android:layout_marginTop="13dp"
+                                           android:layout_marginRight="15dp"
+                                           android:layout_weight="2" />
+
+                                       <fragment
+                                           android:layout_height="match_parent"
+                                           android:id="@+id/event_cardthree"
+                                           android:name="dtu.android.moroapp.EventCardBlockFragment"
+                                           android:layout_width="160dp"
+                                           android:layout_columnWeight="1"
+                                           android:layout_marginTop="13dp"
+                                           android:layout_weight="2" />
+                                   </LinearLayout>
+               -->
 
             </LinearLayout>
-        </ScrollView>
+
+
+        </LinearLayout>
     </LinearLayout>
 </FrameLayout>
