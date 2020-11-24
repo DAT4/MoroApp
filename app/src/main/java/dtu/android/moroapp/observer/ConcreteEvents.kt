@@ -9,11 +9,21 @@ object ConcreteEvents : ICache {
     override val observers: ArrayList<IObserver> = ArrayList()
 
     fun getAllEvents(): MutableList<*> {
-        return this.content
+        return order(this.content as ArrayList<Event>)
     }
 
     fun setEvents(events: MutableList<Event>) {
         this.content = events
         sendUpdateEvent()
+    }
+    private fun order(scores: ArrayList<Event>): MutableList<Event> {
+        scores.sortWith(kotlin.Comparator { lhs, rhs ->
+            when {
+                lhs.time > rhs.time -> 1
+                lhs.time < rhs.time -> -1
+                else -> 0
+            }
+        })
+        return scores
     }
 }
