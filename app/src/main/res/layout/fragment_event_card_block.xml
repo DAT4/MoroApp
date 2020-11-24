@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="160dp"
     android:layout_height="160dp"
+    android:id="@+id/event_card_long"
     tools:context=".EventCardBlockFragment"
     >
 

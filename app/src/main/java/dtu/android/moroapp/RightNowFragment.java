@@ -22,6 +22,7 @@ import dtu.android.moroapp.adapters.GridViewAdapter;
 import dtu.android.moroapp.adapters.ListViewAdapter;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.Location;
+import dtu.android.moroapp.observer.ConcreteEvents;
 
 public class RightNowFragment extends Fragment implements View.OnClickListener {
 
@@ -62,7 +63,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap.setOnClickListener(this);
 
         // Test values
-        String[] events = new String[]{"TEst 1", "Test2"};
+        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
 
         // Manger setup
         viewManager = new EventsViewManager(events);

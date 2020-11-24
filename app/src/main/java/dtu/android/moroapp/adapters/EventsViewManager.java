@@ -4,13 +4,17 @@ import android.content.Context;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
+import dtu.android.moroapp.models.Event;
+
 public class EventsViewManager {
 
     IListState state;
-    String[] dataToView;
+    List<Event> dataToView;
 
     // Get the data
-    public EventsViewManager(String[] titles) {
+    public EventsViewManager(List<Event> titles) {
         this.dataToView = titles;
         this.state = new ListViewAdapter(this);
     }

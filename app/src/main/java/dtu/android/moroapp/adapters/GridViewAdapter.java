@@ -7,14 +7,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import dtu.android.moroapp.R;
+import dtu.android.moroapp.SingleEventFragment;
+import dtu.android.moroapp.models.Event;
 
 public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHolder> implements IListState {
 
-    private String[] localDataSet;
+    private List<Event> localDataSet;
     private EventsViewManager manager;
 
 
@@ -74,15 +81,19 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     // Replace the contents of a view (invoked by the layout manager)
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
-        viewHolder.getEventTitle().setText(localDataSet[position]);
-        viewHolder.getEventDistance().setText( 0 + " km");
-        viewHolder.getEventDate().setText("00-00-00");
+        /*SimpleDateFormat date = new SimpleDateFormat("dd-MM-yy");
+        String dateStr = date.format(new Date(this.localDataSet.get(position).getTime() * 1000)); */
+
+        viewHolder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
+        viewHolder.getEventDistance().setText("00 km");
+        viewHolder.getEventDate().setText("00-00");
         viewHolder.getEventTime().setText("00:00");
+        viewHolder.setEventLink(this.localDataSet.get(position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return this.localDataSet.size();
     }
 }

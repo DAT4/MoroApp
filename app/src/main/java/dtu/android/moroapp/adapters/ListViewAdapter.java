@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
+
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> implements IListState{
 
-    private String[] localDataSet;
+    private List<Event> localDataSet;
     EventsViewManager manager;
 
     public ListViewAdapter(EventsViewManager eventsViewManager) {
@@ -61,12 +63,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     }
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     *                by RecyclerView.
-     */
 
 
     // Create new views (invoked by the layout manager)
@@ -85,15 +81,17 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getEventTitle().setText(localDataSet[position]);
-        viewHolder.getEventDistance().setText( 0 + " km");
-        viewHolder.getEventDate().setText("00-00-00");
+        viewHolder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
+        viewHolder.getEventDistance().setText( "0 km");
+        viewHolder.getEventDate().setText("00-00");
         viewHolder.getEventTime().setText("00:00");
+        viewHolder.setEventLink(this.localDataSet.get(position));
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return localDataSet.size();
     }
 }
