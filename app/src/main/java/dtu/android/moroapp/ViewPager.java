@@ -1,5 +1,6 @@
 package dtu.android.moroapp;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -20,8 +25,12 @@ import dtu.android.moroapp.observer.ConcreteEvents;
 public class ViewPager extends Fragment {
 
     private View myFragment;
-    private ViewPager2 viewPager;
+    private ViewPager viewPager;
     private ArrayList<Event> events;
+    private TextView title;
+    private TextView desc;
+    private ImageView image;
+    private Event event;
 
     public ViewPager() {
 
@@ -34,7 +43,15 @@ public class ViewPager extends Fragment {
 
         myFragment = inflater.inflate( R.layout.fragment_view_pager, container, false );
 
-        viewPager = (ViewPager2) myFragment.findViewById(R.id.viewPager);
+        /*title = myFragment.findViewById(R.id.card_item_titel);
+        desc = myFragment.findViewById(R.id.card_item_desc);
+        image = myFragment.findViewById(R.id.bannerID);
+
+        title.setText(getArguments().getString("Titel"));
+        desc.setText(getArguments().getString("Desc"));
+        */
+
+        viewPager = myFragment.findViewById(R.id.viewPager);
 
         return myFragment;
     }
@@ -46,7 +63,7 @@ public class ViewPager extends Fragment {
         setUpViewPager(viewPager);
     }
 
-    private void setUpViewPager(ViewPager2 viewPager) {
+    private void setUpViewPager(ViewPager viewPager) {
 
         events = (ArrayList<Event>) ConcreteEvents.INSTANCE.getAllEvents();
 
@@ -54,6 +71,8 @@ public class ViewPager extends Fragment {
 
         Adapter adapter = (Adapter) frontpage_adapter;
 
-        viewPager.setAdapter(adapter);
+
     }
+
+
 }

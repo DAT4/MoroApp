@@ -21,16 +21,16 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import dtu.android.moroapp.R;
+import dtu.android.moroapp.ViewPager;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.Frontpage_Event_Model;
 
-public class Frontpage_Adapter extends FragmentStatePagerAdapter {
+public class Frontpage_Adapter extends PagerAdapter {
 
     private Context context;
     private ArrayList<Event> modelArrayList;
 
     public Frontpage_Adapter(Context context, ArrayList<Event> modelArrayList) {
-        super(context);
         this.context = context;
         this.modelArrayList = modelArrayList;
     }
@@ -45,11 +45,6 @@ public class Frontpage_Adapter extends FragmentStatePagerAdapter {
         return view.equals(object);
     }
 
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-            return null;
-    }
 
     @NonNull
     @Override

@@ -52,7 +52,7 @@ class FrontPageFragment : Fragment(), IObserver {
         }
     }
 
-    private fun printBanner() {
+    /*private fun printBanner() {
         val events = ConcreteEvents.getAllEvents()
         try {
             val adapter = Frontpage_Adapter(this.context, events as ArrayList<Event>)
@@ -61,7 +61,7 @@ class FrontPageFragment : Fragment(), IObserver {
         } catch (e: Exception) {
             print("Fejlet")
         }
-    }
+    }*/
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
