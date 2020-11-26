@@ -1,122 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="#D2C8E4"
     android:orientation="vertical"
-    tools:context=".findEvent_interface_Fragment"
-    android:background="#D2C8E4">
+    tools:context=".findEvent_interface_Fragment">
 
-    <LinearLayout
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/find_event_tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:hint="Søg efter Nøgleord" />
-        <Button
-            android:layout_width="match_parent"
-            android:background="#332C0B67"
-            android:textColor="#000000"
-            android:layout_weight="4"
-            android:fontFamily="@font/anton_regular"
-            android:layout_height="match_parent"
-            android:text="SØG"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        android:layout_weight="4"
+        android:layout_height="60dp"
+        android:background="@color/colorFindEventWhen"
+        app:tabTextAppearance="@style/Find_where_tabs_style"
         >
 
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#332C0B67"
-            android:fontFamily="@font/anton_regular"
-            android:layout_weight="1"
-            android:text="Hvornår"
-            android:id="@+id/button_when"
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        android:layout_weight="4"
-        >
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#332C0B67"
-            android:fontFamily="@font/anton_regular"
-            android:layout_weight="1"
-            android:text="HVAD"
-            android:id="@+id/button_what"
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        android:layout_weight="4"
-        >
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#332C0B67"
-            android:fontFamily="@font/anton_regular"
-            android:layout_weight="1"
-            android:text="HVOR"
-            android:id="@+id/button_where"
-            />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:gravity="center"
-        android:layout_weight="1">
-
-        <Button
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_when"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#332C0B67"
-            android:fontFamily="@font/anton_regular"
-            android:id="@+id/button_search"
-            android:text="SØG"/>
+            android:text="HVORNÅR" />
 
-    </LinearLayout>
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_where"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HVOR" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_what"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HVAD" />
+    </com.google.android.material.tabs.TabLayout>
 
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/find_event_viewPager"
+        android:layout_below="@+id/find_event_tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
 
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_search_button"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/colorFindEventWhat"
+        android:layout_centerHorizontal="true"
+        android:elevation="6dp"
+
+        />
 
 
-</LinearLayout>
+</RelativeLayout>
