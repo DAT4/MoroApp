@@ -86,6 +86,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         viewHolder.getEventDate().setText("00-00");
         viewHolder.getEventTime().setText("00:00");
         viewHolder.setEventLink(this.localDataSet.get(position));
+        viewHolder.setEventimage(this.localDataSet.get(position).getImage());
 
     }
 
