@@ -6,14 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import dtu.android.moroapp.adapters.Frontpage_Adapter
+import dtu.android.moroapp.adapters.FrontPageAdapter
 import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.observer.ConcreteEvents
 import dtu.android.moroapp.observer.IObserver
 import kotlinx.android.synthetic.main.fragment_front_page.*
-import kotlinx.android.synthetic.main.fragment_view_pager.*
 import sh.mama.hangman.adapters.EventAdapter
+import java.lang.reflect.Array
+import java.util.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,16 +54,26 @@ class FrontPageFragment : Fragment(), IObserver {
         }
     }
 
-    /*private fun printBanner() {
-        val events = ConcreteEvents.getAllEvents()
+    private fun printBanner() {
         try {
-            val adapter = Frontpage_Adapter(this.context, events as ArrayList<Event>)
-            viewPager.adapter = adapter
-
+            initBanner()
         } catch (e: Exception) {
             print("Fejlet")
         }
-    }*/
+    }
+
+    private fun initBanner(){
+        val fragments : ArrayList<Fragment> = ArrayList()
+        val events = ConcreteEvents.getAllEvents()
+
+        for (e in events as List<Event>) {
+            val viewPager: ViewPager = ViewPager.getInstance(e)
+            fragments.add(viewPager)
+        }
+
+        val fontPageAdapter = FrontPageAdapter(fragmentManager!!, fragments)
+        viewPager.adapter = fontPageAdapter
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -88,7 +100,8 @@ class FrontPageFragment : Fragment(), IObserver {
                         .commit()
             }
 
-            printEvents();
+            printEvents()
+            printBanner()
         }
 
 

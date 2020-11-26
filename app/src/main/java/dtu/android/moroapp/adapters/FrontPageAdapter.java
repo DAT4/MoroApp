@@ -22,41 +22,21 @@ import dtu.android.moroapp.models.Event;
 
 public class FrontPageAdapter extends FragmentStatePagerAdapter {
 
-    private ArrayList<Event> modelArrayList;
-    private Context context;
+    private ArrayList<Fragment> mFragments;
 
-    public FrontPageAdapter(FragmentManager fm, ArrayList<Event> modelArrayList, Context context) {
+    public FrontPageAdapter(@NonNull FragmentManager fm, ArrayList<Fragment> fragments) {
         super(fm);
-        this.modelArrayList = modelArrayList;
-        this.context = context;
-
+        mFragments = fragments;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-
-        ViewPager viewPager = new ViewPager();
-
-        View view = LayoutInflater.from(context).inflate( R.layout.card_item_view_pager, container, false);
-
-        //Making the view ready
-        ImageView bannerID = view.findViewById( R.id.bannerID);
-        TextView card_item_titel = view.findViewById(R.id.card_item_titel);
-        TextView card_item_desc = view.findViewById(R.id.card_item_desc);
-
-        Event myModel = modelArrayList.get(position);
-        String titel = myModel.getTitle();
-        String desc = myModel.getGenre();
-
-        Picasso.get().load(myModel.getImage()).into(bannerID);
-
-        return viewPager;
+        return mFragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return modelArrayList.size();
+        return mFragments.size();
     }
-
 }

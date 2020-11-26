@@ -1,78 +1,76 @@
 package dtu.android.moroapp;
 
-import android.media.Image;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
-import dtu.android.moroapp.adapters.Frontpage_Adapter;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.observer.ConcreteEvents;
+
 
 public class ViewPager extends Fragment {
 
-    private View myFragment;
-    private ViewPager viewPager;
-    private ArrayList<Event> events;
-    private TextView title;
-    private TextView desc;
-    private ImageView image;
-    private Event event;
+    private TextView mTitle;
+    private TextView mDesc;
+    private ImageView mImage;
+    private Event mEvent;
 
-    public ViewPager() {
+    public static ViewPager getInstance(Event event) {
+        ViewPager viewPager = new ViewPager();
 
+        if(event != null){
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("event", event);
+            viewPager.setArguments(bundle);
+        }
+
+        return viewPager;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate( savedInstanceState );
+
+        if(getArguments() != null){
+            mEvent = (Event) getArguments().getSerializable("event");
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        myFragment = inflater.inflate( R.layout.fragment_view_pager, container, false );
-
-        /*title = myFragment.findViewById(R.id.card_item_titel);
-        desc = myFragment.findViewById(R.id.card_item_desc);
-        image = myFragment.findViewById(R.id.bannerID);
-
-        title.setText(getArguments().getString("Titel"));
-        desc.setText(getArguments().getString("Desc"));
-        */
-
-        viewPager = myFragment.findViewById(R.id.viewPager);
-
-        return myFragment;
+        return inflater.inflate(R.layout.card_item_view_pager,container,false);
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated( savedInstanceState );
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        mImage = view.findViewById(R.id.bannerID);
+        mTitle = view.findViewById(R.id.card_item_titel);
+        mDesc = view.findViewById(R.id.card_item_desc);
 
-        setUpViewPager(viewPager);
+        init();
     }
 
-    private void setUpViewPager(ViewPager viewPager) {
+    private void init(){
+        if(mEvent != null){
+            //RequestOptions options = new RequestOptions().placeholder(R.drawable.android_1);
 
-        events = (ArrayList<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+            //Glide.with(getActivity()).setDefaultRequestOptions(options).load(mEvent.getImage()).into(mImage);
 
-        Frontpage_Adapter frontpage_adapter = new Frontpage_Adapter(this.getContext(),events);
+            Picasso.get().load(mEvent.getImage()).into(mImage);
 
-        Adapter adapter = (Adapter) frontpage_adapter;
-
-
+            mTitle.setText(mEvent.getTitle());
+            mDesc.setText(mEvent.getGenre());
+        }
     }
-
-
 }
