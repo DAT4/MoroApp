@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dtu.android.moroapp.adapters.FrontPageAdapter
 import dtu.android.moroapp.models.Event
@@ -14,7 +13,6 @@ import dtu.android.moroapp.observer.ConcreteEvents
 import dtu.android.moroapp.observer.IObserver
 import kotlinx.android.synthetic.main.fragment_front_page.*
 import sh.mama.hangman.adapters.EventAdapter
-import java.lang.reflect.Array
 import java.util.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
@@ -71,8 +69,8 @@ class FrontPageFragment : Fragment(), IObserver {
             fragments.add(viewPager)
         }
 
-        val fontPageAdapter = FrontPageAdapter(fragmentManager!!, fragments)
-        viewPager.adapter = fontPageAdapter
+        val frontPageAdapter = FrontPageAdapter(childFragmentManager, fragments)
+        viewPager.adapter = frontPageAdapter
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
