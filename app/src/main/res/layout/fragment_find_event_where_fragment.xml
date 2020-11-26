@@ -11,241 +11,146 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/topButtons"
-                android:orientation="horizontal"
-                android:layout_margin="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <Button
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:id="@+id/where_back"
-                        android:background="@drawable/ic_arrow_back"
-                        android:backgroundTint="@color/colorFindEventWhere"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <Button
-                        android:layout_width="60dp"
-                        android:layout_height="20dp"
-                        android:background="@drawable/ic_arrow_up"
-                        android:id="@+id/button_Op_where"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <Button
-                        android:layout_width="30dp"
-                        android:layout_height="20dp"
-                        android:background="@android:color/transparent"
-                        android:textColor="@color/colorFindEventWhere"
-                        android:text="X"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/Titel"
-                android:layout_marginTop="5dp"
-
-                >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="HVOR"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/anton_regular"
-                    android:textColor="#000000"
-                    android:gravity="center"
-                    />
-            </LinearLayout>
 
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:columnCount="3"
+                android:id="@+id/grid_where"
                 android:layout_gravity="center"
                 android:layout_margin="16dp"
                 android:layout_weight="4"
-
-
                 >
 
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-                    android:text="NØRREBRO"
+                    android:checked="false"
+                    android:textOff="NØRREBRO"
+                    android:textOn="NØRREBRO"
 
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="ISLANDS BRYGGE"
+                    android:checked="false"
+                    android:textOff="ISLANDS BRYGGE"
+                    android:textOn="ISLANDS BRYGGE"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-
-                    android:text="INDRE BY"
+                    android:checked="false"
+                    android:textOff="INDRE BY"
+                    android:textOn="INDRE BY"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
 
                     android:textSize="15sp"
-
-                    android:text="ØSTERBRO"
+                    android:checked="false"
+                    android:textOff="ØSTERBRO"
+                    android:textOn="ØSTERBRO"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="NORDVEST"
+                    android:checked="false"
+                    android:textOff="NORDVEST"
+                    android:textOn="NORDVEST"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="VALBY"
+                    android:checked="false"
+                    android:textOff="VALBY"
+                    android:textOn="valby"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="BRØNSHØJ"
+                    android:checked="false"
+                    android:textOff="brønshøj"
+                    android:textOn="brønshøj"
 
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="AMAR"
+                    android:checked="false"
+                    android:textOff="AMAR"
+                    android:textOn="AMAR"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="VESTERBRO"
+                    android:checked="false"
+                    android:textOff="vesterbro"
+                    android:textOn="vesterbro"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="VANLØSE"
+                    android:checked="false"
+                    android:textOff="Vanløse"
+                    android:textOn="vanløse"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="CHRISTIANSHAVN"
+                    android:checked="false"
+                    android:textOff="christianshavn"
+                    android:textOn="christianshavn"
                     />
-                <Button
-                    android:background="@drawable/box_red_bg"
+                <ToggleButton
+                    android:background="@drawable/where_selector"
                     android:layout_margin="5dp"
                     android:fontFamily="@font/anton_regular"
                     android:textColor="#991917"
-
                     android:textSize="15sp"
-
-                    android:text="REFSHALEØEN"
+                    android:checked="false"
+                    android:textOff="refshaleøen"
+                    android:textOn="refshaleøen"
                     />
             </GridLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-
-                >
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button_Down_where"
-                    android:text="Ned"
-                    />
-
-            </LinearLayout>
-        </LinearLayout>
 
     </ScrollView>
 

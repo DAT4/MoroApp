@@ -89,7 +89,8 @@ class Query private constructor(val query: String) {
         TIMELT("timestampLT"),
         TIMEGT("timestampGT"),
         AREA("area"),
-        TITLE("title")
+        TITLE("title"),
+        GENRE ("genre")
     }
 }
 

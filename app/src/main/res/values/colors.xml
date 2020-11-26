@@ -9,7 +9,9 @@
     <color name="colorIconBlue">#1F3A7D</color>
     <color name="colorIconGreen">#0C3832</color>
     <color name="colorFindEventWhere">#991917</color>
+    <color name="colorFindEventWhereToggle">#E36D6B</color>
     <color name="colorFindEventWhat">#F6A31A</color>
     <color name="colorFindEventWhen">#E95634</color>
     <color name="colorAboutUs">#1E1123</color>
 </resources>
+
