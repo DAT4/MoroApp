@@ -1,14 +1,20 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.SingleEventFragment;
@@ -21,6 +27,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final TextView eventTime;
     protected final Context context;
     protected final View eventLink;
+    protected final ImageView eventimage;
 
     public EventItemViewHolder(View view) {
         super(view);
@@ -31,6 +38,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         eventDate = (TextView) view.findViewById(R.id.event_card_long_date);
         eventTime = (TextView) view.findViewById(R.id.event_card_long_time);
         eventLink = (View) view.findViewById(R.id.event_card_long);
+        eventimage = (ImageView) view.findViewById(R.id.image);
 
 
     }
@@ -49,6 +57,11 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
 
     public TextView getEventTime() {
         return eventTime;
+    }
+
+    public void setEventimage(String url) {
+        Picasso.get().load(url).fit().centerCrop().into(eventimage);
+        eventimage.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN);
     }
 
     public void setEventLink(Event event) {
