@@ -5,6 +5,31 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/anton_regular</item>
+    </style>
+    
+    
+    
+    <style name="Find_where_tabs_style" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:fontFamily">@font/anton_regular</item>
+    </style>
+
+    <style name="CalenderTheme" parent="Theme.AppCompat">
+        <item name="android:colorAccent">@color/colorFindEventWhere</item>
+        <item name="colorPrimary">@color/colorFindEventWhere</item>
+        <item name="yearStyle">@style/calender_theme_week</item>
+    </style>
+
+    <style name="calender_theme_date" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+        <item name="android:weekNumberColor">@color/colorFindEventWhere</item>
+    </style>
+
+    <style name="calender_theme_week" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
     </style>
 
 </resources>

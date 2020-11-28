@@ -2,8 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="20dp"
     android:layout_width="160dp"
     android:layout_height="160dp"
+    android:id="@+id/event_card_long"
     tools:context=".EventCardBlockFragment"
     >
 
@@ -22,15 +25,27 @@
             android:layout_height="93dp"
             android:gravity="bottom">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/image"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_marginBottom="1dp"
-                android:text="DATO"
-                android:textColor="#FFFFFF" />
+                <TextView
+                    android:id="@+id/event_card_long_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_columnWeight="1"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="69dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:text="DATO"
+                    android:textColor="@color/colorWhite" />
+            </RelativeLayout>
+
 
         </LinearLayout>
 
@@ -38,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_gravity="bottom"
-            android:background="#1F3A7D"
+            android:background="@color/colorIconBlue"
             android:orientation="vertical">
 
             <LinearLayout
@@ -47,13 +62,15 @@
                 android:layout_gravity="top">
 
                 <TextView
+                    android:id="@+id/event_card_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
                     android:layout_marginLeft="2dp"
+                    android:fontFamily="@font/anton_regular"
                     android:text="Titel PÅ EVENT"
-                    android:textColor="#FFFFFF" />
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -62,7 +79,8 @@
                     android:layout_weight="1"
                     android:gravity="right"
                     android:text="+"
-                    android:textColor="#FFFFFF" />
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 
@@ -73,22 +91,26 @@
                 android:gravity="bottom">
 
                 <TextView
+                    android:id="@+id/event_card_long_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="left"
                     android:layout_marginLeft="2dp"
                     android:text="2,3 km"
-                    android:textColor="#FFFFFF" />
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
+                    android:id="@+id/event_card_long_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="right"
                     android:layout_marginRight="3dp"
                     android:text="00:00 - 00:00"
-                    android:textColor="#FFFFFF" />
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 

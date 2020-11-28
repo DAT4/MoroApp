@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="20dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="10dp"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="90dp"
     android:id="@+id/event_card_long"
     android:background="#C4C4C4"
     android:orientation="vertical">
@@ -13,54 +13,71 @@
             android:layout_width="match_parent"
             android:layout_height="70dp">
 
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
             <TextView
                 android:id="@+id/event_card_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TITLE PÅ EVENT"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:fontFamily="@font/anton_regular"
+                android:textColor="@color/colorWhite"
                 android:textSize="18dp" />
 
         </RelativeLayout>
 
-        <GridLayout
+        <LinearLayout
+
+            android:layout_weight="2"
             android:id="@+id/GridLayout1"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="#1F3A7D"
-            android:columnCount="3"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:background="@color/colorIconBlue"
             android:orientation="horizontal"
-            android:rowCount="1"
-            tools:context=".GridXMLActivity">
+            android:paddingHorizontal="10dp"
+            >
 
             <TextView
                 android:id="@+id/event_card_long_place"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_columnWeight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="@color/colorWhite"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/anton_regular"
                 android:text="10,1 km"
-                android:textAlignment="viewStart"
-                android:textColor="#FFFFFF" />
+                />
             <TextView
                 android:id="@+id/event_card_long_date"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_columnWeight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/anton_regular"
                 android:text="DATO"
-                android:textAlignment="center"
-                android:textColor="#FFFFFF" />
+                />
 
             <TextView
                 android:id="@+id/event_card_long_time"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_columnWeight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:includeFontPadding="false"
+                android:gravity="right"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/anton_regular"
                 android:text="00:00 - 00:00"
-                android:textAlignment="textEnd"
-                android:textColor="#FFFFFF" />
+                />
 
-        </GridLayout>
+        </LinearLayout>
 
 
     </LinearLayout>

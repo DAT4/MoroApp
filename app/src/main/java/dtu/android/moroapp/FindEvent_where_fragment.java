@@ -5,15 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class FindEvent_where_fragment extends Fragment implements View.OnClickListener{
+import dtu.android.moroapp.models.FindEventModel;
+import dtu.android.moroapp.utils.Query;
+import kotlin.Pair;
 
-    private Button ButtonOp_where, ButtonDown_where, back;
+public class FindEvent_where_fragment extends Fragment{
+
+    private GridLayout grid;
     private View root;
 
     public FindEvent_where_fragment() {
@@ -25,37 +31,32 @@ public class FindEvent_where_fragment extends Fragment implements View.OnClickLi
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_find_event_where_fragment, container, false);
 
-        ButtonOp_where = root.findViewById(R.id.button_Op_where);
-        ButtonDown_where = root.findViewById(R.id.button_Down_where);
-        back = root.findViewById(R.id.where_back);
+        grid = root.findViewById(R.id.grid_where);
 
-        ButtonOp_where.setOnClickListener(this);
-        ButtonDown_where.setOnClickListener(this);
-        back.setOnClickListener(this);
+        setupGrid();
+
 
         return root;
+    }
+
+    private void setupGrid() {
+        for (int i = 0; i < grid.getChildCount(); i++) {
+            ToggleButton button = (ToggleButton) grid.getChildAt(i);
+            button.setOnClickListener(view -> {
+                if(button.isChecked()) {
+                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(Query.Filter.AREA, button.getTextOff().toString()));
+                }
+                if (!button.isChecked()) {
+                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(Query.Filter.AREA, button.getTextOff().toString()));
+                }
+            });
+
+        }
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-    }
-
-    @Override
-    public void onClick(View view){
-         if(view == ButtonOp_where) {
-            findEvent_what_fragment newFragment = new findEvent_what_fragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.mainFragment, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        } else if(view == back) {
-             findEvent_interface_Fragment newFragment = new findEvent_interface_Fragment();
-             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-             transaction.replace(R.id.mainFragment, newFragment);
-             transaction.addToBackStack(null);
-             transaction.commit();
-         }
     }
 }

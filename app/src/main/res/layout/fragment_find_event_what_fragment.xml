@@ -9,212 +9,146 @@
     android:padding="16dp"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/topButtons"
-        android:orientation="horizontal"
-        android:layout_margin="16dp"
-        >
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:id="@+id/what_back"
-
-        android:text="Tilbage"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Op"
-        android:id="@+id/button_Op_what"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Kryds"
-        />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:id="@+id/Titel"
-        android:layout_marginTop="16dp"
-
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HVAD"
-            android:textSize="20dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#000000"
-            android:gravity="center"
-            />
-    </LinearLayout>
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:layout_weight="4"
-
-
-        >
-
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-            android:text="Koncert"
-
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Udstilling"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-
-            android:text="Litteratur"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Film"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Comedy"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Talk"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Teater"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Fest"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Gratis"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Sport og Spil"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Mad Og drikke"
-            />
-        <Button
-            android:background="@drawable/box_bg"
-            android:layout_margin="5dp"
-            android:fontFamily="@font/anton_regular"
-            android:textColor="#F6A31A"
-
-            android:textSize="15sp"
-
-            android:text="Mode"
-            />
-    </GridLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-
+        android:layout_marginTop="40dp"
         >
 
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ned"
-            android:id="@+id/button_Down_what"
-            />
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="1000dp"
+                android:columnCount="3"
+                android:id="@+id/grid_what"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                >
 
-    </LinearLayout>
+                <ToggleButton
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:background="@drawable/what_selector"
+                    android:checked="false"
+                    android:textOff="Koncert"
+                    android:textOn="Koncert"
 
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Udstilling"
+                    android:textOn="Udstilling"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Litteratur"
+                    android:textOn="Litteratur"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Film"
+                    android:textOn="Film"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Comedy"
+                    android:textOn="Comedy"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Talk"
+                    android:textOn="Talk"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Teater"
+                    android:textOn="Teater"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Fest"
+                    android:textOn="Fest"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Gratis"
+                    android:textOn="Gratis"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Sport og Spil"
+                    android:textOn="Sport og Spil"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="Mad Og drikke"
+                    android:textOn="mad og drikke"
+                    />
+                <ToggleButton
+                    android:background="@drawable/what_selector"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/anton_regular"
+                    android:textColor="#F6A31A"
+                    android:textSize="15sp"
+                    android:checked="false"
+                    android:textOff="mode"
+                    android:textOn="mode"
+                    />
+            </GridLayout>
 
+    </ScrollView>
 </LinearLayout>
 
 

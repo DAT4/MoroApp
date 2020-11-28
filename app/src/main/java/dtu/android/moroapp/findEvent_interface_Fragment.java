@@ -7,16 +7,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
-public class findEvent_interface_Fragment extends Fragment implements View.OnClickListener {
+import dtu.android.moroapp.adapters.TabAdapter;
 
-    private Button buttonWhen, buttonWhere, buttonWhat;
+
+public class findEvent_interface_Fragment extends Fragment {
+
+    private ViewPager2 viewPager;
+    private TabItem tabWhen, tabWhere, tabWhat;
+
+
     private View root;
 
     @Override
@@ -27,13 +37,27 @@ public class findEvent_interface_Fragment extends Fragment implements View.OnCli
 
         root = inflater.inflate(R.layout.fragment_find_event_interface, container, false);
 
-        buttonWhen = root.findViewById(R.id.button_when);
-        buttonWhere = root.findViewById(R.id.button_where);
-        buttonWhat = root.findViewById(R.id.button_what);
+        viewPager = root.findViewById(R.id.find_event_viewPager);
+        viewPager.setAdapter(new TabAdapter(getActivity()));
 
-        buttonWhat.setOnClickListener(this);
-        buttonWhere.setOnClickListener(this);
-        buttonWhen.setOnClickListener(this);
+        TabLayout tabLayout = root.findViewById(R.id.find_event_tabLayout);
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
+                tabLayout, viewPager, (tab, position) -> {
+                            switch (position) {
+                                case 0:
+                                    tab.setText("Hvornår");
+                                    break;
+                                case 1:
+                                    tab.setText("Hvor");
+                                    break;
+                                case 2:
+                                    tab.setText("hvad");
+                                    break;
+                            }
+                }
+        );
+        tabLayoutMediator.attach();
+
 
 
         return root;
@@ -45,27 +69,5 @@ public class findEvent_interface_Fragment extends Fragment implements View.OnCli
 
     }
 
-    @Override
-    public void onClick(View view) {
-        if (view == buttonWhat) {
-            findEvent_what_fragment newFragment = new findEvent_what_fragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.mainFragment, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        } else if (view == buttonWhen) {
-            FindEvent_when_fragment newFragment = new FindEvent_when_fragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.mainFragment, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        } else if (view == buttonWhere) {
-            FindEvent_where_fragment newFragment = new FindEvent_where_fragment();
-            FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.mainFragment, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }
     }
-}
 

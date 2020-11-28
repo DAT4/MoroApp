@@ -1,5 +1,7 @@
 package dtu.android.moroapp
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
 import dtu.android.moroapp.models.Event
 import kotlinx.android.synthetic.main.fragment_single_event.view.*
 import java.text.SimpleDateFormat
@@ -44,11 +47,9 @@ class SingleEventFragment : Fragment() {
 
             val timeStamp = Date(event.time * 1000)
 
-            val timeFormat = SimpleDateFormat("HH:mm")
-            val dateFormat = SimpleDateFormat("dd/mm/yy")
+            val time = SimpleDateFormat("HH:mm").format(timeStamp)
+            val date = SimpleDateFormat("dd/MM/yyyy").format(timeStamp)
 
-            val time = timeFormat.format(timeStamp)
-            val date = dateFormat.format(timeStamp)
             event_single_title.text = event.title
             event_single_description.text = event.text
             event_single_date.text = date
@@ -58,11 +59,17 @@ class SingleEventFragment : Fragment() {
             event_single_address.text = "${event.location.address.street} ${event.location.address.no}"
             event_single_city.text = "${event.location.address.zip} ${event.location.address.city}"
             event_single_link.setOnClickListener{
-                Toast.makeText(context,"link",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.link)))
             }
             event_single_ticket.setOnClickListener{
-                Toast.makeText(context,"ticket",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(event.tickets)))
             }
+            println(event.image)
+            Picasso.get()
+                    .load(event.image)
+                    .fit()
+                    .centerCrop()
+                    .into(image)
         }
     }
 

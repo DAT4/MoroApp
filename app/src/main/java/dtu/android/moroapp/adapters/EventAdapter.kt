@@ -1,5 +1,7 @@
 package sh.mama.hangman.adapters
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import dtu.android.moroapp.R
 import dtu.android.moroapp.SingleEventFragment
 import dtu.android.moroapp.findEvent_interface_Fragment
@@ -31,7 +34,7 @@ class EventAdapter(
             val timeStamp = Date(events[position].time * 1000)
 
             val timeFormat = SimpleDateFormat("HH:mm")
-            val dateFormat = SimpleDateFormat("dd/mm/yy")
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy")
 
             val time = timeFormat.format(timeStamp)
             val date = dateFormat.format(timeStamp)
@@ -40,6 +43,9 @@ class EventAdapter(
             event_card_long_time.text = time
             event_card_long_date.text = date
             event_card_long_place.text = events[position].location.place
+            Picasso.get().load(events[position].image).fit().centerCrop().into(image)
+            image.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
+            GridLayout1.setBackgroundColor(resources.getColor(R.color.colorFindEventWhere))
             event_card_long.setOnClickListener {
                 val f = SingleEventFragment()
                 val fm = (context as AppCompatActivity).supportFragmentManager
