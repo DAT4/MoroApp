@@ -1,22 +1,19 @@
 package dtu.android.moroapp;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ToggleButton;
 
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.utils.Query;
+import dtu.android.moroapp.utils.FilterType;
 import kotlin.Pair;
 
 public class findEvent_what_fragment extends Fragment {
@@ -53,7 +50,7 @@ public class findEvent_what_fragment extends Fragment {
 
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(Query.Filter.GENRE, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(FilterType.GENRE, button.getTextOff().toString()));
 
                     for (Pair p: FindEventModel.INSTANCE.getFilters()) {
                         System.out.println(p);
@@ -61,7 +58,7 @@ public class findEvent_what_fragment extends Fragment {
 
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(Query.Filter.GENRE, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(FilterType.GENRE, button.getTextOff().toString()));
 
                     for (Pair p: FindEventModel.INSTANCE.getFilters()) {
                         System.out.println(p);
