@@ -1,6 +1,10 @@
 package dtu.android.moroapp.observer
 
 import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.utils.Filter
+import dtu.android.moroapp.utils.FilterType
+import dtu.android.moroapp.utils.GraphQL
+import dtu.android.moroapp.utils.events
 
 object ConcreteEvents : ICache {
     override val url: String = "https://mama.sh/moro/api"
@@ -16,6 +20,7 @@ object ConcreteEvents : ICache {
         this.content = events
         sendUpdateEvent()
     }
+
     private fun order(scores: ArrayList<Event>): MutableList<Event> {
         scores.sortWith(kotlin.Comparator { lhs, rhs ->
             when {
@@ -26,4 +31,43 @@ object ConcreteEvents : ICache {
         })
         return scores
     }
+
+    fun load() {
+        val t = System.currentTimeMillis() / 1000
+        val filter = Filter.Builder()
+                .filters(FilterType.TIMEGT, t)
+                .build()
+        cache(
+                GraphQL(
+                        "${
+                            events(filter) {
+                                title { }
+                                genre { }
+                                image { }
+                                link { }
+                                other { }
+                                price { }
+                                text { }
+                                time { }
+                                location {
+                                    area { }
+                                    place { }
+                                    address {
+                                        city { }
+                                        street { }
+                                        no { }
+                                        state { }
+                                        zip { }
+                                    }
+                                    coordinates {
+                                        longitude { }
+                                        latitude { }
+                                    }
+                                }
+                            }
+                        }"
+                )
+        )
+    }
+
 }
