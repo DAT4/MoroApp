@@ -57,10 +57,6 @@ abstract class Query(val name: String) : Element {
         builder.append("\n")
     }
 
-    operator fun EdgeCase.unaryPlus(){
-        children.add(this)
-    }
-
     override fun toString(): String {
         val builder = StringBuilder()
         render(builder, "")
