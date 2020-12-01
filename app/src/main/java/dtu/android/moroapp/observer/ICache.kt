@@ -1,8 +1,6 @@
 package dtu.android.moroapp.observer
 
-import android.widget.Toast
-import dtu.android.moroapp.utils.GraphQL
-import dtu.android.moroapp.utils.Query
+import dtu.android.moroapp.utils.GQL
 import dtu.android.moroapp.utils.Response
 import dtu.android.moroapp.utils.postStuff
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +13,7 @@ interface ICache : IObservable {
 
     var content: MutableList<*>
 
-    fun cache(query: GraphQL) {
+    fun cache(query: GQL) {
         GlobalScope.launch(Dispatchers.IO) {
             val data: Response = postStuff(query, url)
             launch(Dispatchers.Main) {

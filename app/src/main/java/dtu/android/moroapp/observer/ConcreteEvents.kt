@@ -1,10 +1,7 @@
 package dtu.android.moroapp.observer
 
 import dtu.android.moroapp.models.Event
-import dtu.android.moroapp.utils.Filter
-import dtu.android.moroapp.utils.FilterType
-import dtu.android.moroapp.utils.GraphQL
-import dtu.android.moroapp.utils.events
+import dtu.android.moroapp.utils.*
 
 object ConcreteEvents : ICache {
     override val url: String = "https://mama.sh/moro/api"
@@ -38,30 +35,31 @@ object ConcreteEvents : ICache {
                 .filters(FilterType.TIMEGT, t)
                 .build()
         cache(
-                GraphQL(
+                GQL(
                         "${
                             events(filter) {
-                                title { }
-                                genre { }
-                                image { }
-                                link { }
-                                other { }
-                                price { }
-                                text { }
-                                time { }
+                                title
+                                genre
+                                image
+                                link
+                                tickets
+                                other
+                                price
+                                text
+                                time
                                 location {
-                                    area { }
-                                    place { }
+                                    area
+                                    place
                                     address {
-                                        city { }
-                                        street { }
-                                        no { }
-                                        state { }
-                                        zip { }
+                                        city
+                                        street
+                                        no
+                                        state
+                                        zip
                                     }
                                     coordinates {
-                                        longitude { }
-                                        latitude { }
+                                        longitude
+                                        latitude
                                     }
                                 }
                             }
@@ -69,5 +67,5 @@ object ConcreteEvents : ICache {
                 )
         )
     }
-
 }
+

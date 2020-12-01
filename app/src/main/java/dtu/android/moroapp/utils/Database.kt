@@ -6,7 +6,7 @@ import java.io.DataOutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-inline fun <reified T> postStuff(query: Any, url: String): T{
+inline fun <reified T> postStuff(query: Any, url: String): T {
     val req = URL(url)
     val con = req.openConnection() as HttpURLConnection
     con.requestMethod = "POST"
@@ -36,7 +36,6 @@ interface Element {
 @DslMarker //Domain Specific Language
 annotation class GraphQLMarker
 
-
 @GraphQLMarker
 abstract class Query(val name: String) : Element {
     val children = arrayListOf<Element>()
@@ -58,10 +57,20 @@ abstract class Query(val name: String) : Element {
         builder.append("\n")
     }
 
+    operator fun EdgeCase.unaryPlus(){
+        children.add(this)
+    }
+
     override fun toString(): String {
         val builder = StringBuilder()
         render(builder, "")
         return builder.toString()
+    }
+}
+
+abstract class EdgeCase(parent: Query, name: String) :Query(name) {
+    init {
+        parent.children.add(this)
     }
 }
 
@@ -87,15 +96,16 @@ class EVENTS(private val filter: Filter) : Query("events") {
         builder.append("\n}")
     }
 
-    fun title(visit: TITLE.() -> Unit) = visitEntity(TITLE(), visit)
-    fun genre(visit: GENRE.() -> Unit) = visitEntity(GENRE(), visit)
-    fun image(visit: IMAGE.() -> Unit) = visitEntity(IMAGE(), visit)
-    fun link(visit: LINK.() -> Unit) = visitEntity(LINK(), visit)
-    fun other(visit: OTHER.() -> Unit) = visitEntity(OTHER(), visit)
-    fun price(visit: PRICE.() -> Unit) = visitEntity(PRICE(), visit)
-    fun text(visit: TEXT.() -> Unit) = visitEntity(TEXT(), visit)
-    fun tickets(visit: TICKETS.() -> Unit) = visitEntity(TICKETS(), visit)
-    fun time(visit: TIME.() -> Unit) = visitEntity(TIME(), visit)
+    val title = object : EdgeCase(this,"title") {}
+    val genre = object : EdgeCase(this,"genre") {}
+    val image = object : EdgeCase(this, "image") {}
+    val link = object : EdgeCase(this, "link") {}
+    val other = object : EdgeCase(this, "other") {}
+    val price = object : EdgeCase(this, "price") {}
+    val text = object : EdgeCase(this, "text") {}
+    val tickets = object : EdgeCase(this, "tickets") {}
+    val time = object : EdgeCase(this, "time") {}
+
     fun location(visit: LOCATION.() -> Unit) = visitEntity(LOCATION(), visit)
 }
 
@@ -118,44 +128,25 @@ fun events(filter: Filter, visit: EVENTS.() -> Unit): EVENTS {
     return events
 }
 
-class TITLE : Query("title")
-class GENRE : Query("genre")
-class IMAGE : Query("image")
-class LINK : Query("link")
-class OTHER : Query("other")
-class PRICE : Query("price")
-class TEXT : Query("text")
-class TICKETS : Query("tickets")
-class TIME : Query("time")
 class LOCATION : Query("location") {
-    fun area(visit: AREA.() -> Unit) = visitEntity(AREA(), visit)
-    fun place(visit: PLACE.() -> Unit) = visitEntity(PLACE(), visit)
+    val area  = object:EdgeCase(this,"area"){}
+    val place = object:EdgeCase(this,"area"){}
     fun address(visit: ADDRESS.() -> Unit) = visitEntity(ADDRESS(), visit)
     fun coordinates(visit: COORDINATES.() -> Unit) = visitEntity(COORDINATES(), visit)
 }
 
-class AREA : Query("area")
-class PLACE : Query("place")
 class ADDRESS : Query("address") {
-    fun city(visit: CITY.() -> Unit) = visitEntity(CITY(), visit)
-    fun street(visit: STREET.() -> Unit) = visitEntity(STREET(), visit)
-    fun no(visit: NO.() -> Unit) = visitEntity(NO(), visit)
-    fun state(visit: STATE.() -> Unit) = visitEntity(STATE(), visit)
-    fun zip(visit: ZIP.() -> Unit) = visitEntity(ZIP(), visit)
+    val city = object : EdgeCase(this,"city"){}
+    val street = object : EdgeCase(this,"street"){}
+    val no = object : EdgeCase(this,"no"){}
+    val state = object : EdgeCase(this,"state"){}
+    val zip = object : EdgeCase(this,"zip"){}
 }
 
-class CITY : Query("city")
-class STREET : Query("street")
-class NO : Query("no")
-class STATE : Query("state")
-class ZIP : Query("zip")
 class COORDINATES : Query("coordinates") {
-    fun longitude(visit: LONGITUDE.() -> Unit) = visitEntity(LONGITUDE(), visit)
-    fun latitude(visit: LATITUDE.() -> Unit) = visitEntity(LATITUDE(), visit)
+    val longitude = object : EdgeCase(this,"longitude"){}
+    val latitude = object : EdgeCase(this,"latitude"){}
 }
-
-class LONGITUDE : Query("longitude")
-class LATITUDE : Query("latitude")
 
 enum class FilterType(val str: String) {
     PLACE("place"),
@@ -168,8 +159,7 @@ enum class FilterType(val str: String) {
     GENRE("genre")
 }
 
-
-data class GraphQL(val query: String)
+data class GQL(val query: String)
 data class Response(val data: Data, val errors: MutableList<GQLError>)
 data class Data(val events: MutableList<Event>)
 data class GQLError(val message: String)
