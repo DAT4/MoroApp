@@ -2,6 +2,7 @@ package dtu.android.moroapp.observer
 
 import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.utils.*
+import dtu.android.moroapp.utils.graphQL.Filter
 
 object ConcreteEvents : ICache {
     override val url: String = "https://mama.sh/moro/api"
@@ -11,11 +12,6 @@ object ConcreteEvents : ICache {
 
     fun getAllEvents(): MutableList<*> {
         return order(this.content as ArrayList<Event>)
-    }
-
-    fun setEvents(events: MutableList<Event>) {
-        this.content = events
-        sendUpdateEvent()
     }
 
     private fun order(scores: ArrayList<Event>): MutableList<Event> {
@@ -32,7 +28,7 @@ object ConcreteEvents : ICache {
     fun load() {
         val t = System.currentTimeMillis() / 1000
         val filter = Filter.Builder()
-                .filters(FilterType.TIMEGT, t)
+                .filters(EventFilters.TIMEGT, t)
                 .build()
         cache(
                 GQL(
