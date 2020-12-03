@@ -4,17 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.utils.Query;
+import dtu.android.moroapp.utils.FilterType;
 import kotlin.Pair;
 
 public class FindEvent_where_fragment extends Fragment{
@@ -44,10 +42,10 @@ public class FindEvent_where_fragment extends Fragment{
             ToggleButton button = (ToggleButton) grid.getChildAt(i);
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(Query.Filter.AREA, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(FilterType.AREA, button.getTextOff().toString()));
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(Query.Filter.AREA, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(FilterType.AREA, button.getTextOff().toString()));
                 }
             });
 
