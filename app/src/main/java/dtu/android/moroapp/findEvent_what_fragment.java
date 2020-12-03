@@ -13,7 +13,7 @@ import android.widget.GridLayout;
 import android.widget.ToggleButton;
 
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.utils.FilterType;
+import dtu.android.moroapp.utils.EventFilters;
 import kotlin.Pair;
 
 public class findEvent_what_fragment extends Fragment {
@@ -50,7 +50,7 @@ public class findEvent_what_fragment extends Fragment {
 
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(FilterType.GENRE, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(EventFilters.GENRE, button.getTextOff().toString()));
 
                     for (Pair p: FindEventModel.INSTANCE.getFilters()) {
                         System.out.println(p);
@@ -58,7 +58,7 @@ public class findEvent_what_fragment extends Fragment {
 
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(FilterType.GENRE, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(EventFilters.GENRE, button.getTextOff().toString()));
 
                     for (Pair p: FindEventModel.INSTANCE.getFilters()) {
                         System.out.println(p);

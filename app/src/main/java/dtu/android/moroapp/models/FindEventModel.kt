@@ -1,9 +1,7 @@
 package dtu.android.moroapp.models
 
-import dtu.android.moroapp.utils.FilterType
+import dtu.android.moroapp.utils.EventFilters
 
 object FindEventModel {
-    var filters : ArrayList<Pair<FilterType, String>> = ArrayList()
-
-
+    var filters : ArrayList<Pair<EventFilters, String>> = ArrayList()
 }
