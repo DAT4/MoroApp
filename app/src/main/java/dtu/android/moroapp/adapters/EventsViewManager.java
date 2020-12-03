@@ -28,6 +28,8 @@ public class EventsViewManager {
         updateView(view, context);
     }
 
+
+
     public void viewList(RecyclerView view, Context context) {
         this.state.viewList(view, context);
         updateView(view, context);
