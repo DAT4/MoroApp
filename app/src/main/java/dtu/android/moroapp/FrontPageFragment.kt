@@ -39,7 +39,6 @@ class FrontPageFragment : Fragment(), IObserver {
         ConcreteEvents.add(this)
     }
 
-
     private fun printEvents() {
         val events = ConcreteEvents.getAllEvents()
         try {
@@ -107,7 +106,7 @@ class FrontPageFragment : Fragment(), IObserver {
 
     override fun update() {
         if(ConcreteEvents.content.isEmpty())
-            Toast.makeText(context,"No internet!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"No connection to server!",Toast.LENGTH_SHORT).show()
         printEvents()
     }
 }

@@ -1,5 +1,6 @@
 package dtu.android.moroapp.observer
 
+import android.widget.Toast
 import dtu.android.moroapp.utils.GQL
 import dtu.android.moroapp.utils.Response
 import dtu.android.moroapp.utils.postStuff
@@ -15,13 +16,9 @@ interface ICache : IObservable {
 
     fun cache(query: GQL) {
         GlobalScope.launch(Dispatchers.IO) {
-            val data: Response = postStuff(query, url)
+            val data: Response? = postStuff(query, url)
             launch(Dispatchers.Main) {
-                try {
-                    this@ICache.content = data.data.events as MutableList<*>
-                } catch (e: NullPointerException) {
-                    println("Intet net")
-                }
+                this@ICache.content = data?.data?.events ?: ArrayList<Any>()
                 sendUpdateEvent()
             }
         }
