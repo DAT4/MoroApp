@@ -105,7 +105,7 @@ class FrontPageFragment : Fragment(), IObserver {
     }
 
     override fun update() {
-        if(ConcreteEvents.content.isEmpty())
+        if(ConcreteEvents.content.events.isEmpty())
             Toast.makeText(context,"No connection to server!",Toast.LENGTH_SHORT).show()
         printEvents()
     }

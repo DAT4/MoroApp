@@ -7,21 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
-import dtu.android.moroapp.adapters.GridViewAdapter;
-import dtu.android.moroapp.adapters.ListViewAdapter;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.models.Location;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
 public class RightNowFragment extends Fragment implements View.OnClickListener {
@@ -31,7 +23,6 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     private View root;
     RecyclerView listview;
     EventsViewManager viewManager;
-
 
 
     @Override
@@ -44,12 +35,12 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
 
         back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class );
-                startActivity(intent);
-                }
-            }
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
         );
 
         // BTN setup
@@ -93,7 +84,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         updateView();
     }
 
-    void updateView () {
+    void updateView() {
         listview.setAdapter(viewManager.getAdapter());
         listview.setLayoutManager(viewManager.getLayoutManager(this.getContext()));
     }

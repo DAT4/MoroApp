@@ -1,11 +1,11 @@
 package dtu.android.moroapp.utils.graphQL
 
+@DslMarker //Domain Specific Language
+annotation class GraphQLMarker
+
 interface Element {
     fun render(builder: StringBuilder, indent: String)
 }
-
-@DslMarker //Domain Specific Language
-annotation class GraphQLMarker
 
 @GraphQLMarker
 abstract class Query(val name: String) : Element {
@@ -35,12 +35,14 @@ abstract class Query(val name: String) : Element {
     }
 }
 
+@GraphQLMarker
 abstract class EdgeCase(parent: Query, name: String) :Query(name) {
     init {
         parent.children.add(this)
     }
 }
 
+@GraphQLMarker
 abstract class MotherCase(private val filter: Filter, name: String) :Query(name){
     override fun render(builder: StringBuilder, indent: String) {
         builder.append("{$name")
@@ -64,8 +66,10 @@ abstract class MotherCase(private val filter: Filter, name: String) :Query(name)
     }
 }
 
+@GraphQLMarker
 interface FilterType {fun str() : String}
 
+@GraphQLMarker
 class Filter private constructor(val filters: MutableMap<FilterType, Any>) {
     class Builder {
         private val filters = mutableMapOf<FilterType, Any>()

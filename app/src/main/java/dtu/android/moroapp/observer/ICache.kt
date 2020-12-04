@@ -1,24 +1,25 @@
 package dtu.android.moroapp.observer
 
-import android.widget.Toast
-import dtu.android.moroapp.utils.GQL
-import dtu.android.moroapp.utils.Response
-import dtu.android.moroapp.utils.postStuff
+import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.utils.Network.postStuff
+import dtu.android.moroapp.utils.graphQL.GQL
+import dtu.android.moroapp.utils.graphQL.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.lang.NullPointerException
+import java.lang.reflect.Type
 
-interface ICache : IObservable {
+interface ICache<T> : IObservable {
     val url: String
 
-    var content: MutableList<*>
+    var content: T
 
-    fun cache(query: GQL) {
+    fun cache(query: GQL, type: Type) {
+        println(query)
         GlobalScope.launch(Dispatchers.IO) {
-            val data: Response? = postStuff(query, url)
+            val response: Response<T> = postStuff(query, url, type)
             launch(Dispatchers.Main) {
-                this@ICache.content = data?.data?.events ?: ArrayList<Any>()
+                this@ICache.content = response.data
                 sendUpdateEvent()
             }
         }
