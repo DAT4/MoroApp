@@ -1,16 +1,11 @@
 package dtu.android.moroapp.observer
 
-import com.google.gson.reflect.TypeToken
 import dtu.android.moroapp.models.Event
-import dtu.android.moroapp.utils.EventFilters
-import dtu.android.moroapp.utils.events
+import dtu.android.moroapp.utils.*
 import dtu.android.moroapp.utils.graphQL.Filter
 import dtu.android.moroapp.utils.graphQL.GQL
-import dtu.android.moroapp.utils.graphQL.Response
 
-object ConcreteEvents : ICache<ConcreteEvents.EventList> {
-    data class EventList(val events: MutableList<Event>)
-    private val responseType = object :TypeToken<Response<EventList>>(){}.type
+object ConcreteEvents : ICache<EventList> {
     override val url: String = "https://mama.sh/moro/api"
 
     override var content = EventList(ArrayList())
@@ -68,7 +63,7 @@ object ConcreteEvents : ICache<ConcreteEvents.EventList> {
                             }
                         }"
                 )
-        ,responseType)
+        , getEventListResponseType())
     }
 
 }

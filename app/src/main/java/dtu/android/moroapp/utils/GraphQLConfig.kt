@@ -1,6 +1,8 @@
 package dtu.android.moroapp.utils
 
+import com.google.gson.reflect.TypeToken
 import dtu.android.moroapp.utils.graphQL.*
+import java.lang.reflect.Type
 
 /**
  * Klasserne i denne configuration bliver brugt til at gennerere
@@ -11,6 +13,10 @@ import dtu.android.moroapp.utils.graphQL.*
  * classer automatisk ud fra modellerne i systemet.
  *
  */
+
+data class EventList(val events: MutableList<dtu.android.moroapp.models.Event>)
+
+fun getEventListResponseType(): Type = object : TypeToken<Response<EventList>>() {}.type
 
 fun events(filter: Filter, visit: Event.() -> Unit): Event {
     val events = Event(filter)
