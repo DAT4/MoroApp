@@ -1,4 +1,4 @@
-package dtu.android.moroapp.utils.graphQL
+package dtu.android.moroapp.utils.GraphQL
 
 data class GQL(val query: String)
 data class Response<T>(val data: T, val errors: MutableList<GQLError>)

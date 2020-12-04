@@ -1,7 +1,7 @@
 package dtu.android.moroapp.utils
 
 import com.google.gson.reflect.TypeToken
-import dtu.android.moroapp.utils.graphQL.*
+import dtu.android.moroapp.utils.GraphQL.*
 import java.lang.reflect.Type
 
 /**

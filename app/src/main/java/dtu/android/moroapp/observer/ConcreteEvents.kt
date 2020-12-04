@@ -2,8 +2,8 @@ package dtu.android.moroapp.observer
 
 import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.utils.*
-import dtu.android.moroapp.utils.graphQL.Filter
-import dtu.android.moroapp.utils.graphQL.GQL
+import dtu.android.moroapp.utils.GraphQL.Filter
+import dtu.android.moroapp.utils.GraphQL.GQL
 
 object ConcreteEvents : ICache<EventList> {
     override val url: String = "https://mama.sh/moro/api"

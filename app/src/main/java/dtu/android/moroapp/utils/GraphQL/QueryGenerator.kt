@@ -1,4 +1,4 @@
-package dtu.android.moroapp.utils.graphQL
+package dtu.android.moroapp.utils.GraphQL
 
 @DslMarker //Domain Specific Language
 annotation class GraphQLMarker

@@ -1,9 +1,8 @@
 package dtu.android.moroapp.observer
 
-import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.utils.Network.postStuff
-import dtu.android.moroapp.utils.graphQL.GQL
-import dtu.android.moroapp.utils.graphQL.Response
+import dtu.android.moroapp.utils.GraphQL.GQL
+import dtu.android.moroapp.utils.GraphQL.Response
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
