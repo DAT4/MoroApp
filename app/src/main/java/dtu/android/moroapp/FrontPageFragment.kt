@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import dtu.android.moroapp.adapters.PremiumAdapter
 import dtu.android.moroapp.models.Event
 import dtu.android.moroapp.observer.ConcreteEvents
 import dtu.android.moroapp.observer.IObserver
@@ -37,6 +38,16 @@ class FrontPageFragment : Fragment(), IObserver {
             param2 = it.getString(ARG_PARAM2)
         }
         ConcreteEvents.add(this)
+    }
+
+    private fun premiumSlider() {
+        val events = ConcreteEvents.getAllEvents()
+        try {
+            val adapter = PremiumAdapter(events as ArrayList<Event>)
+            view_pager.adapter = adapter
+        } catch (e: java.lang.Exception) {
+            println(e)
+        }
     }
 
     private fun printEvents() {
@@ -75,6 +86,7 @@ class FrontPageFragment : Fragment(), IObserver {
                         .commit()
             }
             printEvents();
+            premiumSlider()
         }
     }
 
@@ -108,5 +120,6 @@ class FrontPageFragment : Fragment(), IObserver {
         if(ConcreteEvents.content.events.isEmpty())
             Toast.makeText(context,"No connection to server!",Toast.LENGTH_SHORT).show()
         printEvents()
+        premiumSlider()
     }
 }

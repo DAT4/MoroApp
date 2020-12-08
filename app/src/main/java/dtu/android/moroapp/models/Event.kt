@@ -1,6 +1,8 @@
 package dtu.android.moroapp.models
 
 import java.io.Serializable
+import java.text.SimpleDateFormat
+import java.util.*
 
 data class Event(
         val title: String,
@@ -13,7 +15,10 @@ data class Event(
         val tickets: String,
         val location: Location,
         val time: Long,
-) : Serializable
+) : Serializable {
+    fun getDate(): String = SimpleDateFormat("dd/MM/yyyy").format(Date(time * 1000))
+    fun getTime(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
+}
 
 data class Address(
         val city: String,

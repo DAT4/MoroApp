@@ -15,11 +15,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
-            <ImageView
-                android:layout_weight="1"
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:src="@drawable/a"/>
+                />
 
             <Button
                 android:layout_marginTop="30dp"
