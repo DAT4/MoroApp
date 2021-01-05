@@ -30,19 +30,12 @@ class EventAdapter(
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+        val event = events[position]
         holder.itemView.apply {
-            val timeStamp = Date(events[position].time * 1000)
-
-            val timeFormat = SimpleDateFormat("HH:mm")
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy")
-
-            val time = timeFormat.format(timeStamp)
-            val date = dateFormat.format(timeStamp)
-
-            event_card_title.text = events[position].title
-            event_card_long_time.text = time
-            event_card_long_date.text = date
-            event_card_long_place.text = events[position].location.place
+            event_card_title.text = event.title
+            event_card_long_time.text = event.getTime()
+            event_card_long_date.text = event.getDate()
+            event_card_long_place.text = event.location.place
             Picasso.get().load(events[position].image).fit().centerCrop().into(image)
             image.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
             GridLayout1.setBackgroundColor(resources.getColor(R.color.colorFindEventWhere))

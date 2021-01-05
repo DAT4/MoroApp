@@ -37,8 +37,9 @@ class PremiumAdapter(
             bannerID.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
             /*
             title.text = event.title
-            date.text = event.getDate()
-            time.text = event.getTime()
+            description.text = event.genre
+            //date.text = event.getDate()
+            //time.text = event.getTime()
             Picasso.get().load(event.image).fit().centerCrop().into(banner)
             banner.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
             this.setOnClickListener{
