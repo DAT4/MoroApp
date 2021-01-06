@@ -2,30 +2,39 @@ package dtu.android.moroapp.adapters;
 
 import android.content.Context;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import dtu.android.moroapp.Event_Recycler_Fragment;
 
 public class MapViewAdapter implements IListState {
 
 
     private EventsViewManager manager;
+    Fragment myFragment;
 
     MapViewAdapter(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
     }
 
     @Override
-    public void viewGrid(RecyclerView view, Context context) {
-        this.manager.changeState(new GridViewAdapter(this.manager));
+    public Fragment viewGrid(Fragment view, Context context) {
+        return this.manager.changeState(new GridViewAdapter(this.manager));
     }
 
     @Override
-    public void viewList(RecyclerView view, Context context) {
-        this.manager.changeState(new ListViewAdapter(this.manager));
+    public Fragment viewList(Fragment view, Context context) {
+        return this.manager.changeState(new ListViewAdapter(this.manager));
     }
 
     @Override
-    public void viewMap(RecyclerView view, Context context) {
-        // Do nothing
+    public Fragment viewMap(Fragment view, Context context) {
+        return myFragment;
+    }
+
+    @Override
+    public Fragment getFragment() {
+        return myFragment;
     }
 
     @Override

@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import dtu.android.moroapp.Event_Recycler_Fragment;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 
@@ -20,26 +23,38 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     private List<Event> localDataSet;
     EventsViewManager manager;
+    Event_Recycler_Fragment myFragment;
 
     public ListViewAdapter(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
         this.localDataSet = this.manager.dataToView;
+        this.myFragment = new Event_Recycler_Fragment();
     }
 
     @Override
-    public void viewGrid(RecyclerView view, Context context) {
-        this.manager.changeState(new GridViewAdapter(this.manager));
+    public Fragment viewGrid(Fragment view, Context context) {
+         return this.manager.changeState(new GridViewAdapter(this.manager));
     }
 
     @Override
-    public void viewList(RecyclerView view, Context context) {
-
+    public Fragment viewList(Fragment view, Context context) {
+        return myFragment;
     }
 
     @Override
-    public void viewMap(RecyclerView view, Context context) {
-        this.manager.changeState(new MapViewAdapter(this.manager));
+    public Fragment viewMap(Fragment view, Context context) {
+        return this.manager.changeState(new MapViewAdapter(this.manager));
+    }
 
+    @Override
+    public Fragment getFragment() {
+        updateFragment();
+        return this.myFragment;
+    }
+
+    public void updateFragment(){
+        this.myFragment.setAdapter(this);
+        this.myFragment.setLayoutManager(getLayoutManager(myFragment.getContext()));
     }
 
 
@@ -62,8 +77,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         }
 
     }
-
-
 
     // Create new views (invoked by the layout manager)
     @Override

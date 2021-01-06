@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import dtu.android.moroapp.Event_Recycler_Fragment;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.SingleEventFragment;
 import dtu.android.moroapp.models.Event;
@@ -23,28 +25,40 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
     private List<Event> localDataSet;
     private EventsViewManager manager;
+    Event_Recycler_Fragment myFragment;
 
 
     public GridViewAdapter(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
         this.localDataSet = this.manager.dataToView;
+        this.myFragment = new Event_Recycler_Fragment();
     }
 
     @Override
-    public void viewGrid(RecyclerView view, Context context) {
-
+    public Fragment viewGrid(Fragment view, Context context) {
+        return this.myFragment;
     }
 
     @Override
-    public void viewList(RecyclerView view, Context context) {
-        this.manager.changeState(new ListViewAdapter(this.manager));
+    public Fragment viewList(Fragment view, Context context) {
+        return this.manager.changeState(new ListViewAdapter(this.manager));
     }
 
     @Override
-    public void viewMap(RecyclerView view, Context context) {
-        this.manager.changeState(new MapViewAdapter(this.manager));
+    public Fragment viewMap(Fragment view, Context context) {
+        return this.manager.changeState(new MapViewAdapter(this.manager));
     }
 
+    @Override
+    public Fragment getFragment() {
+        updateFragment();
+        return myFragment;
+    }
+
+    public void updateFragment(){
+        this.myFragment.setAdapter(this);
+        this.myFragment.setLayoutManager(getLayoutManager(myFragment.getContext()));
+    }
 
     public RecyclerView.Adapter getAdapter() {
         return this;
@@ -96,4 +110,6 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     public int getItemCount() {
         return this.localDataSet.size();
     }
+
+
 }

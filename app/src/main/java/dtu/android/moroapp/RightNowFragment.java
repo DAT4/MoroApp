@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -23,7 +24,8 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     private View root;
     RecyclerView listview;
     EventsViewManager viewManager;
-
+    Fragment myFragment;
+    FragmentManager fragmentManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,14 +35,15 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
         back = root.findViewById(R.id.right_now_back);
 
+        fragmentManager = getActivity().getSupportFragmentManager();
 
         back.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                                        startActivity(intent);
-                                    }
-                                }
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                }
+            }
         );
 
         // BTN setup
@@ -60,23 +63,30 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         viewManager = new EventsViewManager(events);
 
         // recycler view setup
-        listview = root.findViewById(R.id.recyclerView);
-        updateView();
+        //listview = root.findViewById(R.id.recyclerView);
+        //updateView();
+
+        myFragment = viewManager.getFragment();
+
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
 
         return root;
     }
 
     public void viewList(View view) {
         // Change View
-        viewManager.viewList(listview,this.getContext());
+        myFragment = viewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     public void viewGrid(View view) {
-        viewManager.viewGrid(listview,this.getContext());
+        myFragment = viewManager.viewGrid(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     public void viewMap(View view) {
-        viewManager.viewMap(listview,this.getContext());
+        myFragment = viewManager.viewMap(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void updateView() {
