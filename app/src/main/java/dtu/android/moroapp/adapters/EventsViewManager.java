@@ -1,6 +1,7 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
+import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,11 +14,13 @@ public class EventsViewManager {
 
     IListState state;
     List<Event> dataToView;
+    Context context;
 
     // Get the data
-    public EventsViewManager(List<Event> titles) {
+    public EventsViewManager(List<Event> titles, Context context) {
         this.dataToView = titles;
-        this.state = new ListViewAdapter(this);
+        this.state = new ListViewState(this);
+        this.context = context;
     }
 
     public Fragment changeState(IListState listState) {
@@ -47,6 +50,10 @@ public class EventsViewManager {
 
     public Fragment getFragment(){
         return this.state.getFragment();
+    }
+
+    public void updateFragment(){
+        this.state.updateFragment();
     }
 
 

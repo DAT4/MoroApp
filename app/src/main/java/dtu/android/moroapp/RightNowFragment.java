@@ -1,5 +1,6 @@
 package dtu.android.moroapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,8 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -60,7 +63,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
 
         // Manger setup
-        viewManager = new EventsViewManager(events);
+        viewManager = new EventsViewManager(events,getContext());
 
         // recycler view setup
         //listview = root.findViewById(R.id.recyclerView);
@@ -69,6 +72,13 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         myFragment = viewManager.getFragment();
 
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+
+        //viewManager.updateFragment();
+
+        /*FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.mainFragment, myFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();*/
 
         return root;
     }
@@ -92,6 +102,13 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     void updateView() {
         listview.setAdapter(viewManager.getAdapter());
         listview.setLayoutManager(viewManager.getLayoutManager(this.getContext()));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        //viewManager.updateFragment();
     }
 
     @Override

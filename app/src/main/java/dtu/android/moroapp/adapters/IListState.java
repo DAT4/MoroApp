@@ -10,6 +10,7 @@ public interface IListState {
     Fragment viewList(Fragment view, Context context);
     Fragment viewMap(Fragment view, Context context);
     Fragment getFragment();
+    void updateFragment();
     RecyclerView.Adapter getAdapter();
     RecyclerView.LayoutManager getLayoutManager(Context context);
 }

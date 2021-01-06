@@ -5,26 +5,24 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import dtu.android.moroapp.Event_Recycler_Fragment;
-
-public class MapViewAdapter implements IListState {
+public class MapViewState implements IListState {
 
 
     private EventsViewManager manager;
     Fragment myFragment;
 
-    MapViewAdapter(EventsViewManager eventsViewManager) {
+    MapViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
     }
 
     @Override
     public Fragment viewGrid(Fragment view, Context context) {
-        return this.manager.changeState(new GridViewAdapter(this.manager));
+        return this.manager.changeState(new GridViewState(this.manager));
     }
 
     @Override
     public Fragment viewList(Fragment view, Context context) {
-        return this.manager.changeState(new ListViewAdapter(this.manager));
+        return this.manager.changeState(new ListViewState(this.manager));
     }
 
     @Override
@@ -35,6 +33,11 @@ public class MapViewAdapter implements IListState {
     @Override
     public Fragment getFragment() {
         return myFragment;
+    }
+
+    @Override
+    public void updateFragment() {
+
     }
 
     @Override
