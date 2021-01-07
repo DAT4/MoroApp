@@ -27,6 +27,7 @@ public class MinProfilFragment extends Fragment implements View.OnClickListener 
         return inflater.inflate(R.layout.fragment_min_profil, container, false);
     }
 
+
     @Override
     public void onClick(View view) {
         //TO-DO

@@ -1,19 +1,22 @@
 package dtu.android.moroapp.models
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Entity(tableName = "events")
 data class Event(
-        val title: String,
+        @PrimaryKey val title: String,
         val genre: String,
         val image: String,
         val link: String,
-        val other: MutableList<String>,
         val price: Int,
         val text: String,
         val tickets: String,
-        val location: Location,
+        @Embedded val location: Location,
         val time: Long,
 ) : Serializable {
     fun getDate(): String = SimpleDateFormat("dd/MM/yyyy").format(Date(time * 1000))
@@ -35,8 +38,8 @@ data class Coordinates(
 
 data class Location(
         val area: String,
-        val address: Address,
+        @Embedded val address: Address,
         val place: String,
-        val coordinates: Coordinates,
+        @Embedded val coordinates: Coordinates,
 ) : Serializable
 

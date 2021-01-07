@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -32,6 +34,11 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         root = inflater.inflate(R.layout.right_now_fragment, container, false);
 
         back = root.findViewById(R.id.right_now_back);
+
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+
 
 
         back.setOnClickListener(new View.OnClickListener() {
