@@ -5,14 +5,20 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
+import dtu.android.moroapp.models.Event;
+
 public class MapViewState implements IListState {
 
-
     private EventsViewManager manager;
-    Fragment myFragment;
+    Event_Map_Fragment myFragment;
+    List<Event> events;
 
     MapViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
+        this.events = this.manager.dataToView;
+        this.myFragment = new Event_Map_Fragment();
     }
 
     @Override
