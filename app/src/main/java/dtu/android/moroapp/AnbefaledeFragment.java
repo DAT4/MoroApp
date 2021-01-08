@@ -18,7 +18,7 @@ import dtu.android.moroapp.observer.ConcreteEvents;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AnbefaledeFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 public class AnbefaledeFragment extends Fragment implements View.OnClickListener {
