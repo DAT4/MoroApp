@@ -1,4 +1,4 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

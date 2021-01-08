@@ -19,6 +19,7 @@ public class ListViewState implements IListState{
 
     EventsViewManager manager;
     Event_Recycler_Fragment myFragment;
+    Event_Recycler_Fragment mySavedEvents;
     ListViewAdapter adapter;
 
     public ListViewState(EventsViewManager eventsViewManager) {

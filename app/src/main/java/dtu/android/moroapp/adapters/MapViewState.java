@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import dtu.android.moroapp.Event_Map_Fragment;
 import dtu.android.moroapp.models.Event;
 
 public class MapViewState implements IListState {

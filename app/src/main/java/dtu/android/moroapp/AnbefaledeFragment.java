@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
@@ -36,7 +37,10 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         fragmentManager = getActivity().getSupportFragmentManager();
 
         // Events
-        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+        //List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+
+        List<Event> events = new ArrayList<>();
+        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
 
         // Manager setup
         eventsViewManager = new EventsViewManager(events,getContext());
