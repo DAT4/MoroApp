@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -23,23 +24,23 @@ import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SavedEventsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SavedEventsFragment extends Fragment implements View.OnClickListener {
 
     private View view;
     Button btnList, btnGrid, btnMap;
     RecyclerView recyclerView;
     EventsViewManager eventsViewManager;
+    Fragment myFragment;
+    FragmentManager fragmentManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_saved_events, container, false);
+
+        fragmentManager = getActivity().getSupportFragmentManager();
 
   /*      ImageView imageListView = view.findViewById(R.id.savedEvents_list_view);
         ImageView imageGridView = view.findViewById(R.id.savedEvents_grid_view);
@@ -65,11 +66,16 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
 
 
         // Manger setup
-        eventsViewManager = new EventsViewManager(events);
+        eventsViewManager = new EventsViewManager(events,getContext());
 
         // recycler view setup
-        recyclerView = view.findViewById(R.id.savedEventsRecyclerView);
-        updateView();
+        //recyclerView = view.findViewById(R.id.savedEventsRecyclerView);
+
+        myFragment = eventsViewManager.getFragment();
+
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+
+        //updateView();
 
         return view;
     }
@@ -80,16 +86,18 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
     }
 
     void viewList(View v) {
-        eventsViewManager.viewList(recyclerView, this.getContext());
+        myFragment = eventsViewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void viewGrid(View v) {
-
-        eventsViewManager.viewGrid(recyclerView, this.getContext());
+        myFragment = eventsViewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void viewMap(View v) {
-        eventsViewManager.viewMap(recyclerView, this.getContext());
+        myFragment = eventsViewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
 

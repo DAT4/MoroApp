@@ -3,6 +3,7 @@ package dtu.android.moroapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,17 +17,15 @@ import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AnbefaledeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AnbefaledeFragment extends Fragment implements View.OnClickListener {
 
     private View root;
     RecyclerView recyclerView;
     EventsViewManager eventsViewManager;
     Button btnList, btnGrid, btnMap;
+    Fragment myFragment;
+    FragmentManager fragmentManager;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,11 +33,13 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_anbefalede, container, false);
 
+        fragmentManager = getActivity().getSupportFragmentManager();
+
         // Events
         List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
 
         // Manager setup
-        eventsViewManager = new EventsViewManager(events);
+        eventsViewManager = new EventsViewManager(events,getContext());
 
         // BTN setup
         btnList = root.findViewById(R.id.recommendEvents_list_view);
@@ -50,23 +51,30 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         btnMap = root.findViewById(R.id.recommendEvents_map_view);
         btnMap.setOnClickListener(this);
 
-        recyclerView = root.findViewById(R.id.recommendRecyclerView);
-        updateView();
+        //recyclerView = root.findViewById(R.id.recommendRecyclerView);
+
+        myFragment = eventsViewManager.getFragment();
+
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+
+        //updateView();
 
         return root;
     }
 
     void viewList(View v) {
-        eventsViewManager.viewList(recyclerView, this.getContext());
+        myFragment = eventsViewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void viewGrid(View v) {
-
-        eventsViewManager.viewGrid(recyclerView, this.getContext());
+        myFragment = eventsViewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void viewMap(View v) {
-        eventsViewManager.viewMap(recyclerView, this.getContext());
+        myFragment = eventsViewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void updateView() {
