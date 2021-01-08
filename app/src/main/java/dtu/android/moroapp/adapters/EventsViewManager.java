@@ -1,7 +1,9 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
+import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -12,37 +14,30 @@ public class EventsViewManager {
 
     IListState state;
     List<Event> dataToView;
+    Context context;
 
     // Get the data
-    public EventsViewManager(List<Event> titles) {
+    public EventsViewManager(List<Event> titles, Context context) {
         this.dataToView = titles;
-        this.state = new ListViewAdapter(this);
+        this.state = new ListViewState(this);
+        this.context = context;
     }
 
-    public void changeState(IListState listState) {
+    public Fragment changeState(IListState listState) {
         this.state = listState;
+        return getFragment();
     }
 
-    public void viewGrid(RecyclerView view, Context context) {
-        this.state.viewGrid(view, context);
-        updateView(view, context);
+    public Fragment viewGrid(Fragment view, Context context) {
+        return this.state.viewGrid(view, context);
     }
 
-
-
-    public void viewList(RecyclerView view, Context context) {
-        this.state.viewList(view, context);
-        updateView(view, context);
-    }
-    public void viewMap(RecyclerView view, Context context) {
-        this.state.viewMap(view, context);
-        updateView(view, context);
+    public Fragment viewList(Fragment view, Context context) {
+        return this.state.viewList(view, context);
     }
 
-
-    public void updateView(RecyclerView view, Context context) {
-        view.setAdapter(getAdapter());
-        view.setLayoutManager(getLayoutManager(context));
+    public Fragment viewMap(Fragment view, Context context) {
+        return this.state.viewMap(view, context);
     }
 
     public RecyclerView.Adapter getAdapter() {
@@ -53,7 +48,13 @@ public class EventsViewManager {
         return this.state.getLayoutManager(context);
     }
 
+    public Fragment getFragment(){
+        return this.state.getFragment();
+    }
 
+    public void updateFragment(){
+        this.state.updateFragment();
+    }
 
 
 }

@@ -2,12 +2,15 @@ package dtu.android.moroapp.adapters;
 
 import android.content.Context;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 public interface IListState {
-    void viewGrid(RecyclerView view, Context context);
-    void viewList(RecyclerView view, Context context);
-    void viewMap(RecyclerView view, Context context);
+    Fragment viewGrid(Fragment view, Context context);
+    Fragment viewList(Fragment view, Context context);
+    Fragment viewMap(Fragment view, Context context);
+    Fragment getFragment();
+    void updateFragment();
     RecyclerView.Adapter getAdapter();
     RecyclerView.LayoutManager getLayoutManager(Context context);
 }
