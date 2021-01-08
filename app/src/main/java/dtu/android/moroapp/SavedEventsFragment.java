@@ -63,7 +63,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         // load saved events events
         List<Event> events = new ArrayList<>();
         events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
-
+        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));
 
         // Manger setup
         eventsViewManager = new EventsViewManager(events,getContext());
@@ -73,7 +73,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
 
         myFragment = eventsViewManager.getFragment();
 
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.savedEvents_container,myFragment).commit();
 
         //updateView();
 
@@ -87,17 +87,17 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
 
     void viewList(View v) {
         myFragment = eventsViewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.savedEvents_container,myFragment).commit();
     }
 
     void viewGrid(View v) {
-        myFragment = eventsViewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = eventsViewManager.viewGrid(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.savedEvents_container,myFragment).commit();
     }
 
     void viewMap(View v) {
-        myFragment = eventsViewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = eventsViewManager.viewMap(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.savedEvents_container,myFragment).commit();
     }
 
 

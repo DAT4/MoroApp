@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -26,11 +27,17 @@ public class Event_Recycler_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate( R.layout.event_recycler_fragment, container, false );
+        //recyclerView = root.findViewById(R.id.recyclerView);
 
-        recyclerView = root.findViewById(R.id.recyclerView);
+       // Fragment fragment = new Fragment();
 
+        recyclerView = new RecyclerView(getContext());
         this.recyclerView.setAdapter(adapter);
         this.recyclerView.setLayoutManager(manager);
+
+        LinearLayout layout = root.findViewById(R.id.eventRecyclerViewContainer);
+        layout.addView(recyclerView);
+
 
         return root;
     }

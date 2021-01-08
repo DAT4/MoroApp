@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     EventsViewManager viewManager;
     Fragment myFragment;
     FragmentManager fragmentManager;
+    FrameLayout frameLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,8 +72,13 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         //updateView();
 
         myFragment = viewManager.getFragment();
+        //View eventPresentation = viewManager.getView();
 
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+
+        //frameLayout = root.findViewById(R.id.container_fragment);
+        //frameLayout.addView(eventPresentation);
+
 
         //viewManager.updateFragment();
 
@@ -87,16 +94,27 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         // Change View
         myFragment = viewManager.viewList(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+
+        /*viewManager.viewList(null, getContext());
+        frameLayout.removeAllViews();
+        frameLayout.addView(viewManager.getView());*/
+
     }
 
     public void viewGrid(View view) {
         myFragment = viewManager.viewGrid(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        /*viewManager.viewGrid(null, getContext());
+        frameLayout.removeAllViews();
+        frameLayout.addView(viewManager.getView());*/
     }
 
     public void viewMap(View view) {
         myFragment = viewManager.viewMap(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+/*        viewManager.viewMap(null, getContext());
+        frameLayout.removeAllViews();
+        frameLayout.addView(viewManager.getView()); */
     }
 
     void updateView() {
