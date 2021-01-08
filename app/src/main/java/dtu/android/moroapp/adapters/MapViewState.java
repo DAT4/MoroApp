@@ -18,7 +18,7 @@ public class MapViewState implements IListState {
     MapViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
         this.events = this.manager.dataToView;
-        this.myFragment = new Event_Map_Fragment();
+        this.myFragment = new Event_Map_Fragment(events);
     }
 
     @Override

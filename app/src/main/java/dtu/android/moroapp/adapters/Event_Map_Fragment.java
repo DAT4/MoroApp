@@ -18,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.R;
@@ -73,11 +74,35 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        ArrayList<String> addresses = getAddressFromList(events);
         map = googleMap;
 
-        LatLng address = new LatLng(55.680867098589786, 12.575106731751978);
-        map.addMarker(new MarkerOptions().position(address).title("Copenhagen"));
-        //map.moveCamera( CameraUpdateFactory.newLatLng(address));
+        double v1;
+        double v2;
+        String title;
+
+        String[] temp = addresses.get(0).split(" ,");
+
+        v1 = Double.parseDouble(temp[0]);
+        v2 = Double.parseDouble(temp[1]);
+        title = temp[2];
+
+        LatLng address = new LatLng(v1, v2);
+        map.addMarker(new MarkerOptions().position(address).title(title));
+
+        for (int i = 1; i < addresses.size() - 1; i++) {
+            String[] temp2 = addresses.get(i).split(" ,");
+
+            if(!(temp2[0].equals(temp[0])) && !(temp2[1].equals(temp[1]))){
+
+                v1 = Double.parseDouble(temp2[0]);
+                v2 = Double.parseDouble(temp2[1]);
+                title = temp2[2];
+
+                LatLng address2 = new LatLng(v1, v2);
+                map.addMarker(new MarkerOptions().position(address2).title(title));
+            }
+        }
     }
 
     @Override
@@ -102,5 +127,21 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
+    }
+
+    public ArrayList<String> getAddressFromList(List<Event> events){
+        ArrayList<String> addresses = new ArrayList<>();
+
+
+        for(int i = 0; i < events.size(); i++){
+            String temp = "";
+
+            temp += events.get(i).getLocation().getCoordinates().getLatitude() +" ,";
+            temp += events.get(i).getLocation().getCoordinates().getLongitude() + " ,";
+            temp += events.get(i).getTitle();
+
+            addresses.add(temp);
+        }
+        return addresses;
     }
 }
