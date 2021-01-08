@@ -38,13 +38,15 @@
                 <fragment
                     android:id="@+id/fragment1"
                     android:name="dtu.android.moroapp.SavedEventsFragment"
+                    android:tag="SavedEvents"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4" />
 
-                <fragment
+               <fragment
                     android:id="@+id/fragment2"
                     android:name="dtu.android.moroapp.AnbefaledeFragment"
+                    android:tag="@string/anbefalede_events"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="4" />

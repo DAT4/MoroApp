@@ -57,4 +57,7 @@ public class EventsViewManager {
     }
 
 
+    public View getView() {
+        return this.state.getView();
+    }
 }

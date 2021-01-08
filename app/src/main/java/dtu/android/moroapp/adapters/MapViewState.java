@@ -1,9 +1,13 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
+import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
 
 import java.util.List;
 
@@ -15,6 +19,7 @@ public class MapViewState implements IListState {
     private EventsViewManager manager;
     Event_Map_Fragment myFragment;
     List<Event> events;
+    MapView mapView;
 
     MapViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
@@ -54,6 +59,11 @@ public class MapViewState implements IListState {
 
     @Override
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
+        return null;
+    }
+
+    @Override
+    public View getView() {
         return null;
     }
 }

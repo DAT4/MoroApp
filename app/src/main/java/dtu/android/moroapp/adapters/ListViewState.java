@@ -9,13 +9,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.maps.OnMapReadyCallback;
+
 import java.util.List;
 
 import dtu.android.moroapp.Event_Recycler_Fragment;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 
-public class ListViewState implements IListState{
+public class ListViewState implements IListState {
 
     EventsViewManager manager;
     Event_Recycler_Fragment myFragment;
@@ -26,6 +28,7 @@ public class ListViewState implements IListState{
         this.manager = eventsViewManager;
         this.adapter = new ListViewAdapter(this.manager.dataToView);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
+        this.mySavedEvents = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
 
     @Override
@@ -59,5 +62,13 @@ public class ListViewState implements IListState{
 
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
         return new LinearLayoutManager(context);
+    }
+
+    @Override
+    public View getView() {
+        RecyclerView recyclerView = new RecyclerView(this.manager.context);
+        recyclerView.setLayoutManager(getLayoutManager(this.manager.context));
+        recyclerView.setAdapter(getAdapter());
+        return recyclerView;
     }
 }
