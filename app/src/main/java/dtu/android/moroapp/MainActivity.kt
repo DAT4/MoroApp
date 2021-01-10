@@ -1,19 +1,12 @@
 package dtu.android.moroapp
 
-import dtu.android.moroapp.observer.ConcreteEvents.load
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.NavController
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import dtu.android.moroapp.R
-import dtu.android.moroapp.observer.ConcreteEvents
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import dtu.android.moroapp.databinding.ActivityMainBinding
 import dtu.android.moroapp.mvvm.EventDatabase
