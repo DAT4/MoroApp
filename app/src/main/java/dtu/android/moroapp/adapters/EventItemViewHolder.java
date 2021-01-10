@@ -73,7 +73,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
                 bundle.putParcelable("event", event);
                 Fragment singleEventFragment = new SingleEventFragment();
                 singleEventFragment.setArguments(bundle);
-                manager.beginTransaction().replace(R.id.mainFragment, singleEventFragment).addToBackStack(null).commit();
+                manager.beginTransaction().replace(R.id.fragment, singleEventFragment).addToBackStack(null).commit();
             }
         });
     }

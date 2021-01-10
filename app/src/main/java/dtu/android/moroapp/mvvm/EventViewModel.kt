@@ -14,26 +14,24 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
 
-class EventViewModel (private val eventRepository: EventRepository) : ViewModel() {
+class EventViewModel(private val eventRepository: EventRepository) : ViewModel() {
     val events: MutableLiveData<Resource<List<Event>>> = MutableLiveData()
+
     init {
         getEvents()
     }
 
     private fun getEvents() = viewModelScope.launch {
-        try {
-            events.postValue(Resource.Loading())
-            val response = eventRepository.getEvents(load())
-            events.postValue(handleGetEvents(response))
-        } catch (e:Exception) {
-            e.printStackTrace()
-        }
+        events.postValue(Resource.Loading())
+        val response = eventRepository.getEvents(load())
+        events.postValue(handleGetEvents(response))
     }
 
-    private fun handleGetEvents(response: Response<GQLResponse<List<Event>>>) : Resource<List<Event>> {
-        if(response.isSuccessful) {
+    private fun handleGetEvents(response: Response<GQLResponse>): Resource<List<Event>> {
+        if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                return Resource.Success(resultResponse.data)
+                println("HER ER LISTEN ${resultResponse.data.events}")
+                return Resource.Success(resultResponse.data.events)
             }
         }
         return Resource.Error(response.message())
@@ -44,6 +42,35 @@ class EventViewModel (private val eventRepository: EventRepository) : ViewModel(
         val filter = Filter.Builder()
                 .filters(EventFilters.TIMEGT, t)
                 .build()
+
+        println("${
+            events(filter) {
+                title
+                genre
+                image
+                link
+                tickets
+                other
+                price
+                text
+                time
+                location {
+                    area
+                    place
+                    address {
+                        city
+                        street
+                        no
+                        state
+                        zip
+                    }
+                    coordinates {
+                        longitude
+                        latitude
+                    }
+                }
+            }
+        }")
         return GQLQuery(
                 "${
                     events(filter) {

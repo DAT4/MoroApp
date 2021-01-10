@@ -25,7 +25,7 @@ import sh.mama.hangman.adapters.EventAdapter
 class FrontPageFragment : Fragment() {
 
     private lateinit var navController: NavController
-    //private lateinit var viewModel: EventViewModel
+    private lateinit var viewModel: EventViewModel
     private lateinit var _binding: FragmentFrontPageBinding
     private val binding get() = _binding
 
@@ -57,10 +57,10 @@ class FrontPageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //viewModel = (activity as MainActivity).viewModel
+        viewModel = (activity as MainActivity).viewModel
         navController = Navigation.findNavController(view);
 
-        /*viewModel.events.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.events.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
                 is Resource.Success -> {
                     response.data?.let {
@@ -75,7 +75,7 @@ class FrontPageFragment : Fragment() {
                 }
             }
 
-        }) */
+        })
 
         view.apply {
             binding.findEventButton.setOnClickListener {

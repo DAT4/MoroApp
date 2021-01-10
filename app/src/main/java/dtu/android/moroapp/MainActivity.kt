@@ -4,6 +4,7 @@ import dtu.android.moroapp.observer.ConcreteEvents.load
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.NavController
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
@@ -38,10 +39,11 @@ class MainActivity : AppCompatActivity() {
         val eventRepository = EventRepository(EventDatabase(this))
         val eventViewModelProviderFactory = EventViewModelProviderFactory(eventRepository)
         viewModel = ViewModelProvider(this, eventViewModelProviderFactory).get(EventViewModel::class.java)
+        Log.d("VISNINGSMODEL", viewModel.toString())
 
         // Setup nav
         bottomBar = binding.bottomNavigationView
-        navController = findNavController( R.id.mainFragment)
+        navController = findNavController( R.id.fragment)
         bottomBar.setupWithNavController(navController)
     }
 }
