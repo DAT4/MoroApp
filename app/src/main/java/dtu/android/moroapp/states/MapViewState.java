@@ -1,4 +1,4 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp.states;
 
 import android.content.Context;
 import android.view.View;
@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
 
 import java.util.List;
 
 import dtu.android.moroapp.Event_Map_Fragment;
+import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
 
 public class MapViewState implements IListState {

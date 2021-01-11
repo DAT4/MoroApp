@@ -1,8 +1,12 @@
 package dtu.android.moroapp.adapters;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import dtu.android.moroapp.R;
@@ -11,9 +15,12 @@ import dtu.android.moroapp.models.Event;
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 
     private List<Event> localDataSet;
+    ColorThemeManager colorThemeManager;
 
-    public ListViewAdapter(List<Event> localDataSet) {
+    public ListViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager) {
         this.localDataSet = localDataSet;
+        this.colorThemeManager = colorThemeManager;
+
     }
 
     public static class ViewHolder extends dtu.android.moroapp.adapters.EventItemViewHolder {
@@ -30,6 +37,9 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate( R.layout.event_card_fragment, viewGroup, false);
+
+        View listView = view.findViewById(R.id.GridLayout1);
+        listView.setBackgroundColor(colorThemeManager.getIcon());
 
         return new ListViewAdapter.ViewHolder(view);
     }

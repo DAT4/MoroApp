@@ -18,8 +18,7 @@
             android:value="@string/map_key"/>
 
         <activity android:name=".MainActivity"
-            android:label="hejsa"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:label="MORO"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

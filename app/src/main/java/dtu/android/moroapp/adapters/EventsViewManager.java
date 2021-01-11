@@ -8,19 +8,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.ListViewState;
 
 public class EventsViewManager {
 
     IListState state;
-    List<Event> dataToView;
-    Context context;
+    public Theme theme;
+    public List<Event> dataToView;
+    public Context context;
+    public ColorThemeManager colorThemeManager;
 
     // Get the data
-    public EventsViewManager(List<Event> titles, Context context) {
+    public EventsViewManager(List<Event> titles, Context context, Theme theme) {
         this.dataToView = titles;
-        this.state = new ListViewState(this);
         this.context = context;
+        this.theme = theme;
+        this.colorThemeManager = new ColorThemeManager(theme);
+        this.state = new ListViewState(this);
     }
 
     public Fragment changeState(IListState listState) {

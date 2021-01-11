@@ -1,21 +1,19 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp.states;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.OnMapReadyCallback;
-
-import java.util.List;
-
 import dtu.android.moroapp.Event_Recycler_Fragment;
-import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.adapters.ColorThemeManager;
+import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.ListViewAdapter;
+import dtu.android.moroapp.states.GridViewState;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.MapViewState;
 
 public class ListViewState implements IListState {
 
@@ -23,10 +21,12 @@ public class ListViewState implements IListState {
     Event_Recycler_Fragment myFragment;
     Event_Recycler_Fragment mySavedEvents;
     ListViewAdapter adapter;
+    ColorThemeManager colorThemeManager;
 
     public ListViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
-        this.adapter = new ListViewAdapter(this.manager.dataToView);
+        this.colorThemeManager = this.manager.colorThemeManager;
+        this.adapter = new ListViewAdapter(this.manager.dataToView,colorThemeManager);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
         this.mySavedEvents = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
