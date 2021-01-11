@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +19,7 @@ import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.observer.ConcreteEvents;
+import dtu.android.moroapp.mvvm.EventViewModel;
 
 public class RightNowFragment extends Fragment implements View.OnClickListener {
 
@@ -31,7 +31,8 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     Fragment myFragment;
     FragmentManager fragmentManager;
     NavController navController;
-    FrameLayout frameLayout;
+    EventViewModel viewModel;
+    List<Event> events;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,23 +57,26 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap.setOnClickListener(this);
 
         // Test values
-        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+        viewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
+            events = viewModel.getEvents().getValue().getData();
+        });
+
+        events = viewModel.getEvents().getValue().getData();
+
+
+
 
         // Manger setup
-        viewManager = new EventsViewManager(events,getContext());
+        viewManager = new EventsViewManager(events, getContext());
 
         // recycler view setup
         //listview = root.findViewById(R.id.recyclerView);
         //updateView();
 
         myFragment = viewManager.getFragment();
-        //View eventPresentation = viewManager.getView();
 
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-
-        //frameLayout = root.findViewById(R.id.container_fragment);
-        //frameLayout.addView(eventPresentation);
-
 
         //viewManager.updateFragment();
 
@@ -91,11 +95,11 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         navController = Navigation.findNavController(view);
 
         back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_rightNowFragment_to_frontPageFragment);
-                }
-            }
+                                    @Override
+                                    public void onClick(View view) {
+                                        navController.navigate(R.id.action_rightNowFragment_to_frontPageFragment);
+                                    }
+                                }
         );
 
     }
@@ -104,27 +108,16 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         // Change View
         myFragment = viewManager.viewList(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-
-        /*viewManager.viewList(null, getContext());
-        frameLayout.removeAllViews();
-        frameLayout.addView(viewManager.getView());*/
-
     }
 
     public void viewGrid(View view) {
         myFragment = viewManager.viewGrid(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-        /*viewManager.viewGrid(null, getContext());
-        frameLayout.removeAllViews();
-        frameLayout.addView(viewManager.getView());*/
     }
 
     public void viewMap(View view) {
         myFragment = viewManager.viewMap(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-/*        viewManager.viewMap(null, getContext());
-        frameLayout.removeAllViews();
-        frameLayout.addView(viewManager.getView()); */
     }
 
     void updateView() {

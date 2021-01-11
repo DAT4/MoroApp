@@ -1,6 +1,7 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
+import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
