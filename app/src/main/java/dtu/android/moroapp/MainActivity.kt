@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.Menu
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LifecycleOwner
@@ -19,8 +20,12 @@ import dtu.android.moroapp.mvvm.EventDatabase
 import dtu.android.moroapp.mvvm.EventRepository
 import dtu.android.moroapp.mvvm.EventViewModel
 import dtu.android.moroapp.mvvm.EventViewModelProviderFactory
+import dtu.android.moroapp.observer.ConcreteEvents
+import dtu.android.moroapp.observer.IObserver
+import dtu.android.moroapp.utils.EventFilters
+import dtu.android.moroapp.utils.GraphQL.Filter
 
-class MainActivity : AppCompatActivity(), LifecycleOwner {
+class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
     private lateinit var bottomBar: BottomNavigationView
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         setContentView(binding.root)
         initializeUI()
         setupNav()
+        ConcreteEvents.add(this)
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
@@ -61,7 +67,14 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                
+                query?.let {
+                    val t = System.currentTimeMillis() / 1000
+                    val filter = Filter.Builder()
+                            .filters(EventFilters.TIMEGT, t)
+                            .build()
+                    ConcreteEvents.load(filter)
+                    Toast.makeText(this@MainActivity,query,Toast.LENGTH_SHORT).show()
+                }
                 return true
             }
 
@@ -72,5 +85,14 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         })
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun update() {
+        Toast.makeText(this,"Succes",Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ConcreteEvents.remove(this)
     }
 }
