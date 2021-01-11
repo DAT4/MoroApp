@@ -70,10 +70,9 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
                 query?.let {
                     val t = System.currentTimeMillis() / 1000
                     val filter = Filter.Builder()
-                            .filters(EventFilters.TIMEGT, t)
+                            .filters(EventFilters.PLACE, query)
                             .build()
                     ConcreteEvents.load(filter)
-                    Toast.makeText(this@MainActivity,query,Toast.LENGTH_SHORT).show()
                 }
                 return true
             }
