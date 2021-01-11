@@ -1,19 +1,22 @@
 package dtu.android.moroapp;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 public class Burger_fragment extends Fragment {
 
     private Button bTipOs, bOmOs, bKontakt, bClose;
     private View root;
+    private NavController navController;
 
 
     @Override
@@ -27,51 +30,41 @@ public class Burger_fragment extends Fragment {
         bKontakt = root.findViewById(R.id.burger_kontakt_os);
         bClose = root.findViewById(R.id.burger_close);
 
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+
         bTipOs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment newFragment = new Tip_Os_Fragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainFragment, newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
-
-        bOmOs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment newFragment = new Om_Os_Fragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainFragment, newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                navController.navigate(R.id.action_burger_fragment_to_tip_Os_Fragment);
             }
         });
 
         bKontakt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment newFragment = new Kontakt_Os_Fragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainFragment, newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                navController.navigate(R.id.action_burger_fragment_to_kontakt_Os_Fragment);
             }
         });
 
         bClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment newFragment = new FrontPageFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainFragment, newFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                navController.navigate(R.id.action_burger_fragment_to_frontPageFragment);
             }
         });
 
 
-        return root;
+        bOmOs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_burger_fragment_to_om_Os_Fragment);
+            }
+        });
     }
 }

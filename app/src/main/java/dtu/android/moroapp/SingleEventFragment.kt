@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
 import dtu.android.moroapp.models.Event
 import kotlinx.android.synthetic.main.fragment_single_event.view.*
@@ -20,19 +21,13 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SingleEventFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SingleEventFragment : Fragment() {
     private lateinit var event : Event
+    private val args: SingleEventFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments!!.let {
-            event = it.get("event") as Event
-        }
+        event = args.event
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

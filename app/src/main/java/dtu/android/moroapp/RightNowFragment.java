@@ -1,7 +1,5 @@
 package dtu.android.moroapp;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -30,6 +30,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     EventsViewManager viewManager;
     Fragment myFragment;
     FragmentManager fragmentManager;
+    NavController navController;
     FrameLayout frameLayout;
 
     @Override
@@ -42,14 +43,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-                }
-            }
-        );
+
 
         // BTN setup
         btnList = root.findViewById(R.id.viewList);
@@ -88,6 +82,22 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         transaction.commit();*/
 
         return root;
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_rightNowFragment_to_frontPageFragment);
+                }
+            }
+        );
+
     }
 
     public void viewList(View view) {

@@ -3,7 +3,6 @@ package dtu.android.moroapp.adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -71,7 +70,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
                 AppCompatActivity activity = (AppCompatActivity) context;
                 FragmentManager manager = activity.getSupportFragmentManager();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("event", event);
+                bundle.putParcelable("event", event);
                 Fragment singleEventFragment = new SingleEventFragment();
                 singleEventFragment.setArguments(bundle);
                 manager.beginTransaction().replace(R.id.mainFragment, singleEventFragment).addToBackStack(null).commit();

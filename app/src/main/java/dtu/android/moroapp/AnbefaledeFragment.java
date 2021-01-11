@@ -18,7 +18,6 @@ import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
-
 public class AnbefaledeFragment extends Fragment implements View.OnClickListener {
 
     private View root;
