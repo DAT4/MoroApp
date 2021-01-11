@@ -57,12 +57,14 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap.setOnClickListener(this);
 
         // Test values
-        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
-        viewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
-            events = viewModel.getEvents().getValue().getData();
-        });
 
-        events = viewModel.getEvents().getValue().getData();
+        // Instantiate viewModel
+        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+
+
+        viewModel.getAllEvents().observe(getViewLifecycleOwner(), listResource -> events = viewModel.getAllEvents().getValue().getData());
+
+        events = viewModel.getAllEvents().getValue().getData();
 
 
 
