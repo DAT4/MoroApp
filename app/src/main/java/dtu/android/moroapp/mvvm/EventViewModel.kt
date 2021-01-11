@@ -1,5 +1,6 @@
 package dtu.android.moroapp.mvvm
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,12 +20,18 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
 
     init {
         getEvents()
+        Log.i("EventViewModel", "Created")
     }
 
     private fun getEvents() = viewModelScope.launch {
         events.postValue(Resource.Loading())
         val response = eventRepository.getEvents(load())
         events.postValue(handleGetEvents(response))
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        Log.i("EventViewModel", "ViewModel Destroyed")
     }
 
     private fun handleGetEvents(response: Response<GQLResponse>): Resource<List<Event>> {

@@ -99,4 +99,13 @@
         android:name="dtu.android.moroapp.SavedEventsFragment"
         android:label="fragment_saved_events"
         tools:layout="@layout/fragment_saved_events" />
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="dtu.android.moroapp.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
+    </fragment>
 </navigation>

@@ -1,6 +1,7 @@
 package dtu.android.moroapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -16,7 +19,10 @@ import dtu.android.moroapp.adapters.PremiumAdapter
 import dtu.android.moroapp.api.Resource
 import dtu.android.moroapp.databinding.FragmentFrontPageBinding
 import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.mvvm.EventDatabase
+import dtu.android.moroapp.mvvm.EventRepository
 import dtu.android.moroapp.mvvm.EventViewModel
+import dtu.android.moroapp.mvvm.EventViewModelProviderFactory
 import dtu.android.moroapp.observer.ConcreteEvents
 import dtu.android.moroapp.observer.IObserver
 import kotlinx.android.synthetic.main.fragment_front_page.*
@@ -24,8 +30,7 @@ import sh.mama.hangman.adapters.EventAdapter
 
 class FrontPageFragment : Fragment() {
 
-    private lateinit var navController: NavController
-    private lateinit var viewModel: EventViewModel
+    lateinit var viewModel: EventViewModel
     private lateinit var _binding: FragmentFrontPageBinding
     private val binding get() = _binding
 
@@ -52,13 +57,14 @@ class FrontPageFragment : Fragment() {
                               savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         _binding = FragmentFrontPageBinding.inflate(inflater, container, false)
+        //viewModel = ViewModelProvider(this).get(EventViewModel::class.java)
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
-        navController = Navigation.findNavController(view);
 
         viewModel.events.observe(viewLifecycleOwner, Observer { response ->
             when(response) {
@@ -76,13 +82,37 @@ class FrontPageFragment : Fragment() {
             }
 
         })
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.i("FrontPageFragment", "Getting viewModel from main")
+
+        /*viewModel = (activity as MainActivity).viewModel
+
+        viewModel.events.observe(viewLifecycleOwner, Observer { response ->
+            when(response) {
+                is Resource.Success -> {
+                    response.data?.let {
+                        initRecyclerView(it)
+                        initViewPager(it)
+                    }
+                }
+                is Resource.Error -> {
+                    response.message?.let {
+                        println("Error occured: $it")
+                    }
+                }
+            }
+
+        }) */
 
         view.apply {
             binding.findEventButton.setOnClickListener {
-                navController.navigate(R.id.action_frontPageFragment_to_findEvent_interface_Fragment)
+                findNavController().navigate(R.id.action_frontPageFragment_to_findEvent_interface_Fragment)
             }
             binding.ligeNu.setOnClickListener {
-                navController.navigate(R.id.action_frontPageFragment_to_rightNowFragment)
+                findNavController().navigate(R.id.action_frontPageFragment_to_rightNowFragment)
             }
 
         }

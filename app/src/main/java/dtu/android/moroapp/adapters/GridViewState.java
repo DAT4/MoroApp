@@ -1,22 +1,14 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import dtu.android.moroapp.Event_Recycler_Fragment;
-import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
 
 public class GridViewState implements IListState {
-
     private EventsViewManager manager;
     Event_Recycler_Fragment myFragment;
     GridViewAdapter adapter;
