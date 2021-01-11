@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         bMyProfile = (Button) findViewById(R.id.nav_profile);
         bBurger = (Button) findViewById(R.id.nav_burger);
 
-
         bRightNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
                         .commit();
             }
         });
-
-
 
         if (savedInstanceState == null) {
             Fragment fragment = new FrontPageFragment();
