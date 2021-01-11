@@ -16,6 +16,7 @@
     <color name="colorBackgroundBlue">#A8DEF5</color>
     <color name="colorBackgroundGreen">#CCFFC8</color>
     <color name="colorBackgroundOrange">#FFDEC0</color>
+    <color name="colorFrontPage">#CE93D8</color>
 </resources>
 
 

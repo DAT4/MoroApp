@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
@@ -22,6 +23,8 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.TabAdapter;
+
+import static androidx.navigation.fragment.NavHostFragment.findNavController;
 
 
 public class findEvent_interface_Fragment extends Fragment {
@@ -69,23 +72,19 @@ public class findEvent_interface_Fragment extends Fragment {
         );
         tabLayoutMediator.attach();
 
-        search.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = new Search_results();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.mainFragment,fragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        } );
-
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        search.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(findEvent_interface_FragmentDirections.Companion.actionFindEventInterfaceFragmentToSearchResults());
+            }
+        } );
 
     }
 

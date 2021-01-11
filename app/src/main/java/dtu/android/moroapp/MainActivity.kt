@@ -6,8 +6,10 @@ import androidx.navigation.NavController
 import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -49,5 +51,26 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         bottomBar = binding.bottomNavigationView
         navController = findNavController( R.id.mainFragment)
         bottomBar.setupWithNavController(navController)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.topbar_menu,menu)
+        val search = menu?.findItem(R.id.search_icon)
+        val searchView = search?.actionView as SearchView
+        searchView.queryHint = "Search..."
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+
+        return super.onCreateOptionsMenu(menu)
     }
 }
