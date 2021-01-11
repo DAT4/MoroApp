@@ -13,6 +13,9 @@
     <color name="colorFindEventWhat">#F6A31A</color>
     <color name="colorFindEventWhen">#E95634</color>
     <color name="colorAboutUs">#1E1123</color>
+    <color name="colorBackgroundBlue">#A8DEF5</color>
+    <color name="colorBackgroundGreen">#CCFFC8</color>
+    <color name="colorBackgroundOrange">#FFDEC0</color>
 </resources>
 
 

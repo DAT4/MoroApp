@@ -1,19 +1,16 @@
 package dtu.android.moroapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -21,7 +18,7 @@ import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
-public class RightNowFragment extends Fragment implements View.OnClickListener {
+public class Search_results extends Fragment implements View.OnClickListener {
 
     private Button back;
     Button btnList, btnGrid, btnMap;
@@ -35,7 +32,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.right_now_fragment, container, false);
+        root = inflater.inflate( R.layout.fragment_search_results, container, false );
 
         back = root.findViewById(R.id.right_now_back);
 
@@ -43,14 +40,13 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
                 }
             }
         );
 
-        // BTN setup
         btnList = root.findViewById(R.id.viewList);
         btnList.setOnClickListener(this);
 
@@ -60,85 +56,43 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
 
-        // Test values
         List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
 
-        // Manger setup
-        viewManager = new EventsViewManager(events,getContext(),Theme.BLUE);
-
-        // recycler view setup
-        //listview = root.findViewById(R.id.recyclerView);
-        //updateView();
+        viewManager = new EventsViewManager(events,getContext(),Theme.GREEN);
 
         myFragment = viewManager.getFragment();
-        //View eventPresentation = viewManager.getView();
 
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-
-        //frameLayout = root.findViewById(R.id.container_fragment);
-        //frameLayout.addView(eventPresentation);
-
-
-        //viewManager.updateFragment();
-
-        /*FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.mainFragment, myFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();*/
 
         return root;
     }
 
-    public void viewList(View view) {
-        // Change View
+    public void viewList(){
         myFragment = viewManager.viewList(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-
-        /*viewManager.viewList(null, getContext());
-        frameLayout.removeAllViews();
-        frameLayout.addView(viewManager.getView());*/
-
     }
 
-    public void viewGrid(View view) {
+    public void viewGrid(){
         myFragment = viewManager.viewGrid(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-        /*viewManager.viewGrid(null, getContext());
-        frameLayout.removeAllViews();
-        frameLayout.addView(viewManager.getView());*/
     }
 
-    public void viewMap(View view) {
+    public void viewMap(){
         myFragment = viewManager.viewMap(null,this.getContext());
         fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
-/*        viewManager.viewMap(null, getContext());
-        frameLayout.removeAllViews();
-        frameLayout.addView(viewManager.getView()); */
-    }
-
-    void updateView() {
-        listview.setAdapter(viewManager.getAdapter());
-        listview.setLayoutManager(viewManager.getLayoutManager(this.getContext()));
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        //viewManager.updateFragment();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.viewList:
-                viewList(v);
+                viewList();
                 break;
             case R.id.viewGrid:
-                viewGrid(v);
+                viewGrid();
                 break;
             case R.id.viewMap:
-                viewMap(v);
+                viewMap();
                 break;
             default:
                 break;

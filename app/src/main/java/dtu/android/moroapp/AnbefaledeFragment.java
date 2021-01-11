@@ -52,7 +52,7 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
 
         // Manager setup
-        eventsViewManager = new EventsViewManager(events,getContext());
+        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE);
 
 
 

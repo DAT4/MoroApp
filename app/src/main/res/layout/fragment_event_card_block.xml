@@ -54,7 +54,8 @@
             android:layout_height="68dp"
             android:layout_gravity="bottom"
             android:background="@color/colorIconBlue"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/blockView">
 
             <LinearLayout
                 android:layout_width="match_parent"

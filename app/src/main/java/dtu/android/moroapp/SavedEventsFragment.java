@@ -66,7 +66,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));
 
         // Manger setup
-        eventsViewManager = new EventsViewManager(events,getContext());
+        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE);
 
         // recycler view setup
         //recyclerView = view.findViewById(R.id.savedEventsRecyclerView);

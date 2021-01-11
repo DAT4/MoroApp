@@ -1,30 +1,29 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp.states;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
-
 import dtu.android.moroapp.Event_Recycler_Fragment;
-import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.adapters.ColorThemeManager;
+import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.GridViewAdapter;
 
 public class GridViewState implements IListState {
 
     private EventsViewManager manager;
     Event_Recycler_Fragment myFragment;
     GridViewAdapter adapter;
+    ColorThemeManager colorThemeManager;
 
 
     public GridViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
-        this.adapter = new GridViewAdapter(this.manager.dataToView);
+        this.colorThemeManager = this.manager.colorThemeManager;
+        this.adapter = new GridViewAdapter(this.manager.dataToView,colorThemeManager);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
 
