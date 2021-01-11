@@ -30,6 +30,7 @@ import dtu.android.moroapp.models.EventDao;
 import dtu.android.moroapp.models.EventRoomDatabase;
 import dtu.android.moroapp.models.EventViewModel;
 import dtu.android.moroapp.observer.ConcreteEvents;
+//import dtu.android.moroapp.mvvm.EventViewModel;
 
 
 public class SavedEventsFragment extends Fragment implements View.OnClickListener {
@@ -40,6 +41,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
     EventsViewManager eventsViewManager;
     Fragment myFragment;
     FragmentManager fragmentManager;
+    List<Event> events;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,29 +70,42 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         btnMap.setOnClickListener(this);
 
         // load saved events events
-        List<Event> saveEvents = new ArrayList<>();
-        saveEvents.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
+        events = new ArrayList<>();
+        //saveEvents.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
+        EventViewModel onlineEventViewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
-        //Database and saved events;
-        EventViewModel eventViewModel = new EventViewModel(getActivity().getApplication());
-
-        // Inserting data and saving data
-        eventViewModel.insert(saveEvents.get(0));
-
-        // Get data and Async tast
-        List<Event> events = new ArrayList<>();
-        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
-        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));
+       /* onlineEventViewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
+            events = onlineEventViewModel.getEvents().getValue().getData();
+        }); */
 
         // Manger setup
         eventsViewManager = new EventsViewManager(events,getContext());
 
-        eventViewModel.getAllEvents().observe(this, new Observer<List<Event>>() {
+        onlineEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
+                    @Override
+                    public void onChanged(List<Event> events) {
+                        //events = events;
+                        eventsViewManager.updateEvents(events);
+                    }
+                });
+
+        //Database and saved events;
+        //EventViewModel eventViewModel = new EventViewModel(getActivity().getApplication());
+
+        // Inserting data and saving data
+        //eventViewModel.insert(saveEvents.get(0));
+
+        // Get data and Async tast
+       /* List<Event> events = new ArrayList<>();
+        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
+        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3)); */
+
+        /*eventViewModel.getAllEvents().observe(this, new Observer<List<Event>>() {
             @Override
             public void onChanged(List<Event> eventsList) {
                 eventsViewManager.updateEventsList(eventsList);
             }
-        });
+        }); */
 
 
         //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));

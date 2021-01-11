@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 import dtu.android.moroapp.Event_Recycler_Fragment;
+import dtu.android.moroapp.models.Event;
 
 public class GridViewState implements IListState {
     private EventsViewManager manager;
@@ -52,6 +55,12 @@ public class GridViewState implements IListState {
 
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
         return new GridLayoutManager(context, 2);
+    }
+
+    @Override
+    public void updateEvents(List<Event> events) {
+        this.adapter.setLocalDataSet(events);
+        this.adapter.notifyDataSetChanged();
     }
 
     @Override

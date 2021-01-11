@@ -14,9 +14,15 @@ import dtu.android.moroapp.models.Event;
 
 public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHolder>{
 
+
+
     private List<Event> localDataSet;
 
     public GridViewAdapter(List<Event> localDataSet) {
+        this.localDataSet = localDataSet;
+    }
+
+    public void setLocalDataSet(List<Event> localDataSet) {
         this.localDataSet = localDataSet;
     }
 

@@ -16,6 +16,10 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         this.localDataSet = localDataSet;
     }
 
+    public void setLocalDataSet(List<Event> localDataSet) {
+        this.localDataSet = localDataSet;
+    }
+
     public static class ViewHolder extends dtu.android.moroapp.adapters.EventItemViewHolder {
 
         public ViewHolder(View view) {

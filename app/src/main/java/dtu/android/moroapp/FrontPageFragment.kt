@@ -25,7 +25,6 @@ import dtu.android.moroapp.mvvm.EventViewModel
 import dtu.android.moroapp.mvvm.EventViewModelProviderFactory
 import dtu.android.moroapp.observer.ConcreteEvents
 import dtu.android.moroapp.observer.IObserver
-import kotlinx.android.synthetic.main.fragment_front_page.*
 import sh.mama.hangman.adapters.EventAdapter
 
 class FrontPageFragment : Fragment() {

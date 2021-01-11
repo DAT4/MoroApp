@@ -19,11 +19,11 @@ data class Event(
         val price: Int,
         val text: String,
         val tickets: String,
-        var time: Long = 0,
+        var time: Long,
         @Embedded val location: Location
 ) : Parcelable {
     fun getDate(): String = SimpleDateFormat("dd/MM/yyyy").format(Date(time * 1000))
-    fun getTime(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
+    fun getTimeToString(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
 }
 @Parcelize
 data class Address(

@@ -55,9 +55,14 @@ public class EventsViewManager {
         this.dataToView = list;
     }
 
-
-    public void updateFragment(){
+    public void updateFragment() {
         this.state.updateFragment();
+    }
+
+    public void updateEvents( List<Event> events){
+        this.dataToView = events;
+        this.state.updateEvents(events);
+        //this.state.updateFragment();
     }
 
 

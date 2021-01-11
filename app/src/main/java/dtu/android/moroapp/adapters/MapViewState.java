@@ -63,6 +63,11 @@ public class MapViewState implements IListState {
     }
 
     @Override
+    public void updateEvents(List<Event> events) {
+
+    }
+
+    @Override
     public View getView() {
         return null;
     }

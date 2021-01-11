@@ -52,6 +52,7 @@ public class ListViewState implements IListState {
     }
 
     public void updateFragment(){
+        this.adapter.notifyDataSetChanged();
         this.myFragment.setAdapter(getAdapter());
         this.myFragment.setLayoutManager(getLayoutManager(myFragment.getContext()));
     }
@@ -62,6 +63,12 @@ public class ListViewState implements IListState {
 
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
         return new LinearLayoutManager(context);
+    }
+
+    @Override
+    public void updateEvents(List<Event> events) {
+        this.adapter.setLocalDataSet(events);
+        this.adapter.notifyDataSetChanged();
     }
 
     @Override

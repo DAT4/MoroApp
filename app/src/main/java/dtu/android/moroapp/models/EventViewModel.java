@@ -32,7 +32,7 @@ public class EventViewModel extends AndroidViewModel {
         new InsertAsyncTask(eventDao).execute(event);
     }
 
-    public LiveData<List<Event>> getAllEvents() {
+    public LiveData<List<Event>> getEvents() {
 
         return allEvents;
     }
