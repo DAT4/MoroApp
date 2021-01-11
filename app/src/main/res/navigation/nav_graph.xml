@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/findEvent_interface_Fragment"
-        android:name="dtu.android.moroapp.findEvent_interface_Fragment"
+        android:name="dtu.android.moroapp.ui.FindEvent.findEvent_interface_Fragment"
         android:label="fragment_find_event_interface"
         tools:layout="@layout/fragment_find_event_interface" />
     <fragment
