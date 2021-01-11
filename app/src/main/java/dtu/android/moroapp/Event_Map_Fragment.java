@@ -1,10 +1,11 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,6 +36,7 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
 
     public Event_Map_Fragment(List<Event> events){
         this.events = events;
+        //mapView = new MapView(getContext());
     }
 
     @Override
@@ -42,7 +44,6 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate( R.layout.event_map_fragment, container, false );
-
         mapView = root.findViewById(R.id.viewMap);
 
         initGoogleMap(savedInstanceState);
@@ -69,7 +70,7 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onStop() {
         super.onStop();
-        mapView.onStart();
+        mapView.onStop();
     }
 
     @Override

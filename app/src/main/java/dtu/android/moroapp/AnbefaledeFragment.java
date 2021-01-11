@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
@@ -34,12 +35,6 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
-        // Events
-        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
-
-        // Manager setup
-        eventsViewManager = new EventsViewManager(events,getContext());
-
         // BTN setup
         btnList = root.findViewById(R.id.recommendEvents_list_view);
         btnList.setOnClickListener(this);
@@ -50,11 +45,21 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         btnMap = root.findViewById(R.id.recommendEvents_map_view);
         btnMap.setOnClickListener(this);
 
+        // Events
+        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+        //List<Event> events = new ArrayList<>();
+        //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
+
+        // Manager setup
+        eventsViewManager = new EventsViewManager(events,getContext());
+
+
+
         //recyclerView = root.findViewById(R.id.recommendRecyclerView);
 
         myFragment = eventsViewManager.getFragment();
 
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.recommendEvents_container,myFragment).commit();
 
         //updateView();
 
@@ -63,17 +68,17 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
 
     void viewList(View v) {
         myFragment = eventsViewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.recommendEvents_container,myFragment).commit();
     }
 
     void viewGrid(View v) {
-        myFragment = eventsViewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = eventsViewManager.viewGrid(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.recommendEvents_container,myFragment).commit();
     }
 
     void viewMap(View v) {
-        myFragment = eventsViewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = eventsViewManager.viewMap(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.recommendEvents_container,myFragment).commit();
     }
 
     void updateView() {

@@ -53,7 +53,13 @@ public class GridViewState implements IListState {
         return new GridLayoutManager(context, 2);
     }
 
-
+    @Override
+    public View getView() {
+        RecyclerView recyclerView = new RecyclerView(this.manager.context);
+        recyclerView.setLayoutManager(getLayoutManager(this.manager.context));
+        recyclerView.setAdapter(getAdapter());
+        return recyclerView;
+    }
 
 
 }
