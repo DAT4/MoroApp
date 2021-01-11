@@ -1,7 +1,6 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
-import android.view.View;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.ListViewState;
 
 public class EventsViewManager {
 
     IListState state;
-    List<Event> dataToView;
-    Context context;
+    public List<Event> dataToView;
+    public Context context;
 
     // Get the data
     public EventsViewManager(List<Event> titles, Context context) {

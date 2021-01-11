@@ -21,7 +21,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
         }
-
     }
 
     // Create new views (invoked by the layout manager)

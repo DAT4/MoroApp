@@ -1,4 +1,4 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp.states;
 
 import android.content.Context;
 

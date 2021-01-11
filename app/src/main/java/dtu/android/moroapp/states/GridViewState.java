@@ -1,40 +1,34 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp.states;
 
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.List;
-
 import dtu.android.moroapp.Event_Recycler_Fragment;
-import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.GridViewAdapter;
 
-public class ListViewState implements IListState{
+public class GridViewState implements IListState {
 
     EventsViewManager manager;
     Event_Recycler_Fragment myFragment;
-    ListViewAdapter adapter;
+    GridViewAdapter adapter;
 
-    public ListViewState(EventsViewManager eventsViewManager) {
+
+    public GridViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
-        this.adapter = new ListViewAdapter(this.manager.dataToView);
+        this.adapter = new GridViewAdapter(this.manager.dataToView);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
 
     @Override
     public Fragment viewGrid(Fragment view, Context context) {
-         return this.manager.changeState(new GridViewState(this.manager));
+        return this.myFragment;
     }
 
     @Override
     public Fragment viewList(Fragment view, Context context) {
-        return this.myFragment;
+        return this.manager.changeState(new ListViewState(this.manager));
     }
 
     @Override
@@ -44,7 +38,7 @@ public class ListViewState implements IListState{
 
     @Override
     public Fragment getFragment() {
-        return this.myFragment;
+        return myFragment;
     }
 
     public void updateFragment(){
@@ -57,6 +51,10 @@ public class ListViewState implements IListState{
     }
 
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
-        return new LinearLayoutManager(context);
+        return new GridLayoutManager(context, 2);
     }
+
+
+
+
 }

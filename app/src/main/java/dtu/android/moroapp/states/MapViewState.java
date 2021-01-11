@@ -1,4 +1,4 @@
-package dtu.android.moroapp.adapters;
+package dtu.android.moroapp.states;
 
 import android.content.Context;
 
@@ -7,7 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import dtu.android.moroapp.adapters.Event_Map_Fragment;
+import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.states.GridViewState;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.ListViewState;
 
 public class MapViewState implements IListState {
 
