@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import dtu.android.moroapp.FrontPageFragmentDirections
 import dtu.android.moroapp.R
 import dtu.android.moroapp.SingleEventFragment
 import dtu.android.moroapp.models.Event
@@ -35,6 +37,12 @@ class PremiumAdapter(
             card_item_time.text = event.getTimeToString()
             Picasso.get().load(event.image).fit().centerCrop().into(bannerID)
             bannerID.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
+
+            bannerID.setOnClickListener {
+                val action = FrontPageFragmentDirections
+                        .actionFrontPageFragmentToSingleEventFragment(event)
+                findNavController().navigate(action);
+            }
             /*
             title.text = event.title
             description.text = event.genre

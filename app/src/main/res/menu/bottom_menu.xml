@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rightNowFragment"
+        android:icon="@drawable/ic_lige_nu_navbar"
+        android:title="rightnow"/>
+    <item
+        android:id="@+id/frontPageFragment"
+        android:icon="@drawable/ic_home_navbar"
+        android:title="home"/>
+
+    <item
+        android:id="@+id/minProfilFragment"
+        android:icon="@drawable/ic_min_profil_navbar"
+        android:title="profil"/>
+
+    <item
+        android:id="@+id/burger_fragment"
+        android:icon="@drawable/ic_burger_meneu"
+        android:title="burger"/>
+
+</menu>

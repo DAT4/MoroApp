@@ -1,13 +1,18 @@
 package dtu.android.moroapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +21,7 @@ import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.observer.ConcreteEvents;
+import dtu.android.moroapp.mvvm.EventViewModel;
 
 public class RightNowFragment extends Fragment implements View.OnClickListener {
 
@@ -25,7 +30,11 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     private View root;
     RecyclerView listview;
     EventsViewManager viewManager;
-
+    Fragment myFragment;
+    FragmentManager fragmentManager;
+    NavController navController;
+    EventViewModel viewModel;
+    List<Event> events;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,6 +44,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
         back = root.findViewById(R.id.right_now_back);
 
+        fragmentManager = getActivity().getSupportFragmentManager();
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
@@ -61,34 +71,63 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap.setOnClickListener(this);
 
         // Test values
-        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+        viewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
+            events = viewModel.getEvents().getValue().getData();
+        });
+
+        events = viewModel.getEvents().getValue().getData();
+
+
+
 
         // Manger setup
-        viewManager = new EventsViewManager(events);
+        viewManager = new EventsViewManager(events, getContext());
 
         // recycler view setup
-        listview = root.findViewById(R.id.recyclerView);
-        updateView();
+        //listview = root.findViewById(R.id.recyclerView);
+        //updateView();
+
+        myFragment = viewManager.getFragment();
+
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+
+        //viewManager.updateFragment();
+
+        /*FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.mainFragment, myFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();*/
 
         return root;
     }
 
     public void viewList(View view) {
         // Change View
-        viewManager.viewList(listview,this.getContext());
+        myFragment = viewManager.viewList(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     public void viewGrid(View view) {
-        viewManager.viewGrid(listview,this.getContext());
+        myFragment = viewManager.viewGrid(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     public void viewMap(View view) {
-        viewManager.viewMap(listview,this.getContext());
+        myFragment = viewManager.viewMap(null,this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
     }
 
     void updateView() {
         listview.setAdapter(viewManager.getAdapter());
         listview.setLayoutManager(viewManager.getLayoutManager(this.getContext()));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        //viewManager.updateFragment();
     }
 
     @Override
