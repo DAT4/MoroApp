@@ -72,16 +72,24 @@
                     android:text="Titel PÅ EVENT"
                     android:textColor="@color/colorWhite" />
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="3dp"
+                    android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/addEventToSaved"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:background="@drawable/ic_cross"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="4dp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text="+"
+                    android:text=""
                     android:fontFamily="@font/anton_regular"
                     android:textColor="@color/colorWhite" />
 
+                </LinearLayout>
             </LinearLayout>
 
 

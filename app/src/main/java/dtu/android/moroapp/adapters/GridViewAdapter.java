@@ -40,7 +40,6 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(parent.getContext())
                 .inflate( R.layout.fragment_event_card_block, parent, false);
-
         return new GridViewAdapter.ViewHolder(view);
     }
 
@@ -55,6 +54,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         holder.getEventTime().setText("00:00");
         holder.setEventLink(this.localDataSet.get(position));
         holder.setEventimage(this.localDataSet.get(position).getImage());
+
     }
 
     @Override

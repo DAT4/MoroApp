@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -17,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.RightNowFragmentDirections;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.EventViewModel;
 
 public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final TextView eventTitle;
@@ -26,6 +29,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final Context context;
     protected final View eventLink;
     protected final ImageView eventimage;
+    protected final Button addToSavedBTN;
     NavController navController;
 
     public EventItemViewHolder(View view) {
@@ -38,6 +42,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         eventTime = (TextView) view.findViewById(R.id.event_card_long_time);
         eventLink = (View) view.findViewById(R.id.event_card_long);
         eventimage = (ImageView) view.findViewById(R.id.image);
+        addToSavedBTN = (Button) view.findViewById(R.id.addEventToSaved);
 
 
 
@@ -70,7 +75,16 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 NavDirections action = RightNowFragmentDirections.Companion.actionRightNowFragmentToSingleEventFragment(event);
                 Navigation.findNavController(itemView).navigate(action);
+            }
+        });
+    }
 
+    public void setEventToSave(Event event) {
+        addToSavedBTN.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // need to add functionality
             }
         });
     }
