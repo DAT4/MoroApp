@@ -16,11 +16,11 @@ data class Event(
         val price: Int,
         val text: String,
         val tickets: String,
-        @Embedded val location: Location,
-        val time: Long,
+        var time: Long = 0,
+        @Embedded val location: Location
 ) : Serializable {
     fun getDate(): String = SimpleDateFormat("dd/MM/yyyy").format(Date(time * 1000))
-    fun getTime(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
+    fun getTimeToString(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
 }
 
 data class Address(
@@ -38,8 +38,8 @@ data class Coordinates(
 
 data class Location(
         val area: String,
-        @Embedded val address: Address,
         val place: String,
+        @Embedded val address: Address,
         @Embedded val coordinates: Coordinates,
 ) : Serializable
 

@@ -8,7 +8,11 @@ import android.os.Bundle;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +25,9 @@ import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.EventDao;
+import dtu.android.moroapp.models.EventRoomDatabase;
+import dtu.android.moroapp.models.EventViewModel;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
 /**
@@ -60,12 +67,31 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         btnMap.setOnClickListener(this);
 
         // load saved events events
+        List<Event> saveEvents = new ArrayList<>();
+        saveEvents.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
+
+        //Database and saved events;
+        EventViewModel eventViewModel = new EventViewModel(getActivity().getApplication());
+
+        // Inserting data and saving data
+        eventViewModel.insert(saveEvents.get(0));
+
+        // Get data and Async tast
         List<Event> events = new ArrayList<>();
-        events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
-
-
         // Manger setup
         eventsViewManager = new EventsViewManager(events);
+
+        eventViewModel.getAllEvents().observe(this, new Observer<List<Event>>() {
+            @Override
+            public void onChanged(List<Event> eventsList) {
+                eventsViewManager.updateEventsList(eventsList);
+            }
+        });
+
+
+        //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));
+
+
 
         // recycler view setup
         recyclerView = view.findViewById(R.id.savedEventsRecyclerView);

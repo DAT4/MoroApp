@@ -26,6 +26,8 @@ public class EventsViewManager {
     public void viewGrid(RecyclerView view, Context context) {
         this.state.viewGrid(view, context);
         updateView(view, context);
+
+
     }
 
 
@@ -51,6 +53,10 @@ public class EventsViewManager {
 
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
         return this.state.getLayoutManager(context);
+    }
+
+    public void updateEventsList( List<Event> list) {
+        this.dataToView = list;
     }
 
 

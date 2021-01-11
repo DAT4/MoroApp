@@ -6,7 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = Event.class, version = 1)
+@Database(entities = Event.class, version = 1, exportSchema = false)
 public abstract class EventRoomDatabase extends RoomDatabase {
 
     public abstract EventDao eventDao();
