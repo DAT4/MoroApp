@@ -45,7 +45,6 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         fragmentManager = getActivity().getSupportFragmentManager();
 
 
-
         // BTN setup
         btnList = root.findViewById(R.id.viewList);
         btnList.setOnClickListener(this);
@@ -67,8 +66,6 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         events = viewModel.getAllEvents().getValue().getData();
 
 
-
-
         // Manger setup
         viewManager = new EventsViewManager(events, getContext());
 
@@ -78,7 +75,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
         myFragment = viewManager.getFragment();
 
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
 
         //viewManager.updateFragment();
 
@@ -96,30 +93,26 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
 
-        back.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        navController.navigate(R.id.action_rightNowFragment_to_frontPageFragment);
-                                    }
-                                }
+        back.setOnClickListener(view1 -> navController.navigate(RightNowFragmentDirections
+                .Companion.actionRightNowFragmentToFrontPageFragment())
         );
 
     }
 
     public void viewList(View view) {
         // Change View
-        myFragment = viewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = viewManager.viewList(null, this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
     }
 
     public void viewGrid(View view) {
-        myFragment = viewManager.viewGrid(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = viewManager.viewGrid(null, this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
     }
 
     public void viewMap(View view) {
-        myFragment = viewManager.viewMap(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = viewManager.viewMap(null, this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
     }
 
     void updateView() {

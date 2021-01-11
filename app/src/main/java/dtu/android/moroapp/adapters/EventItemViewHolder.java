@@ -38,9 +38,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         eventTime = (TextView) view.findViewById(R.id.event_card_long_time);
         eventLink = (View) view.findViewById(R.id.event_card_long);
         eventimage = (ImageView) view.findViewById(R.id.image);
-
-
-
+        
     }
 
     public TextView getEventTitle() {
