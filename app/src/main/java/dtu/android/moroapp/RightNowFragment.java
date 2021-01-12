@@ -63,7 +63,6 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         // Instantiate viewModel
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
-
         viewModel.getAllEvents().observe(getViewLifecycleOwner(), listResource -> events = viewModel.getAllEvents().getValue().getData());
 
         events = viewModel.getAllEvents().getValue().getData();
