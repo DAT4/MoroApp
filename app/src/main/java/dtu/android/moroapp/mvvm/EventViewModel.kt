@@ -66,6 +66,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
                         title
                         genre
                         image
+                        category
                         link
                         tickets
                         other
