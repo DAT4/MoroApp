@@ -34,6 +34,11 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
         return events
     }
 
+    fun getFilteredEvents(filter: ArrayList<Pair<EventFilters, String>>) : LiveData<Resource<List<Event>>> {
+
+        return events
+    }
+
     override fun onCleared() {
         super.onCleared()
         Log.i("EventViewModel", "ViewModel Destroyed")
