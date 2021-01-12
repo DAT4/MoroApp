@@ -57,7 +57,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     private fun load(): GQLQuery {
         val t = System.currentTimeMillis() / 1000
         val filter = Filter.Builder()
-                .filters(EventFilters.TIMEGT, t)
+                .filters(EventFilters.TIMEGT, 1601146800)
                 .build()
 
         return GQLQuery(
