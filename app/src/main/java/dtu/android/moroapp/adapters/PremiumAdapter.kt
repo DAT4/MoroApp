@@ -34,7 +34,7 @@ class PremiumAdapter(
         val event = events[position]
         holder.itemView.apply {
             card_item_titel.text = event.title
-            card_item_time.text = event.getTime()
+            card_item_time.text = event.getTimeToString()
             Picasso.get().load(event.image).fit().centerCrop().into(bannerID)
             bannerID.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
 

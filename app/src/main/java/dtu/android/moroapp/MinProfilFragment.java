@@ -33,6 +33,7 @@ public class MinProfilFragment extends Fragment implements View.OnClickListener 
         return root;
      }
 
+
     @Override
     public void onClick(View view) {
         //TO-DO

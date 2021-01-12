@@ -15,6 +15,10 @@ import dtu.android.moroapp.Event_Recycler_Fragment;
 import dtu.android.moroapp.adapters.ColorThemeManager;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.GridViewAdapter;
+import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.ListViewState;
+import dtu.android.moroapp.states.MapViewState;
 
 public class GridViewState implements IListState {
 
@@ -27,7 +31,7 @@ public class GridViewState implements IListState {
     public GridViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
         this.colorThemeManager = this.manager.colorThemeManager;
-        this.adapter = new GridViewAdapter(this.manager.dataToView,colorThemeManager);
+        this.adapter = new GridViewAdapter(this.manager.dataToView,colorThemeManager, this.manager.customClick);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
 
@@ -62,6 +66,12 @@ public class GridViewState implements IListState {
 
     public RecyclerView.LayoutManager getLayoutManager(Context context) {
         return new GridLayoutManager(context, 2);
+    }
+
+    @Override
+    public void updateEvents(List<Event> events) {
+        this.adapter.setLocalDataSet(events);
+        this.adapter.notifyDataSetChanged();
     }
 
     @Override

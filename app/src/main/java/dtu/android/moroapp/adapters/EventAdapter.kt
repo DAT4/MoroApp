@@ -41,7 +41,7 @@ class EventAdapter(
         val event = events[position]
         holder.itemView.apply {
             event_card_title.text = event.title
-            event_card_long_time.text = event.getTime()
+            event_card_long_time.text = event.getTimeToString()
             event_card_long_date.text = event.getDate()
             event_card_long_place.text = event.location.place
             Picasso.get().load(events[position].image).fit().centerCrop().into(image)

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -15,10 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.mvvm.RoomEventViewModel;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
-public class AnbefaledeFragment extends Fragment implements View.OnClickListener {
+public class AnbefaledeFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
     private View root;
     RecyclerView recyclerView;
@@ -26,6 +29,7 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
     Button btnList, btnGrid, btnMap;
     Fragment myFragment;
     FragmentManager fragmentManager;
+    RoomEventViewModel localEventViewModel;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,8 +54,11 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         //List<Event> events = new ArrayList<>();
         //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
 
+        // View model setup
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+
         // Manager setup
-        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE);
+        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE, this);
 
 
 
@@ -101,5 +108,10 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(Event event) {
+        localEventViewModel.insert(event);
     }
 }
