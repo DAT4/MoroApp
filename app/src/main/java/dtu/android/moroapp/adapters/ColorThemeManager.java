@@ -23,7 +23,7 @@ public class ColorThemeManager {
                this.icon = R.color.colorIconOrange;
                break;
            default:
-               break;
+
        }
    }
 
