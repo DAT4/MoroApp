@@ -41,9 +41,14 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
         initializeUI()
         setupNav()
         ConcreteEvents.add(this)
-        supportActionBar?.setDisplayUseLogoEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.drawable.ic_moro_logo)
+        //supportActionBar?.setDisplayUseLogoEnabled(true)
+        //supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        //supportActionBar?.setIcon(R.drawable.ic_moro_logo)
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(R.layout.top_bar)
+
+
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
