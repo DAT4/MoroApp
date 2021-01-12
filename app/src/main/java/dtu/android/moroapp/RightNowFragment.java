@@ -76,6 +76,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
         // Test values
         localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
         viewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
             events = viewModel.getEvents().getValue().getData();

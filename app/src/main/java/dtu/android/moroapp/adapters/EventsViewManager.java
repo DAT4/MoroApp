@@ -20,9 +20,9 @@ public class EventsViewManager {
     // Get the data
     public EventsViewManager(List<Event> titles, Context context, IRecyclerViewClickListener customOnClick) {
         this.dataToView = titles;
-        this.state = new ListViewState(this);
         this.context = context;
         this.customClick = customOnClick;
+        this.state = new ListViewState(this);
     }
 
     public Fragment changeState(IListState listState) {

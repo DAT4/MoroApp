@@ -21,14 +21,12 @@ public class ListViewState implements IListState {
 
     EventsViewManager manager;
     Event_Recycler_Fragment myFragment;
-    Event_Recycler_Fragment mySavedEvents;
     ListViewAdapter adapter;
 
     public ListViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
-        this.adapter = new ListViewAdapter(this.manager.dataToView);
+        this.adapter = new ListViewAdapter(this.manager.dataToView, this.manager.customClick);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
-        this.mySavedEvents = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
 
     @Override
