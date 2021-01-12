@@ -15,12 +15,14 @@ public class EventsViewManager {
     IListState state;
     List<Event> dataToView;
     Context context;
+    IRecyclerViewClickListener customClick;
 
     // Get the data
-    public EventsViewManager(List<Event> titles, Context context) {
+    public EventsViewManager(List<Event> titles, Context context, IRecyclerViewClickListener customOnClick) {
         this.dataToView = titles;
         this.state = new ListViewState(this);
         this.context = context;
+        this.customClick = customOnClick;
     }
 
     public Fragment changeState(IListState listState) {

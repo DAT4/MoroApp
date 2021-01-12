@@ -20,7 +20,7 @@ public class GridViewState implements IListState {
 
     public GridViewState(EventsViewManager eventsViewManager) {
         this.manager = eventsViewManager;
-        this.adapter = new GridViewAdapter(this.manager.dataToView);
+        this.adapter = new GridViewAdapter(this.manager.dataToView, this.manager.customClick);
         this.myFragment = new Event_Recycler_Fragment(this.adapter,getLayoutManager(this.manager.context));
     }
 

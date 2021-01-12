@@ -1,10 +1,13 @@
-package dtu.android.moroapp.models;
+package dtu.android.moroapp.mvvm;
 
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
+import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.EventDao;
 
 @Database(entities = Event.class, version = 1, exportSchema = false)
 public abstract class EventRoomDatabase extends RoomDatabase {

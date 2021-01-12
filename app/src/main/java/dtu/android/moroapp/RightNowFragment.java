@@ -21,10 +21,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.mvvm.EventViewModel;
+import dtu.android.moroapp.mvvm.RoomEventViewModel;
 
-public class RightNowFragment extends Fragment implements View.OnClickListener {
+public class RightNowFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
     private Button back;
     Button btnList, btnGrid, btnMap;
@@ -35,6 +37,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     FragmentManager fragmentManager;
     NavController navController;
     EventViewModel viewModel;
+    RoomEventViewModel localEventViewModel;
     List<Event> events;
 
     @Override
@@ -72,6 +75,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap.setOnClickListener(this);
 
         // Test values
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
         viewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
             events = viewModel.getEvents().getValue().getData();
@@ -83,7 +87,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
 
         // Manger setup
-        viewManager = new EventsViewManager(events, getContext());
+        viewManager = new EventsViewManager(events, getContext(), this);
 
         // recycler view setup
         //listview = root.findViewById(R.id.recyclerView);
@@ -146,5 +150,10 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(Event event) {
+        localEventViewModel.insert(event);
     }
 }

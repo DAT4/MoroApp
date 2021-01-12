@@ -12,6 +12,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     private List<Event> localDataSet;
 
+
     public ListViewAdapter(List<Event> localDataSet) {
         this.localDataSet = localDataSet;
     }

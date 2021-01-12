@@ -3,6 +3,7 @@ package dtu.android.moroapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,9 +18,11 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
 
     private List<Event> localDataSet;
+    IRecyclerViewClickListener customOnClick;
 
-    public GridViewAdapter(List<Event> localDataSet) {
+    public GridViewAdapter(List<Event> localDataSet, IRecyclerViewClickListener customOnClick) {
         this.localDataSet = localDataSet;
+        this.customOnClick = customOnClick;
     }
 
     public void setLocalDataSet(List<Event> localDataSet) {
@@ -54,6 +57,14 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         holder.getEventTime().setText("00:00");
         holder.setEventLink(this.localDataSet.get(position));
         holder.setEventimage(this.localDataSet.get(position).getImage());
+        holder.getEventToSaveBTN().setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customOnClick.onItemClick(localDataSet.get(position));
+                Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

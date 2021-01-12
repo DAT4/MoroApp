@@ -1,26 +1,26 @@
-package dtu.android.moroapp.models;
+package dtu.android.moroapp.mvvm;
 
 import android.app.Application;
-import android.database.sqlite.SQLiteConstraintException;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
-import androidx.loader.content.AsyncTaskLoader;
 
-import java.sql.SQLClientInfoException;
 import java.util.List;
 
-public class EventViewModel extends AndroidViewModel {
+import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.EventDao;
+import dtu.android.moroapp.mvvm.EventRoomDatabase;
+
+public class RoomEventViewModel extends AndroidViewModel {
 
     private String TAG = this.getClass().getSimpleName();
     private EventDao eventDao;
     private EventRoomDatabase eventRoomDatabase;
     private LiveData<List<Event>> allEvents;
 
-    public EventViewModel(Application application) {
+    public RoomEventViewModel(Application application) {
         super(application);
 
         eventRoomDatabase = EventRoomDatabase.getDatabase(application);

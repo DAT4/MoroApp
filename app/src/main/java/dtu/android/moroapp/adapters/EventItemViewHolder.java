@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -19,7 +18,6 @@ import com.squareup.picasso.Picasso;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.RightNowFragmentDirections;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.models.EventViewModel;
 
 public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final TextView eventTitle;
@@ -79,13 +77,7 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void setEventToSave(Event event) {
-        addToSavedBTN.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // need to add functionality
-            }
-        });
+    public Button getEventToSaveBTN() {
+        return addToSavedBTN;
     }
 }

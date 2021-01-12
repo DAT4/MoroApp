@@ -13,10 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dtu.android.moroapp.databinding.ActivityMainBinding
-import dtu.android.moroapp.mvvm.EventDatabase
-import dtu.android.moroapp.mvvm.EventRepository
-import dtu.android.moroapp.mvvm.EventViewModel
-import dtu.android.moroapp.mvvm.EventViewModelProviderFactory
+import dtu.android.moroapp.mvvm.*
 
 class MainActivity : AppCompatActivity(), LifecycleOwner {
     private lateinit var bottomBar: BottomNavigationView

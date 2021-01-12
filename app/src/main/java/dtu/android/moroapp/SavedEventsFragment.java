@@ -1,39 +1,29 @@
 package dtu.android.moroapp;
 
-import android.graphics.Color;
-import android.graphics.drawable.VectorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.models.EventDao;
-import dtu.android.moroapp.models.EventRoomDatabase;
-import dtu.android.moroapp.models.EventViewModel;
-import dtu.android.moroapp.observer.ConcreteEvents;
+import dtu.android.moroapp.mvvm.RoomEventViewModel;
 //import dtu.android.moroapp.mvvm.EventViewModel;
 
 
-public class SavedEventsFragment extends Fragment implements View.OnClickListener {
+public class SavedEventsFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
     private View view;
     Button btnList, btnGrid, btnMap;
@@ -42,6 +32,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
     Fragment myFragment;
     FragmentManager fragmentManager;
     List<Event> events;
+    RoomEventViewModel localEventViewModel;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,16 +63,16 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         // load saved events events
         events = new ArrayList<>();
         //saveEvents.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
-        EventViewModel onlineEventViewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
 
        /* onlineEventViewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
             events = onlineEventViewModel.getEvents().getValue().getData();
         }); */
 
         // Manger setup
-        eventsViewManager = new EventsViewManager(events,getContext());
+        eventsViewManager = new EventsViewManager(events,getContext(), this);
 
-        onlineEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
+        localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
                     @Override
                     public void onChanged(List<Event> events) {
                         //events = events;
@@ -160,5 +151,10 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(Event event) {
+        localEventViewModel.insert(event);
     }
 }
