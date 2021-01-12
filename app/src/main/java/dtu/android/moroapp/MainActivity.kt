@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
         initializeUI()
         setupNav()
         ConcreteEvents.add(this)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.ic_moro_logo)
     }
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
