@@ -3,6 +3,8 @@ package dtu.android.moroapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,13 +16,18 @@ import dtu.android.moroapp.models.Event;
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 
     private List<Event> localDataSet;
+    IRecyclerViewClickListener customOnClick;
     ColorThemeManager colorThemeManager;
     View listView;
 
-    public ListViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager) {
+    public ListViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager, IRecyclerViewClickListener customOnClick) {
         this.localDataSet = localDataSet;
+        this.customOnClick = customOnClick;
         this.colorThemeManager = colorThemeManager;
+    }
 
+    public void setLocalDataSet(List<Event> localDataSet) {
+        this.localDataSet = localDataSet;
     }
 
     public static class ViewHolder extends dtu.android.moroapp.adapters.EventItemViewHolder {
@@ -58,6 +65,15 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         viewHolder.setEventimage(this.localDataSet.get(position).getImage());
         listView.setBackgroundResource(colorThemeManager.getIcon());
 
+
+        viewHolder.getEventToSaveBTN().setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customOnClick.onItemClick(localDataSet.get(position));
+                Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

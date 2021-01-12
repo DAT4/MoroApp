@@ -1,5 +1,6 @@
 package dtu.android.moroapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +14,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.mvvm.EventViewModel;
+import dtu.android.moroapp.mvvm.RoomEventViewModel;
 
-public class RightNowFragment extends Fragment implements View.OnClickListener {
+public class RightNowFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
     private Button back;
     Button btnList, btnGrid, btnMap;
@@ -32,6 +37,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
     FragmentManager fragmentManager;
     NavController navController;
     EventViewModel viewModel;
+    RoomEventViewModel localEventViewModel;
     List<Event> events;
 
     @Override
@@ -44,6 +50,19 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+        );
 
         // BTN setup
         btnList = root.findViewById(R.id.viewList);
@@ -56,6 +75,8 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
         btnMap.setOnClickListener(this);
 
         // Test values
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+
 
         // Instantiate viewModel
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
@@ -66,7 +87,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
 
 
         // Manger setup
-        viewManager = new EventsViewManager(events,getContext(),Theme.BLUE);
+        viewManager = new EventsViewManager(events,getContext(),Theme.BLUE, this);
 
         // recycler view setup
         //listview = root.findViewById(R.id.recyclerView);
@@ -141,5 +162,10 @@ public class RightNowFragment extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(Event event) {
+        localEventViewModel.insert(event);
     }
 }

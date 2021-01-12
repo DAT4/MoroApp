@@ -15,16 +15,18 @@ import dtu.android.moroapp.states.ListViewState;
 
 public class EventsViewManager {
 
-    IListState state;
-    public Theme theme;
+    public IListState state;
     public List<Event> dataToView;
     public Context context;
+    public IRecyclerViewClickListener customClick;
+    public Theme theme;
     public ColorThemeManager colorThemeManager;
 
     // Get the data
-    public EventsViewManager(List<Event> titles, Context context, Theme theme) {
+    public EventsViewManager(List<Event> titles, Context context, Theme theme, IRecyclerViewClickListener customOnClick) {
         this.dataToView = titles;
         this.context = context;
+        this.customClick = customOnClick;
         this.theme = theme;
         this.colorThemeManager = new ColorThemeManager(theme);
         this.state = new ListViewState(this);
@@ -58,9 +60,18 @@ public class EventsViewManager {
     public Fragment getFragment(){
         return this.state.getFragment();
     }
+    public void updateEventsList( List<Event> list) {
+        this.dataToView = list;
+    }
 
-    public void updateFragment(){
+    public void updateFragment() {
         this.state.updateFragment();
+    }
+
+    public void updateEvents( List<Event> events){
+        this.dataToView = events;
+        this.state.updateEvents(events);
+        //this.state.updateFragment();
     }
 
 

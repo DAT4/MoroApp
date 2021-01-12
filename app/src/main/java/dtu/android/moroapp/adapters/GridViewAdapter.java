@@ -3,6 +3,7 @@ package dtu.android.moroapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,13 +15,21 @@ import dtu.android.moroapp.models.Event;
 
 public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHolder>{
 
+
+
     private List<Event> localDataSet;
+    IRecyclerViewClickListener customOnClick;
     ColorThemeManager colorThemeManager;
     View gridView;
 
-    public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager) {
+    public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager,  IRecyclerViewClickListener customOnClick) {
         this.localDataSet = localDataSet;
+        this.customOnClick = customOnClick;
         this.colorThemeManager = colorThemeManager;
+    }
+
+    public void setLocalDataSet(List<Event> localDataSet) {
+        this.localDataSet = localDataSet;
     }
 
     public static class ViewHolder extends dtu.android.moroapp.adapters.EventItemViewHolder {
@@ -59,6 +68,15 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         holder.getEventTime().setText("00:00");
         holder.setEventLink(this.localDataSet.get(position));
         holder.setEventimage(this.localDataSet.get(position).getImage());
+        holder.getEventToSaveBTN().setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customOnClick.onItemClick(localDataSet.get(position));
+                Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         gridView.setBackgroundResource(colorThemeManager.getIcon());
 
     }

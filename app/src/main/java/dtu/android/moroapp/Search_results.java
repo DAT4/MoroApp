@@ -18,13 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
+import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.EventViewModel;
+import dtu.android.moroapp.mvvm.RoomEventViewModel;
 import dtu.android.moroapp.utils.EventFilters;
 import kotlin.Pair;
 
-public class Search_results extends Fragment implements View.OnClickListener {
+public class Search_results extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
     private Button back;
     Button btnList, btnGrid, btnMap;
@@ -34,6 +36,7 @@ public class Search_results extends Fragment implements View.OnClickListener {
     Fragment myFragment;
     FragmentManager fragmentManager;
     EventViewModel viewModel;
+    RoomEventViewModel localEventViewModel;
     NavController navController;
 
 
@@ -62,13 +65,14 @@ public class Search_results extends Fragment implements View.OnClickListener {
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
 
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
 
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
         ArrayList<Pair<EventFilters, String>> filter = FindEventModel.INSTANCE.getFilters();
         List<Event> events = viewModel.getFilteredEvents(filter).getValue().getData();
 
-        viewManager = new EventsViewManager(events,getContext(),Theme.GREEN);
+        viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
 
         myFragment = viewManager.getFragment();
 
@@ -107,5 +111,10 @@ public class Search_results extends Fragment implements View.OnClickListener {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(Event event) {
+        localEventViewModel.insert(event);
     }
 }
