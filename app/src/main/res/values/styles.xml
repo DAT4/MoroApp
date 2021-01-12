@@ -8,5 +8,11 @@
         <item name="android:fontFamily">@font/anton_regular</item>
     </style>
 
+    <style name="BottomNavigation">
+        <item name="android:background">@color/colorBlack</item>
+        <item name="itemFillColor">@color/colorIconBlue</item>
+        <item name="itemIconTint">@color/colorWhite</item>
+        <item name="itemTextColor">@color/colorFrontPage</item>
+    </style>
 
 </resources>
