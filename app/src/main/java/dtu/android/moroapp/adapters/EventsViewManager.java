@@ -1,48 +1,50 @@
 package dtu.android.moroapp.adapters;
 
 import android.content.Context;
+import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.ListViewState;
 
 public class EventsViewManager {
 
     IListState state;
-    List<Event> dataToView;
+    public Theme theme;
+    public List<Event> dataToView;
+    public Context context;
+    public ColorThemeManager colorThemeManager;
 
     // Get the data
-    public EventsViewManager(List<Event> titles) {
+    public EventsViewManager(List<Event> titles, Context context, Theme theme) {
         this.dataToView = titles;
-        this.state = new ListViewAdapter(this);
+        this.context = context;
+        this.theme = theme;
+        this.colorThemeManager = new ColorThemeManager(theme);
+        this.state = new ListViewState(this);
     }
 
-    public void changeState(IListState listState) {
+    public Fragment changeState(IListState listState) {
         this.state = listState;
+        return getFragment();
     }
 
-    public void viewGrid(RecyclerView view, Context context) {
-        this.state.viewGrid(view, context);
-        updateView(view, context);
+    public Fragment viewGrid(Fragment view, Context context) {
+        return this.state.viewGrid(view, context);
     }
 
-
-
-    public void viewList(RecyclerView view, Context context) {
-        this.state.viewList(view, context);
-        updateView(view, context);
-    }
-    public void viewMap(RecyclerView view, Context context) {
-        this.state.viewMap(view, context);
-        updateView(view, context);
+    public Fragment viewList(Fragment view, Context context) {
+        return this.state.viewList(view, context);
     }
 
-
-    public void updateView(RecyclerView view, Context context) {
-        view.setAdapter(getAdapter());
-        view.setLayoutManager(getLayoutManager(context));
+    public Fragment viewMap(Fragment view, Context context) {
+        return this.state.viewMap(view, context);
     }
 
     public RecyclerView.Adapter getAdapter() {
@@ -53,7 +55,16 @@ public class EventsViewManager {
         return this.state.getLayoutManager(context);
     }
 
+    public Fragment getFragment(){
+        return this.state.getFragment();
+    }
+
+    public void updateFragment(){
+        this.state.updateFragment();
+    }
 
 
-
+    public View getView() {
+        return this.state.getView();
+    }
 }

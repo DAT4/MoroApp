@@ -1,60 +1,28 @@
 package dtu.android.moroapp.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 
-public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> implements IListState{
+public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 
     private List<Event> localDataSet;
-    EventsViewManager manager;
+    ColorThemeManager colorThemeManager;
+    View listView;
 
-    public ListViewAdapter(EventsViewManager eventsViewManager) {
-        this.manager = eventsViewManager;
-        this.localDataSet = this.manager.dataToView;
-    }
-
-    @Override
-    public void viewGrid(RecyclerView view, Context context) {
-        this.manager.changeState(new GridViewAdapter(this.manager));
-    }
-
-    @Override
-    public void viewList(RecyclerView view, Context context) {
+    public ListViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager) {
+        this.localDataSet = localDataSet;
+        this.colorThemeManager = colorThemeManager;
 
     }
 
-    @Override
-    public void viewMap(RecyclerView view, Context context) {
-        this.manager.changeState(new MapViewAdapter(this.manager));
-
-    }
-
-
-    public RecyclerView.Adapter getAdapter() {
-        return this;
-    }
-
-    public RecyclerView.LayoutManager getLayoutManager(Context context) {
-        return new LinearLayoutManager(context);
-    }
-
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends dtu.android.moroapp.adapters.EventItemViewHolder {
 
         public ViewHolder(View view) {
@@ -63,17 +31,18 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     }
 
-
-
     // Create new views (invoked by the layout manager)
     @Override
     public ListViewAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.event_card_fragment, viewGroup, false);
+                .inflate( R.layout.event_card_fragment, viewGroup, false);
+
+        listView = view.findViewById(R.id.GridLayout1);
 
         return new ListViewAdapter.ViewHolder(view);
     }
+
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
@@ -87,6 +56,8 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         viewHolder.getEventTime().setText("00:00");
         viewHolder.setEventLink(this.localDataSet.get(position));
         viewHolder.setEventimage(this.localDataSet.get(position).getImage());
+        listView.setBackgroundResource(colorThemeManager.getIcon());
+
 
     }
 

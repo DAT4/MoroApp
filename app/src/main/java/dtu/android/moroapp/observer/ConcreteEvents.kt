@@ -27,41 +27,39 @@ object ConcreteEvents : ICache<EventList> {
         return scores
     }
 
-    fun load(): GQL {
-        val t = System.currentTimeMillis() / 1000
-        val filter = Filter.Builder()
-                .filters(EventFilters.TIMEGT, t)
-                .build()
-        return GQL(
-                "${
-                    events(filter) {
-                        title
-                        genre
-                        image
-                        link
-                        tickets
-                        other
-                        price
-                        text
-                        time
-                        location {
-                            area
-                            place
-                            address {
-                                city
-                                street
-                                no
-                                state
-                                zip
+    fun load(filter : Filter) {
+        cache(
+                GQL(
+                        "${
+                            events(filter) {
+                                title
+                                genre
+                                image
+                                link
+                                tickets
+                                other
+                                price
+                                text
+                                time
+                                location {
+                                    area
+                                    place
+                                    address {
+                                        city
+                                        street
+                                        no
+                                        state
+                                        zip
+                                    }
+                                    coordinates {
+                                        longitude
+                                        latitude
+                                    }
+                                }
                             }
-                            coordinates {
-                                longitude
-                                latitude
-                            }
-                        }
-                    }
-                }"
-        )
+                        }"
+                )
+        , getEventListResponseType())
     }
 
 }

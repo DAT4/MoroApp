@@ -56,6 +56,7 @@
         android:backgroundTint="@color/colorFindEventWhat"
         android:layout_centerHorizontal="true"
         android:elevation="6dp"
+        android:id="@+id/search_button_find_event"
 
         />
 
