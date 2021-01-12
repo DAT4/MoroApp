@@ -24,6 +24,9 @@ import java.util.List;
 
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.FindEventModel;
+import dtu.android.moroapp.utils.EventFilters;
+import kotlin.Pair;
 
 public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
 
@@ -33,6 +36,7 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     View root;
     MapView mapView;
     List<Event> events;
+    List<String> titles;
 
     public Event_Map_Fragment(List<Event> events){
         this.events = events;
@@ -77,33 +81,22 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         ArrayList<String> addresses = getAddressFromList(events);
         map = googleMap;
+        LatLng address = null;
 
-        double v1;
-        double v2;
-        String title;
+        for (int i = 0; i < addresses.size(); i++) {
 
-        String[] temp = addresses.get(0).split(" ,");
+            double v1;
+            double v2;
 
-        v1 = Double.parseDouble(temp[0]);
-        v2 = Double.parseDouble(temp[1]);
-        title = temp[2];
+            String[] temp = addresses.get(i).split(" ,");
 
-        LatLng address = new LatLng(v1, v2);
-        map.addMarker(new MarkerOptions().position(address).title(title));
+            v1 = Double.parseDouble(temp[0]);
+            v2 = Double.parseDouble(temp[1]);
 
-        for (int i = 1; i < addresses.size() - 1; i++) {
-            String[] temp2 = addresses.get(i).split(" ,");
-
-            if(!(temp2[0].equals(temp[0])) && !(temp2[1].equals(temp[1]))){
-
-                v1 = Double.parseDouble(temp2[0]);
-                v2 = Double.parseDouble(temp2[1]);
-                title = temp2[2];
-
-                LatLng address2 = new LatLng(v1, v2);
-                map.addMarker(new MarkerOptions().position(address2).title(title));
-            }
+            address = new LatLng(v1, v2);
+            map.addMarker(new MarkerOptions().position(address).title("Marker"));
         }
+        map.moveCamera(CameraUpdateFactory.newLatLng(address));
     }
 
     @Override
@@ -131,18 +124,37 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     }
 
     public ArrayList<String> getAddressFromList(List<Event> events){
-        ArrayList<String> addresses = new ArrayList<>();
+        ArrayList<String> newList = new ArrayList<>();
 
+        //FindEventModel.INSTANCE.getFilters().add(new Pair<>( EventFilters.) )
 
         for(int i = 0; i < events.size(); i++){
             String temp = "";
+            String title;
 
             temp += events.get(i).getLocation().getCoordinates().getLatitude() +" ,";
             temp += events.get(i).getLocation().getCoordinates().getLongitude() + " ,";
-            temp += events.get(i).getTitle();
+            title = events.get(i).getTitle();
 
-            addresses.add(temp);
+            titles.add(title);
+            newList.add(temp);
         }
+
+        ArrayList<String> addresses = removeDuplicates(newList);
+
         return addresses;
     }
+
+    public ArrayList<String> removeDuplicates(ArrayList<String> list){
+        ArrayList<String> newList = new ArrayList<>();
+
+        for (String str : list) {
+            if(!newList.contains(str)){
+                newList.add(str);
+            }
+        }
+
+        return newList;
+    }
+
 }
