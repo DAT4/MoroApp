@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -21,8 +22,13 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.TabAdapter;
+import dtu.android.moroapp.models.FindEventModel;
+import dtu.android.moroapp.utils.EventFilters;
+import kotlin.Pair;
 
 import static androidx.navigation.fragment.NavHostFragment.findNavController;
 
@@ -82,6 +88,10 @@ public class findEvent_interface_Fragment extends Fragment {
         search.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<Pair<EventFilters,String>> filter = FindEventModel.INSTANCE.getFilters();
+
+                //NavDirections action = findEvent_interface_FragmentDirections.Companion.actionFindEventInterfaceFragmentToSearchResults(filter);
+
                 Navigation.findNavController(view).navigate(findEvent_interface_FragmentDirections.Companion.actionFindEventInterfaceFragmentToSearchResults());
             }
         } );

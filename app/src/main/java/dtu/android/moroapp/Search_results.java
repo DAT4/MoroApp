@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
 public class Search_results extends Fragment implements View.OnClickListener {
@@ -27,6 +29,8 @@ public class Search_results extends Fragment implements View.OnClickListener {
     EventsViewManager viewManager;
     Fragment myFragment;
     FragmentManager fragmentManager;
+    EventViewModel viewModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,7 +60,9 @@ public class Search_results extends Fragment implements View.OnClickListener {
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
 
-        List<Event> events = (List<Event>) ConcreteEvents.INSTANCE.getAllEvents();
+        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+
+        List<Event> events = viewModel.getEvents().getValue().getData();
 
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN);
 
