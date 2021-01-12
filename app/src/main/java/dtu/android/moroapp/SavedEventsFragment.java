@@ -19,7 +19,7 @@ import java.util.List;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.mvvm.RoomEventViewModel;
+import dtu.android.moroapp.mvvm.EventRoomViewModel;
 //import dtu.android.moroapp.mvvm.EventViewModel;
 
 
@@ -32,7 +32,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
     Fragment myFragment;
     FragmentManager fragmentManager;
     List<Event> events;
-    RoomEventViewModel localEventViewModel;
+    EventRoomViewModel localEventViewModel;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         // load saved events events
         events = new ArrayList<>();
         //saveEvents.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
-        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
        /* onlineEventViewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
             events = onlineEventViewModel.getEvents().getValue().getData();
@@ -72,13 +72,8 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         // Manger setup
         eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE, this);
 
-        localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
-                    @Override
-                    public void onChanged(List<Event> events) {
-                        //events = events;
-                        eventsViewManager.updateEvents(events);
-                    }
-                });
+        updateEvents();
+
 
         //Database and saved events;
         //EventViewModel eventViewModel = new EventViewModel(getActivity().getApplication());
@@ -114,6 +109,16 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         //updateView();
 
         return view;
+    }
+
+    private void updateEvents() {
+        localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
+            @Override
+            public void onChanged(List<Event> events) {
+                //events = events;
+                eventsViewManager.updateEvents(events);
+            }
+        });
     }
 
     private void updateView() {
@@ -156,6 +161,8 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onItemClick(Event event) {
-        localEventViewModel.insert(event);
+        localEventViewModel.removeFromSavedEvents(event.getTitle());
+        updateEvents();
+
     }
 }

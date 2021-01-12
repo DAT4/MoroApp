@@ -12,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.mvvm.RoomEventViewModel;
+import dtu.android.moroapp.mvvm.EventRoomViewModel;
 import dtu.android.moroapp.observer.ConcreteEvents;
 
 public class AnbefaledeFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
@@ -29,7 +28,7 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
     Button btnList, btnGrid, btnMap;
     Fragment myFragment;
     FragmentManager fragmentManager;
-    RoomEventViewModel localEventViewModel;
+    EventRoomViewModel localEventViewModel;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,7 +54,7 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
 
         // View model setup
-        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
         // Manager setup
         eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE, this);

@@ -13,14 +13,14 @@ import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.EventDao;
 import dtu.android.moroapp.mvvm.EventRoomDatabase;
 
-public class RoomEventViewModel extends AndroidViewModel {
+public class EventRoomViewModel extends AndroidViewModel {
 
     private String TAG = this.getClass().getSimpleName();
     private EventDao eventDao;
     private EventRoomDatabase eventRoomDatabase;
     private LiveData<List<Event>> allEvents;
 
-    public RoomEventViewModel(Application application) {
+    public EventRoomViewModel(Application application) {
         super(application);
 
         eventRoomDatabase = EventRoomDatabase.getDatabase(application);
@@ -28,19 +28,14 @@ public class RoomEventViewModel extends AndroidViewModel {
         allEvents = eventDao.getAll();
     }
 
-    public void insert(Event event) {
-        new InsertAsyncTask(eventDao).execute(event);
-    }
-
     public LiveData<List<Event>> getEvents() {
 
         return allEvents;
     }
 
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-        Log.i(TAG, "ViewModel Destroyed");
+    // Insert events
+    public void insert(Event event) {
+        new InsertAsyncTask(eventDao).execute(event);
     }
 
     private class InsertAsyncTask extends AsyncTask<Event, Void, Void> {
@@ -60,4 +55,35 @@ public class RoomEventViewModel extends AndroidViewModel {
             return null;
         }
     }
+
+    // Delete events
+    public void removeFromSavedEvents(String title){
+        new DeleteAsyncTask(eventDao).execute(title);
+    }
+
+    private class DeleteAsyncTask extends AsyncTask<String, Void, Void> {
+        EventDao eventDao;
+
+        public DeleteAsyncTask(EventDao eventDao) {
+            this.eventDao = eventDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... titles) {
+            try {
+                eventDao.removeFromSavedEvents(titles[0]);
+            } catch (Exception e) {
+
+            }
+            return null;
+        }
+    }
+
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        Log.i(TAG, "ViewModel Destroyed");
+    }
+
 }
