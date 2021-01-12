@@ -8,20 +8,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.states.IListState;
+import dtu.android.moroapp.states.ListViewState;
 
 public class EventsViewManager {
 
-    IListState state;
-    List<Event> dataToView;
-    Context context;
-    IRecyclerViewClickListener customClick;
+    public IListState state;
+    public List<Event> dataToView;
+    public Context context;
+    public IRecyclerViewClickListener customClick;
+    public Theme theme;
+    public ColorThemeManager colorThemeManager;
 
     // Get the data
-    public EventsViewManager(List<Event> titles, Context context, IRecyclerViewClickListener customOnClick) {
+    public EventsViewManager(List<Event> titles, Context context, Theme theme, IRecyclerViewClickListener customOnClick) {
         this.dataToView = titles;
         this.context = context;
         this.customClick = customOnClick;
+        this.theme = theme;
+        this.colorThemeManager = new ColorThemeManager(theme);
         this.state = new ListViewState(this);
     }
 

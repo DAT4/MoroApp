@@ -58,7 +58,7 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
 
         // Manager setup
-        eventsViewManager = new EventsViewManager(events,getContext(), this);
+        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE, this);
 
 
 

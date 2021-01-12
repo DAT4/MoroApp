@@ -70,7 +70,7 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         }); */
 
         // Manger setup
-        eventsViewManager = new EventsViewManager(events,getContext(), this);
+        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE, this);
 
         localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
                     @Override
@@ -101,7 +101,8 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
 
         //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));
 
-
+        // Manger setup
+        //eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE);
 
         // recycler view setup
         //recyclerView = view.findViewById(R.id.savedEventsRecyclerView);

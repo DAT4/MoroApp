@@ -6,4 +6,6 @@ import dtu.android.moroapp.api.RetrofitInstance
 class EventRepository(private val db: EventDatabase) {
 
     suspend fun getEvents(query: GQLQuery) = RetrofitInstance.api.getEvents(query)
+
+
 }

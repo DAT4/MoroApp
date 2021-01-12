@@ -77,18 +77,17 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         // Test values
         localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
 
+
+        // Instantiate viewModel
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
-        viewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
-            events = viewModel.getEvents().getValue().getData();
-        });
 
-        events = viewModel.getEvents().getValue().getData();
+        viewModel.getAllEvents().observe(getViewLifecycleOwner(), listResource -> events = viewModel.getAllEvents().getValue().getData());
 
-
+        events = viewModel.getAllEvents().getValue().getData();
 
 
         // Manger setup
-        viewManager = new EventsViewManager(events, getContext(), this);
+        viewManager = new EventsViewManager(events,getContext(),Theme.BLUE, this);
 
         // recycler view setup
         //listview = root.findViewById(R.id.recyclerView);
@@ -96,7 +95,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
         myFragment = viewManager.getFragment();
 
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
 
         //viewManager.updateFragment();
 
@@ -108,20 +107,32 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         return root;
     }
 
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
+
+        back.setOnClickListener(view1 -> navController.navigate(RightNowFragmentDirections
+                .Companion.actionRightNowFragmentToFrontPageFragment())
+        );
+
+    }
+
     public void viewList(View view) {
         // Change View
-        myFragment = viewManager.viewList(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = viewManager.viewList(null, this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
     }
 
     public void viewGrid(View view) {
-        myFragment = viewManager.viewGrid(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = viewManager.viewGrid(null, this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
     }
 
     public void viewMap(View view) {
-        myFragment = viewManager.viewMap(null,this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment,myFragment).commit();
+        myFragment = viewManager.viewMap(null, this.getContext());
+        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
     }
 
     void updateView() {

@@ -36,7 +36,11 @@
         android:id="@+id/findEvent_interface_Fragment"
         android:name="dtu.android.moroapp.findEvent_interface_Fragment"
         android:label="fragment_find_event_interface"
-        tools:layout="@layout/fragment_find_event_interface" />
+        tools:layout="@layout/fragment_find_event_interface" >
+        <action
+            android:id="@+id/action_findEvent_interface_Fragment_to_search_results"
+            app:destination="@id/search_results" />
+    </fragment>
     <fragment
         android:id="@+id/minProfilFragment"
         android:name="dtu.android.moroapp.MinProfilFragment"
@@ -106,6 +110,15 @@
         tools:layout="@layout/fragment_blank" >
         <action
             android:id="@+id/action_blankFragment_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_results"
+        android:name="dtu.android.moroapp.Search_results"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" >
+        <action
+            android:id="@+id/action_search_results_to_frontPageFragment"
             app:destination="@id/frontPageFragment" />
     </fragment>
 </navigation>

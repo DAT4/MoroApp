@@ -19,10 +19,13 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
     private List<Event> localDataSet;
     IRecyclerViewClickListener customOnClick;
+    ColorThemeManager colorThemeManager;
+    View gridView;
 
-    public GridViewAdapter(List<Event> localDataSet, IRecyclerViewClickListener customOnClick) {
+    public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager,  IRecyclerViewClickListener customOnClick) {
         this.localDataSet = localDataSet;
         this.customOnClick = customOnClick;
+        this.colorThemeManager = colorThemeManager;
     }
 
     public void setLocalDataSet(List<Event> localDataSet) {
@@ -43,6 +46,14 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(parent.getContext())
                 .inflate( R.layout.fragment_event_card_block, parent, false);
+
+        //ImageView imageListView = view.findViewById(R.id.savedEvents_list_view);
+        //imageListView.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorIconOrange));
+
+        gridView = view.findViewById(R.id.blockView);
+
+
+
         return new GridViewAdapter.ViewHolder(view);
     }
 
@@ -65,6 +76,8 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
                 Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
             }
         });
+
+        gridView.setBackgroundResource(colorThemeManager.getIcon());
 
     }
 

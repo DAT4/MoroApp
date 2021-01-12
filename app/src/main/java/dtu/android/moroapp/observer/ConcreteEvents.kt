@@ -27,11 +27,7 @@ object ConcreteEvents : ICache<EventList> {
         return scores
     }
 
-    fun load() {
-        val t = System.currentTimeMillis() / 1000
-        val filter = Filter.Builder()
-                .filters(EventFilters.TIMEGT, t)
-                .build()
+    fun load(filter : Filter) {
         cache(
                 GQL(
                         "${

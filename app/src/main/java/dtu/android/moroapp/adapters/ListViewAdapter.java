@@ -5,8 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
+
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 
@@ -14,10 +17,13 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     private List<Event> localDataSet;
     IRecyclerViewClickListener customOnClick;
+    ColorThemeManager colorThemeManager;
+    View listView;
 
-    public ListViewAdapter(List<Event> localDataSet, IRecyclerViewClickListener customOnClick) {
+    public ListViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager, IRecyclerViewClickListener customOnClick) {
         this.localDataSet = localDataSet;
         this.customOnClick = customOnClick;
+        this.colorThemeManager = colorThemeManager;
     }
 
     public void setLocalDataSet(List<Event> localDataSet) {
@@ -39,6 +45,8 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate( R.layout.event_card_fragment, viewGroup, false);
 
+        listView = view.findViewById(R.id.GridLayout1);
+
         return new ListViewAdapter.ViewHolder(view);
     }
 
@@ -55,6 +63,8 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         viewHolder.getEventTime().setText("00:00");
         viewHolder.setEventLink(this.localDataSet.get(position));
         viewHolder.setEventimage(this.localDataSet.get(position).getImage());
+        listView.setBackgroundResource(colorThemeManager.getIcon());
+
 
         viewHolder.getEventToSaveBTN().setOnClickListener( new View.OnClickListener() {
 

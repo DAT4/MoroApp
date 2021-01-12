@@ -1,6 +1,7 @@
 package dtu.android.moroapp.mvvm
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,14 +20,23 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     val events: MutableLiveData<Resource<List<Event>>> = MutableLiveData()
 
     init {
-        getEvents()
+        loadEvents()
         Log.i("EventViewModel", "Created")
     }
 
-    private fun getEvents() = viewModelScope.launch {
+    private fun loadEvents() = viewModelScope.launch {
         events.postValue(Resource.Loading())
         val response = eventRepository.getEvents(load())
         events.postValue(handleGetEvents(response))
+    }
+
+    fun getAllEvents() : LiveData<Resource<List<Event>>> {
+        return events
+    }
+
+    fun getFilteredEvents(filter: ArrayList<Pair<EventFilters, String>>) : LiveData<Resource<List<Event>>> {
+
+        return events
     }
 
     override fun onCleared() {
