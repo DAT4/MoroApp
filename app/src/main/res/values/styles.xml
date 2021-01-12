@@ -6,9 +6,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/anton_regular</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
     
-    
+    <style name="MyActionBar" >
+        <item name="android:background">#000000</item>
+    </style>
     
     <style name="Find_where_tabs_style" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>

@@ -3,10 +3,8 @@ package dtu.android.moroapp.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -18,6 +16,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
     private List<Event> localDataSet;
     ColorThemeManager colorThemeManager;
+    View gridView;
 
     public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager) {
         this.localDataSet = localDataSet;
@@ -42,8 +41,7 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         //ImageView imageListView = view.findViewById(R.id.savedEvents_list_view);
         //imageListView.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorIconOrange));
 
-        View gridView = view.findViewById(R.id.blockView);
-        gridView.setBackgroundColor(colorThemeManager.getIcon());
+        gridView = view.findViewById(R.id.blockView);
 
 
 
@@ -61,6 +59,8 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         holder.getEventTime().setText("00:00");
         holder.setEventLink(this.localDataSet.get(position));
         holder.setEventimage(this.localDataSet.get(position).getImage());
+        gridView.setBackgroundResource(colorThemeManager.getIcon());
+
     }
 
     @Override
