@@ -117,7 +117,8 @@
         android:name="dtu.android.moroapp.Search_results"
         android:label="fragment_search_results"
         tools:layout="@layout/fragment_search_results" >
-        <argument android:name="filter"
-            app:argType="dtu.android.moroapp.models.FindEventModel[]" />
+        <action
+            android:id="@+id/action_search_results_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
     </fragment>
 </navigation>

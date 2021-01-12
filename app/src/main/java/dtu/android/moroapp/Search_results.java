@@ -1,24 +1,27 @@
 package dtu.android.moroapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.EventViewModel;
-import dtu.android.moroapp.observer.ConcreteEvents;
+import dtu.android.moroapp.utils.EventFilters;
+import kotlin.Pair;
 
 public class Search_results extends Fragment implements View.OnClickListener {
 
@@ -30,6 +33,7 @@ public class Search_results extends Fragment implements View.OnClickListener {
     Fragment myFragment;
     FragmentManager fragmentManager;
     EventViewModel viewModel;
+    NavController navController;
 
 
     @Override
@@ -42,12 +46,9 @@ public class Search_results extends Fragment implements View.OnClickListener {
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), MainActivity.class);
-                    startActivity(intent);
-                }
+        back.setOnClickListener(view -> {
+                navController = Navigation.findNavController(view);
+                navController.navigate(Search_resultsDirections.Companion.actionSearchResultsToFrontPageFragment());
             }
         );
 
@@ -60,9 +61,11 @@ public class Search_results extends Fragment implements View.OnClickListener {
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
 
+
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
-        List<Event> events = viewModel.getEvents().getValue().getData();
+        ArrayList<Pair<EventFilters, String>> filter = FindEventModel.INSTANCE.getFilters();
+        List<Event> events = viewModel.getFilteredEvents(filter).getValue().getData();
 
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN);
 
