@@ -14,7 +14,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
@@ -22,7 +21,7 @@ import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.EventViewModel;
-import dtu.android.moroapp.mvvm.RoomEventViewModel;
+import dtu.android.moroapp.mvvm.EventRoomViewModel;
 import dtu.android.moroapp.utils.EventFilters;
 import kotlin.Pair;
 
@@ -36,7 +35,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
     Fragment myFragment;
     FragmentManager fragmentManager;
     EventViewModel viewModel;
-    RoomEventViewModel localEventViewModel;
+    EventRoomViewModel localEventViewModel;
     NavController navController;
 
 
@@ -65,7 +64,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
 
-        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 

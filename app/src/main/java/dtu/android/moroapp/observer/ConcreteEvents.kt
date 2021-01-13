@@ -12,19 +12,12 @@ object ConcreteEvents : ICache<EventList> {
 
     override val observers: ArrayList<IObserver> = ArrayList()
 
-    fun getAllEvents(): MutableList<Event> {
+    fun getAllEvents(): List<Event> {
         return order(this.content.events)
     }
 
-    private fun order(scores: MutableList<Event>): MutableList<Event> {
-        scores.sortWith(kotlin.Comparator { lhs, rhs ->
-            when {
-                lhs.time > rhs.time -> 1
-                lhs.time < rhs.time -> -1
-                else -> 0
-            }
-        })
-        return scores
+    private fun order(events: MutableList<Event>): List<Event> {
+        return events.sortedByDescending{ it.time  }
     }
 
     fun load(filter : Filter) {

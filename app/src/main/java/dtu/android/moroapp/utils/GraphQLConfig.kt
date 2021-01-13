@@ -30,6 +30,7 @@ class Event(filter: Filter) : MotherCase(filter, "events") {
     val title = object : EdgeCase(this, "title") {}
     val genre = object : EdgeCase(this, "genre") {}
     val image = object : EdgeCase(this, "image") {}
+    val category = object : EdgeCase(this, "category") {}
     val link = object : EdgeCase(this, "link") {}
     val other = object : EdgeCase(this, "other") {}
     val price = object : EdgeCase(this, "price") {}

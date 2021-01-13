@@ -16,6 +16,7 @@ data class Event(
         val genre: String,
         val image: String,
         val link: String,
+        val category: List<String>,
         val price: Int,
         val text: String,
         val tickets: String,

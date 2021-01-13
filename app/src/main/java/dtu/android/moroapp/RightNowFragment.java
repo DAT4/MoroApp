@@ -14,8 +14,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -24,7 +22,7 @@ import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.mvvm.EventViewModel;
-import dtu.android.moroapp.mvvm.RoomEventViewModel;
+import dtu.android.moroapp.mvvm.EventRoomViewModel;
 
 public class RightNowFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
@@ -37,7 +35,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
     FragmentManager fragmentManager;
     NavController navController;
     EventViewModel viewModel;
-    RoomEventViewModel localEventViewModel;
+    EventRoomViewModel localEventViewModel;
     List<Event> events;
 
     @Override
@@ -75,7 +73,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         btnMap.setOnClickListener(this);
 
         // Test values
-        localEventViewModel = new ViewModelProvider(requireActivity()).get(RoomEventViewModel.class);
+        localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
 
         // Instantiate viewModel

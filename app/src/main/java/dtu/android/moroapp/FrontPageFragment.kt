@@ -5,26 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dtu.android.moroapp.adapters.PremiumAdapter
 import dtu.android.moroapp.api.Resource
 import dtu.android.moroapp.databinding.FragmentFrontPageBinding
 import dtu.android.moroapp.models.Event
-import dtu.android.moroapp.mvvm.EventDatabase
-import dtu.android.moroapp.mvvm.EventRepository
 import dtu.android.moroapp.mvvm.EventViewModel
-import dtu.android.moroapp.mvvm.EventViewModelProviderFactory
-import dtu.android.moroapp.observer.ConcreteEvents
-import dtu.android.moroapp.observer.IObserver
 import sh.mama.hangman.adapters.EventAdapter
 
 class FrontPageFragment : Fragment() {
@@ -44,7 +33,9 @@ class FrontPageFragment : Fragment() {
 
     private fun initRecyclerView(events: List<Event>) {
         try {
-            val adapter = EventAdapter(events)
+            val adapter = EventAdapter(
+                    events.sortedByDescending { it.time }.reversed().take(5)
+            )
             binding.frontPageList.adapter = adapter
             binding.frontPageList.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {

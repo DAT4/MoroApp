@@ -2,14 +2,18 @@ package dtu.android.moroapp.mvvm;
 
 import android.content.Context;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
+import dtu.android.moroapp.models.Converters;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.EventDao;
 
 @Database(entities = Event.class, version = 1, exportSchema = false)
+@TypeConverters(Converters.class)
 public abstract class EventRoomDatabase extends RoomDatabase {
 
     public abstract EventDao eventDao();

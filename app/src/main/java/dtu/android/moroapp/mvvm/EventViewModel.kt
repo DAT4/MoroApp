@@ -60,40 +60,13 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
                 .filters(EventFilters.TIMEGT, 1601146800)
                 .build()
 
-        println("${
-            events(filter) {
-                title
-                genre
-                image
-                link
-                tickets
-                other
-                price
-                text
-                time
-                location {
-                    area
-                    place
-                    address {
-                        city
-                        street
-                        no
-                        state
-                        zip
-                    }
-                    coordinates {
-                        longitude
-                        latitude
-                    }
-                }
-            }
-        }")
         return GQLQuery(
                 "${
                     events(filter) {
                         title
                         genre
                         image
+                        category
                         link
                         tickets
                         other
