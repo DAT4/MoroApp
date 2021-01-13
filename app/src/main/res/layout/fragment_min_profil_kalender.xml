@@ -32,8 +32,19 @@
                 android:text="@string/kalender"/>
         </LinearLayout>
 
+        <CalendarView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileCalender"
+            android:theme="@style/CalenderTheme"
+            android:dateTextAppearance="@style/calender_theme_date"
+            android:weekDayTextAppearance="@style/calender_theme_week"
+            />
+
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="666dp"></FrameLayout>
+            android:layout_height="wrap_content">
+
+        </FrameLayout>
     </LinearLayout>
 </FrameLayout>

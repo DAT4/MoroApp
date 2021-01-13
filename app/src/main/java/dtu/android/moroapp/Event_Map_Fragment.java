@@ -36,7 +36,7 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     View root;
     MapView mapView;
     List<Event> events;
-    List<String> titles;
+    //List<String> titles;
 
     public Event_Map_Fragment(List<Event> events){
         this.events = events;
@@ -130,13 +130,13 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
 
         for(int i = 0; i < events.size(); i++){
             String temp = "";
-            String title;
+            //String title;
 
             temp += events.get(i).getLocation().getCoordinates().getLatitude() +" ,";
             temp += events.get(i).getLocation().getCoordinates().getLongitude() + " ,";
-            title = events.get(i).getTitle();
+            //title = events.get(i).getTitle();
 
-            titles.add(title);
+            //titles.add(title);
             newList.add(temp);
         }
 

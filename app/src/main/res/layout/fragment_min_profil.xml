@@ -24,7 +24,7 @@
             android:text="@string/min_profil"
             android:textColor="@color/colorBlack"
             android:textSize="30sp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <ScrollView
             android:layout_width="match_parent"
