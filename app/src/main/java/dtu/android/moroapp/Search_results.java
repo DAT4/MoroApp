@@ -66,10 +66,10 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
 
         localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
-        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+        /*viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
         ArrayList<Pair<EventFilters, String>> filter = FindEventModel.INSTANCE.getFilters();
-        List<Event> events = viewModel.getFilteredEvents(filter).getValue().getData();
+        List<Event> events = viewModel.getFilteredEvents(filter).getValue().getData();*/
 
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
 
