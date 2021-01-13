@@ -12,7 +12,7 @@
         android:iconTint="@color/colorWhite"/>
 
     <item
-        android:id="@+id/minProfilFragment"
+        android:id="@+id/overViewMyProfile"
         android:icon="@drawable/ic_person_button"
         android:title="profil"
         android:iconTint="@color/colorWhite"/>
