@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dtu.android.moroapp.databinding.ActivityMainBinding
 import dtu.android.moroapp.mvvm.EventDatabase
@@ -43,10 +45,11 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
         ConcreteEvents.add(this)
         //supportActionBar?.setDisplayUseLogoEnabled(true)
         //supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
         //supportActionBar?.setIcon(R.drawable.ic_moro_logo)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(R.layout.top_bar)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
 
     }
@@ -78,7 +81,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
                 query?.let {
                     val t = System.currentTimeMillis() / 1000
                     val filter = Filter.Builder()
-                            .filters(EventFilters.PLACE, query)
+                            .filters(EventFilters.TITLE, query)
                             .build()
                     ConcreteEvents.load(filter)
                 }
@@ -95,6 +98,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
     }
 
     override fun update() {
+        this.findNavController(R.navigation.nav_graph).navigate(NavGraphDirections.moveToSeachListFragment())
         Toast.makeText(this,"Succes",Toast.LENGTH_SHORT).show()
     }
 
