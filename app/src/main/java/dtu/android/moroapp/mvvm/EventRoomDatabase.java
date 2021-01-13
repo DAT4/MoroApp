@@ -14,7 +14,7 @@ import dtu.android.moroapp.models.Converters;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.EventDao;
 
-@Database(entities = Event.class, version = 1, exportSchema = false)
+@Database(entities = Event.class, version = 2, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class EventRoomDatabase extends RoomDatabase {
 
@@ -36,9 +36,8 @@ public abstract class EventRoomDatabase extends RoomDatabase {
         if (instance == null) {
             synchronized (EventRoomDatabase.class) {
                 if (instance == null) {
-                    Room.databaseBuilder(context.getApplicationContext(),  EventRoomDatabase.class, "event_database")
-                            .addMigrations(MIGRATION_1_2).build();
-                    instance = Room.databaseBuilder(context.getApplicationContext(), EventRoomDatabase.class, "event_database").build();
+                    instance = Room.databaseBuilder(context.getApplicationContext(),  EventRoomDatabase.class, "event_database").fallbackToDestructiveMigration().build();
+                    //instance = Room.databaseBuilder(context.getApplicationContext(), EventRoomDatabase.class, "event_database").build();
                 }
             }
         }

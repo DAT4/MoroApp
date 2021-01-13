@@ -16,6 +16,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.adapters.EventsViewManager;
@@ -81,6 +82,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
         viewModel.getAllEvents().observe(getViewLifecycleOwner(), listResource -> events = viewModel.getAllEvents().getValue().getData());
 
+        events = new ArrayList<>();
         events = viewModel.getAllEvents().getValue().getData();
 
 
