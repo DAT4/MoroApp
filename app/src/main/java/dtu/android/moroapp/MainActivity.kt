@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
 
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
         return super.onCreateView(name, context, attrs)
+
     }
 
     private fun initializeUI() {
