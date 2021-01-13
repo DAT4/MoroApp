@@ -98,5 +98,5 @@ public class findEvent_interface_Fragment extends Fragment {
 
     }
 
-    }
+}
 
