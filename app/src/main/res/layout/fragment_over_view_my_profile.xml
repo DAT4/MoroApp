@@ -3,38 +3,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OverViewMyProfile"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorBackgroundOrange">
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:id="@+id/myProfileOverviewTab"
+        app:tabTextAppearance="@style/Find_where_tabs_style"
+        >
 
-        <Button
-            android:id="@+id/myProfileButton"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabProfile"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="MIN PROFIL"
-            android:fontFamily="@font/anton_regular"/>
-
-        <Button
-            android:id="@+id/myKalenderButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="KALENDER"
-            android:fontFamily="@font/anton_regular"/>
-    </LinearLayout>
+            android:text="MIN PROFIL" />
 
-    <fragment
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCalender"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="KALENDER"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/myProfileOverviewViewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragmentContainer"
-        android:name="dtu.android.moroapp.MinProfilFragment"
-        />
-
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
