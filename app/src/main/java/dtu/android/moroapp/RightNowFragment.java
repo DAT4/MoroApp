@@ -43,51 +43,49 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.right_now_fragment, container, false);
+        root = inflater.inflate( R.layout.right_now_fragment, container, false );
 
-        back = root.findViewById(R.id.right_now_back);
+        back = root.findViewById( R.id.right_now_back );
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
 
-
-
-        back.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        Intent intent = new Intent(getActivity(), MainActivity.class);
-                                        startActivity(intent);
-                                    }
-                                }
+        back.setOnClickListener( new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View view) {
+                                         Intent intent = new Intent( getActivity(), MainActivity.class );
+                                         startActivity( intent );
+                                     }
+                                 }
         );
 
         // BTN setup
-        btnList = root.findViewById(R.id.viewList);
-        btnList.setOnClickListener(this);
+        btnList = root.findViewById( R.id.viewList );
+        btnList.setOnClickListener( this );
 
-        btnGrid = root.findViewById(R.id.viewGrid);
-        btnGrid.setOnClickListener(this);
+        btnGrid = root.findViewById( R.id.viewGrid );
+        btnGrid.setOnClickListener( this );
 
-        btnMap = root.findViewById(R.id.viewMap);
-        btnMap.setOnClickListener(this);
+        btnMap = root.findViewById( R.id.viewMap );
+        btnMap.setOnClickListener( this );
 
         // Test values
-        localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
+        localEventViewModel = new ViewModelProvider( requireActivity() ).get( EventRoomViewModel.class );
 
 
         // Instantiate viewModel
-        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
+        viewModel = new ViewModelProvider( requireActivity() ).get( EventViewModel.class );
 
-        viewModel.getAllEvents().observe(getViewLifecycleOwner(), listResource -> events = viewModel.getAllEvents().getValue().getData());
+        viewModel.getAllEvents().observe( getViewLifecycleOwner(), listResource -> events = viewModel.getAllEvents().getValue().getData() );
 
         events = new ArrayList<>();
         events = viewModel.getAllEvents().getValue().getData();
 
 
         // Manger setup
-        viewManager = new EventsViewManager(events,getContext(),Theme.BLUE, this);
+        viewManager = new EventsViewManager( events, getContext(), Theme.BLUE, this );
 
         // recycler view setup
         //listview = root.findViewById(R.id.recyclerView);
@@ -95,7 +93,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
         myFragment = viewManager.getFragment();
 
-        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
+        fragmentManager.beginTransaction().replace( R.id.container_fragment, myFragment ).commit();
 
         //viewManager.updateFragment();
 
@@ -110,34 +108,34 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
+        super.onViewCreated( view, savedInstanceState );
+        navController = Navigation.findNavController( view );
 
-        back.setOnClickListener(view1 -> navController.navigate(RightNowFragmentDirections
-                .Companion.actionRightNowFragmentToFrontPageFragment())
+        back.setOnClickListener( view1 -> navController.navigate( RightNowFragmentDirections
+                .Companion.actionRightNowFragmentToFrontPageFragment() )
         );
 
     }
 
     public void viewList(View view) {
         // Change View
-        myFragment = viewManager.viewList(null, this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
+        myFragment = viewManager.viewList( null, this.getContext() );
+        fragmentManager.beginTransaction().replace( R.id.container_fragment, myFragment ).commit();
     }
 
     public void viewGrid(View view) {
-        myFragment = viewManager.viewGrid(null, this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
+        myFragment = viewManager.viewGrid( null, this.getContext() );
+        fragmentManager.beginTransaction().replace( R.id.container_fragment, myFragment ).commit();
     }
 
     public void viewMap(View view) {
-        myFragment = viewManager.viewMap(null, this.getContext());
-        fragmentManager.beginTransaction().replace(R.id.container_fragment, myFragment).commit();
+        myFragment = viewManager.viewMap( null, this.getContext() );
+        fragmentManager.beginTransaction().replace( R.id.container_fragment, myFragment ).commit();
     }
 
     void updateView() {
-        listview.setAdapter(viewManager.getAdapter());
-        listview.setLayoutManager(viewManager.getLayoutManager(this.getContext()));
+        listview.setAdapter( viewManager.getAdapter() );
+        listview.setLayoutManager( viewManager.getLayoutManager( this.getContext() ) );
     }
 
     @Override
@@ -151,13 +149,13 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.viewList:
-                viewList(v);
+                viewList( v );
                 break;
             case R.id.viewGrid:
-                viewGrid(v);
+                viewGrid( v );
                 break;
             case R.id.viewMap:
-                viewMap(v);
+                viewMap( v );
                 break;
             default:
                 break;
@@ -166,6 +164,6 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onItemClick(Event event) {
-        localEventViewModel.insert(event);
+        localEventViewModel.insert( event );
     }
 }
