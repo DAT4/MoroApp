@@ -16,8 +16,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/profileCalender"
-            android:dateTextAppearance="@style/calender_theme_date"
-            android:weekDayTextAppearance="@style/calender_theme_week"
+
+            android:theme="@style/CustomCalendarMonth"
+            android:dateTextAppearance="@style/CustomCalendarDay"
+            android:weekDayTextAppearance="@style/CustomCalendarWeek"
             />
 
     </LinearLayout>

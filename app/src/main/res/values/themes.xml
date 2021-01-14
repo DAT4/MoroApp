@@ -28,4 +28,18 @@
     <style name="calender_theme_week" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@color/colorFindEventWhere</item>
     </style>
+
+
+
+    <style name="CustomCalendarMonth" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+    </style>
+
+    <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+    </style>
+
+    <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+    </style>
 </resources>
