@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.utils.EventFilters;
+import dtu.android.moroapp.utils.EventFiltersListStuff;
 import kotlin.Pair;
 
 public class FindEvent_where_fragment extends Fragment{
@@ -42,10 +43,10 @@ public class FindEvent_where_fragment extends Fragment{
             ToggleButton button = (ToggleButton) grid.getChildAt(i);
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().add(new Pair<>(EventFilters.AREA, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilter().filters(EventFiltersListStuff.AREA, button.getTextOff().toString());
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilters().remove(new Pair<>(EventFilters.AREA, button.getTextOff().toString()));
+                    FindEventModel.INSTANCE.getFilter().pop(EventFiltersListStuff.AREA, button.getTextOff().toString());
                 }
             });
 

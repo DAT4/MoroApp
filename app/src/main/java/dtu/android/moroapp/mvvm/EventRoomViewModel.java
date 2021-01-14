@@ -29,7 +29,6 @@ public class EventRoomViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Event>> getEvents() {
-
         return allEvents;
     }
 

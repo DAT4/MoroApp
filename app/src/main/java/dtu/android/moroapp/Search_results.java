@@ -87,8 +87,10 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
 
         viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
+        /* FILTER IS FILTER VIEWMODEL WILL MAKE CALLBACK
         ArrayList<Pair<EventFilters, String>> filter = FindEventModel.INSTANCE.getFilters();
         events = viewModel.getFilteredEvents(filter).getValue().getData();
+         */
 
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
 

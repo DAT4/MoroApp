@@ -36,20 +36,22 @@ abstract class Query(val name: String) : Element {
 }
 
 @GraphQLMarker
-abstract class EdgeCase(parent: Query, name: String) :Query(name) {
+abstract class EdgeCase(parent: Query, name: String) : Query(name) {
     init {
         parent.children.add(this)
     }
 }
 
 @GraphQLMarker
-abstract class MotherCase(private val filter: Filter, name: String) :Query(name){
+abstract class MotherCase(private val filter: Filter, name: String) : Query(name) {
     override fun render(builder: StringBuilder, indent: String) {
         builder.append("{$name")
         if (filter.filters.isNotEmpty()) {
             builder.append("(" + filter.filters.map {
-                if (it.value is Int || it.value is Long) {
+                if (it.value is Number) {
                     it.key.str() + ":" + it.value + ","
+                } else if (it.value is Iterable<*>) {
+                    it.key.str() + ":" + (it.value as Iterable<*>).joinToString(", ", "[", "]") + ","
                 } else {
                     it.key.str() + ":\"" + it.value + "\","
                 }
@@ -67,14 +69,28 @@ abstract class MotherCase(private val filter: Filter, name: String) :Query(name)
 }
 
 @GraphQLMarker
-interface FilterType {fun str() : String}
+interface FilterType {
+    fun str(): String
+}
 
 @GraphQLMarker
-class Filter private constructor(val filters: MutableMap<FilterType, Any>) {
+class Filter private constructor(val filters: Map<FilterType, Any>) {
     class Builder {
-        private val filters = mutableMapOf<FilterType, Any>()
+        private var filters: MutableMap<FilterType, Any> = mutableMapOf()
         fun filters(key: FilterType, value: Any) = apply {
-            this.filters[key] = value
+            this.filters[key] = when (this.filters[key]) {
+                is List<*> -> (this.filters[key] as List<*>) + listOf(value)
+                is Comparable<*> -> listOf(this.filters[key], value)
+                else -> value
+            }
+        }
+
+        fun pop(key: FilterType, value: Any) = apply {
+            if (this.filters[key] is List<*>) {
+                this.filters[key] = (this.filters[key] as List<*>).filter { filter -> filter != value }
+            } else {
+                this.filters.remove(key)
+            }
         }
 
         fun build(): Filter {

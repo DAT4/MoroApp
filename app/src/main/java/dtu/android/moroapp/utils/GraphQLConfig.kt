@@ -61,15 +61,20 @@ class Coordinates : Query("coordinates") {
     val latitude = object : EdgeCase(this, "latitude") {}
 }
 
-enum class EventFilters(val str: String) : FilterType {
+enum class EventFiltersListStuff(val str: String, ) : FilterType {
     PLACE("place"),
+    AREA("area"),
+    CATEGORY("category"),
+    GENRE("genre");
+
+    override fun str(): String = str
+}
+enum class EventFilters(val str: String, ) : FilterType {
     PRICELT("priceLT"),
     PRICEGT("priceGT"),
     TIMELT("timestampLT"),
     TIMEGT("timestampGT"),
-    AREA("area"),
-    TITLE("title"),
-    GENRE("genre");
+    TITLE("title");
 
     override fun str(): String = str
 }
