@@ -1,5 +1,6 @@
 package dtu.android.moroapp;
 
+import android.net.CaptivePortal;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 public class Burger_fragment extends Fragment {
@@ -55,7 +57,7 @@ public class Burger_fragment extends Fragment {
         bClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_burger_fragment_to_frontPageFragment);
+                navController.navigate(Burger_fragmentDirections.Companion.actionBurgerFragmentPop());
             }
         });
 

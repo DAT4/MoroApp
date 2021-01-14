@@ -61,7 +61,8 @@
         android:id="@+id/burger_fragment"
         android:name="dtu.android.moroapp.Burger_fragment"
         android:label="fragment_burger_fragment"
-        tools:layout="@layout/fragment_burger_fragment" >
+        tools:layout="@layout/fragment_burger_fragment"
+        >
         <action
             android:id="@+id/action_burger_fragment_to_tip_Os_Fragment"
             app:destination="@id/tip_Os_Fragment" />
@@ -74,6 +75,11 @@
         <action
             android:id="@+id/action_burger_fragment_to_frontPageFragment"
             app:destination="@id/frontPageFragment" />
+        <action
+            android:id="@+id/action_burger_fragment_pop"
+            app:popUpTo="@id/burger_fragment"
+            app:popUpToInclusive="true"
+            app:destination="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/tip_Os_Fragment"
