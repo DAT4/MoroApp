@@ -10,6 +10,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
 
 @Parcelize
@@ -28,6 +31,12 @@ data class Event(
 ) : Parcelable {
     fun getDate(): String = SimpleDateFormat("dd/MM/yyyy").format(Date(time * 1000))
     fun getTimeToString(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
+    fun getLocalDate() = this.time.toLocalDate()
+    private fun Long.toLocalDate(): LocalDate {
+        return Instant.ofEpochMilli(this)
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate()
+    }
 }
 @Parcelize
 data class Address(
