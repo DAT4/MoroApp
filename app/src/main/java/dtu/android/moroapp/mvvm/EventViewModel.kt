@@ -23,7 +23,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     val events get() = _events as LiveData<Resource<List<Event>>>
 
 
-    fun filterEvents(filter: Filter) {
+    fun filterEvents(filter: Filter) :List<Event> {
         events.value?.data?.let {
             var tmpList = it
             filter.filters.forEach { filter ->
@@ -44,8 +44,9 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
                     }
                 }
             }
-            _events.postValue(Resource.Success(tmpList))
+            return tmpList
         }
+        return emptyList()
     }
 
 

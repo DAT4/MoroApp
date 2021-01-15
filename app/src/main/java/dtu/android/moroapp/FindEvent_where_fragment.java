@@ -1,6 +1,7 @@
 package dtu.android.moroapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class FindEvent_where_fragment extends Fragment{
             ToggleButton button = (ToggleButton) grid.getChildAt(i);
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
+                    Log.i("FindEvenWhere",button.getTextOff().toString());
                     FindEventModel.INSTANCE.getFilter().filters(EventFiltersListStuff.AREA, button.getTextOff().toString());
                 }
                 if (!button.isChecked()) {
