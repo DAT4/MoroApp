@@ -44,7 +44,20 @@ public class MinProfilKalenderFragment extends Fragment {
 
         savedEvents = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
-        updateEvents();
+        //updateEvents();
+        List<Event> events;
+        events = savedEvents.getEvents().getValue();
+
+
+        for (int i = 0; i < events.size(); i++) {
+            LocalDate temp = events.get(i).getLocalDate();
+            calendarDay = CalendarDay.from(temp.getYear(),temp.getMonthValue(),temp.getDayOfMonth());
+
+            dates.add(calendarDay);
+        }
+
+        decorator = new EventDecorator(R.color.colorIconOrange,dates);
+        calender.addDecorator(decorator);
 
         return root;
     }

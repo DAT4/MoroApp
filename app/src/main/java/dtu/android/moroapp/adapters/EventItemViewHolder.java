@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import dtu.android.moroapp.NavGraphDirections;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.RightNowFragmentDirections;
 import dtu.android.moroapp.models.Event;
@@ -71,8 +72,9 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         eventLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavDirections action = RightNowFragmentDirections.Companion.actionRightNowFragmentToSingleEventFragment(event);
+                NavDirections action = NavGraphDirections.Companion.toSingleEventFragment(event);
                 Navigation.findNavController(itemView).navigate(action);
+
             }
         });
     }
