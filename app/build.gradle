@@ -68,7 +68,8 @@ dependencies {
     implementation 'me.bendik.simplerangeview:simplerangeview:0.2.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation 'sun.bob:mcalendarview:1.0.0'
+    implementation 'com.riontech:calendar:1.0'
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
 
     def room_version = "2.2.6"
 
