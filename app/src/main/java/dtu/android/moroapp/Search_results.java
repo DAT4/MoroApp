@@ -92,6 +92,8 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
         events = viewModel.getFilteredEvents(filter).getValue().getData();
          */
 
+        events = new ArrayList<>();
+
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
 
         myFragment = viewManager.getFragment();
