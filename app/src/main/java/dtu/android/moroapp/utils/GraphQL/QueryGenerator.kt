@@ -1,5 +1,9 @@
 package dtu.android.moroapp.utils.GraphQL
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
+
 @DslMarker //Domain Specific Language
 annotation class GraphQLMarker
 
@@ -74,7 +78,8 @@ interface FilterType {
 }
 
 @GraphQLMarker
-class Filter private constructor(val filters: Map<FilterType, Any>) {
+@Parcelize
+class Filter private constructor(val filters: @RawValue Map<FilterType, Any>):Parcelable {
     class Builder {
         private var filters: MutableMap<FilterType, Any> = mutableMapOf()
         fun filters(key: FilterType, value: Any) = apply {
