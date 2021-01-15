@@ -5,7 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/frontPageFragment">
     <action
-        android:id="@+id/moveToSeachListFragment"
+        android:id="@+id/moveToSearchListFragment"
         app:destination="@+id/search_results"
         />
 
@@ -130,6 +130,9 @@
         <action
             android:id="@+id/action_search_results_to_frontPageFragment"
             app:destination="@id/frontPageFragment" />
+        <argument
+            android:name="filter"
+            app:argType="dtu.android.moroapp.utils.GraphQL.Filter" />
     </fragment>
     <fragment
         android:id="@+id/overViewMyProfile"

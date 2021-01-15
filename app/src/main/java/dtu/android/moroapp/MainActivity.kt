@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
     }
 
     override fun update() {
-        this.findNavController(R.navigation.nav_graph).navigate(NavGraphDirections.moveToSeachListFragment())
+        //this.findNavController(R.navigation.nav_graph).navigate(NavGraphDirections.moveToSeachListFragment())
         Toast.makeText(this,"Succes",Toast.LENGTH_SHORT).show()
     }
 

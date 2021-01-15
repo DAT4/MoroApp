@@ -45,6 +45,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
     EventRoomViewModel localEventViewModel;
     NavController navController;
     List<Event> events;
+    Search_resultsArgs args;
 
 
     @Override
