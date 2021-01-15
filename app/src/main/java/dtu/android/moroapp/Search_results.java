@@ -44,9 +44,13 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
     EventViewModel viewModel;
     EventRoomViewModel localEventViewModel;
     NavController navController;
-    List<Event> events;
     Search_resultsArgs args;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FindEventModel.INSTANCE.clear();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +77,8 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
 
+        args = Search_resultsArgs.fromBundle(getArguments());
+
         return root;
     }
 
@@ -92,6 +98,8 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
         ArrayList<Pair<EventFilters, String>> filter = FindEventModel.INSTANCE.getFilters();
         events = viewModel.getFilteredEvents(filter).getValue().getData();
          */
+
+        List<Event> events = viewModel.filterEvents(args.getFilter());
 
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
 

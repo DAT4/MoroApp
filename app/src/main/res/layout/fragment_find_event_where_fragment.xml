@@ -54,8 +54,8 @@
                     android:textColor="#991917"
                     android:textSize="15sp"
                     android:checked="false"
-                    android:textOff="INDRE BY"
-                    android:textOn="INDRE BY"
+                    android:textOff="Indre by"
+                    android:textOn="Indre by"
                     />
                 <ToggleButton
                     android:background="@drawable/where_selector"
@@ -136,8 +136,8 @@
                     android:textColor="#991917"
                     android:textSize="15sp"
                     android:checked="false"
-                    android:textOff="christianshavn"
-                    android:textOn="christianshavn"
+                    android:textOff="Christianshavn"
+                    android:textOn="Christianshavn"
                     />
                 <ToggleButton
                     android:background="@drawable/where_selector"
