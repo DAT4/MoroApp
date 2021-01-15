@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
         val eventRepository = EventRepository(EventDatabase(this))
         val eventViewModelProviderFactory = EventViewModelProviderFactory(eventRepository)
         viewModel = ViewModelProvider(this, eventViewModelProviderFactory).get(EventViewModel::class.java)
+        viewModel.loadEvents()
     }
 
     private fun setupNav() {

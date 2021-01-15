@@ -20,11 +20,10 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     val events: MutableLiveData<Resource<List<Event>>> = MutableLiveData()
 
     init {
-        loadEvents()
         Log.i("EventViewModel", "Created")
     }
 
-    private fun loadEvents() = viewModelScope.launch {
+    fun loadEvents() = viewModelScope.launch {
         events.postValue(Resource.Loading())
         val response = eventRepository.getEvents(load())
         events.postValue(handleGetEvents(response))
@@ -34,9 +33,11 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
         return events
     }
 
-    fun getFilteredEvents(filter: ArrayList<Pair<EventFilters, String>>) : LiveData<Resource<List<Event>>> {
-
-        return events
+    fun getFilteredEvents(filter: Filter) = viewModelScope.launch {
+        val query = makeQuery(filter)
+        events.postValue(Resource.Loading())
+        val response = eventRepository.getEvents(query)
+        events.postValue(handleGetEvents(response))
     }
 
     override fun onCleared() {
@@ -54,12 +55,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
         return Resource.Error(response.message())
     }
 
-    private fun load(): GQLQuery {
-        val t = System.currentTimeMillis() / 1000
-        val filter = Filter.Builder()
-                .filters(EventFilters.TIMEGT, 1601146800)
-                .build()
-
+    private fun makeQuery(filter: Filter): GQLQuery {
         return GQLQuery(
                 "${
                     events(filter) {
@@ -91,5 +87,14 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
                     }
                 }"
         )
+    }
+
+    private fun load(): GQLQuery {
+        val t = System.currentTimeMillis() / 1000
+        val filter = Filter.Builder()
+                .filters(EventFilters.TIMEGT, 1601146800)
+                .build()
+
+        return makeQuery(filter)
     }
 }

@@ -69,7 +69,9 @@ enum class EventFilters(val str: String) : FilterType {
     TIMEGT("timestampGT"),
     AREA("area"),
     TITLE("title"),
-    GENRE("genre");
+    GENRE("genre"),
+    CATEGORY("category");
+
 
     override fun str(): String = str
 }
