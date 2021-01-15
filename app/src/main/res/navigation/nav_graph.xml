@@ -139,4 +139,7 @@
         android:name="dtu.android.moroapp.OverViewMyProfile"
         android:label="fragment_over_view_my_profile"
         tools:layout="@layout/fragment_over_view_my_profile" />
+    <action
+        android:id="@+id/toSingleEventFragment"
+        app:destination="@id/singleEventFragment" />
 </navigation>

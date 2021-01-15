@@ -33,7 +33,7 @@ data class Event(
     fun getTimeToString(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
     fun getLocalDate() = this.time.toLocalDate()
     private fun Long.toLocalDate(): LocalDate {
-        return Instant.ofEpochMilli(this)
+        return Instant.ofEpochMilli(this * 1000)
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate()
     }
