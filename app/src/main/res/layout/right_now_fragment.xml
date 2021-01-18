@@ -36,7 +36,7 @@
                     android:layout_weight="1"
                     android:layout_gravity="left">
                     <Button
-                        android:layout_width="164dp"
+                        android:layout_width="180dp"
                         android:layout_height="34dp"
                         android:text="Tilbage"
                         android:fontFamily="@font/anton_regular"
