@@ -10,7 +10,7 @@ import com.google.android.gms.maps.MapView;
 
 import java.util.List;
 
-import dtu.android.moroapp.Event_Map_Fragment;
+import dtu.android.moroapp.ui.cards.Event_Map_Fragment;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.models.Event;
 

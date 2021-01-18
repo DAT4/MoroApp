@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.findEvent;
 
 import android.os.Bundle;
 
@@ -24,8 +24,10 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
+import dtu.android.moroapp.R;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.TabAdapter;
+import dtu.android.moroapp.ui.fragments.findEvent.findEvent_interface_FragmentDirections;
 import dtu.android.moroapp.models.FindEventModel;
 import kotlin.Pair;
 

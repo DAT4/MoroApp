@@ -1,4 +1,4 @@
-package dtu.android.moroapp
+package dtu.android.moroapp.ui.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -7,10 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
+import dtu.android.moroapp.R
+import dtu.android.moroapp.ui.fragments.SingleEventFragmentArgs
 import dtu.android.moroapp.models.Event
 import kotlinx.android.synthetic.main.fragment_single_event.view.*
 import java.text.SimpleDateFormat

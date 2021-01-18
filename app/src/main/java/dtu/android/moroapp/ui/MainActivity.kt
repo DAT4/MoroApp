@@ -1,22 +1,19 @@
-package dtu.android.moroapp
+package dtu.android.moroapp.ui
 
 import android.content.Context
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.NavController
 import android.os.Bundle
 import android.util.AttributeSet
-import android.util.Log
 import android.view.Menu
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import dtu.android.moroapp.R
 import dtu.android.moroapp.databinding.ActivityMainBinding
 import dtu.android.moroapp.models.FindEventModel
 import dtu.android.moroapp.mvvm.*
@@ -60,7 +57,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
     private fun setupNav() {
         bottomBar = binding.bottomNavigationView
-        navController = findNavController( R.id.mainFragment)
+        navController = findNavController(R.id.mainFragment)
         bottomBar.setupWithNavController(navController)
     }
 

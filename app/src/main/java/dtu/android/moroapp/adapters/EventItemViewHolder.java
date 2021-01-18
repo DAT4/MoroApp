@@ -17,7 +17,6 @@ import com.squareup.picasso.Picasso;
 
 import dtu.android.moroapp.NavGraphDirections;
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.RightNowFragmentDirections;
 import dtu.android.moroapp.models.Event;
 
 public class EventItemViewHolder extends RecyclerView.ViewHolder {

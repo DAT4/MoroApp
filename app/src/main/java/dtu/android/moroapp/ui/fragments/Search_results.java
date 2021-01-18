@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import dtu.android.moroapp.R;
+import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
@@ -98,7 +100,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
 
         List<Event> events = new ArrayList();
 
-        viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
+        viewManager = new EventsViewManager(events,getContext(), Theme.GREEN, this);
 
         myFragment = viewManager.getFragment();
 

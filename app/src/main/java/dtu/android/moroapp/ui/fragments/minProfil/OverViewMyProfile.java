@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.minProfil;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import android.widget.TableLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import dtu.android.moroapp.R;
 import dtu.android.moroapp.adapters.ProfileOverviewTabAdapter;
 import dtu.android.moroapp.databinding.FragmentOverViewMyProfileBinding;
 

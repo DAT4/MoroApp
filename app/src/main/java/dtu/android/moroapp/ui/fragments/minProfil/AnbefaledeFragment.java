@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.minProfil;
 
 import android.os.Bundle;
 
@@ -15,6 +15,8 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.android.moroapp.R;
+import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
@@ -57,7 +59,7 @@ public class AnbefaledeFragment extends Fragment implements View.OnClickListener
         localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
         // Manager setup
-        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE, this);
+        eventsViewManager = new EventsViewManager(events,getContext(), Theme.ORANGE, this);
 
 
 

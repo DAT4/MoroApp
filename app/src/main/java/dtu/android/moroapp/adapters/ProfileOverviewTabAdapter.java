@@ -5,11 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import dtu.android.moroapp.FindEvent_when_fragment;
-import dtu.android.moroapp.FindEvent_where_fragment;
-import dtu.android.moroapp.MinProfilFragment;
-import dtu.android.moroapp.MinProfilKalenderFragment;
-import dtu.android.moroapp.findEvent_what_fragment;
+import dtu.android.moroapp.ui.fragments.minProfil.MinProfilFragment;
+import dtu.android.moroapp.ui.fragments.minProfil.MinProfilKalenderFragment;
 
 public class ProfileOverviewTabAdapter extends FragmentStateAdapter {
 

@@ -1,4 +1,4 @@
-package dtu.android.moroapp
+package dtu.android.moroapp.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dtu.android.moroapp.ui.MainActivity
+import dtu.android.moroapp.R
 import dtu.android.moroapp.adapters.PremiumAdapter
 import dtu.android.moroapp.api.Resource
 import dtu.android.moroapp.databinding.FragmentFrontPageBinding

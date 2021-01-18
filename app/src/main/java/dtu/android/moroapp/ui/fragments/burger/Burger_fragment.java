@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.burger;
 
 import android.net.CaptivePortal;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
+
+import dtu.android.moroapp.R;
 
 public class Burger_fragment extends Fragment {
 

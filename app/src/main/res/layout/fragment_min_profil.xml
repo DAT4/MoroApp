@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MinProfilFragment"
+    tools:context=".ui.fragments.minProfil.MinProfilFragment"
     tools:visibility="visible">
 
     <LinearLayout
@@ -37,7 +37,7 @@
 
                 <fragment
                     android:id="@+id/fragment1"
-                    android:name="dtu.android.moroapp.SavedEventsFragment"
+                    android:name="dtu.android.moroapp.ui.fragments.minProfil.SavedEventsFragment"
                     android:tag="SavedEvents"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 
                <fragment
                     android:id="@+id/fragment2"
-                    android:name="dtu.android.moroapp.AnbefaledeFragment"
+                    android:name="dtu.android.moroapp.ui.fragments.minProfil.AnbefaledeFragment"
                     android:tag="@string/anbefalede_events"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

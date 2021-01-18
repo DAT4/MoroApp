@@ -9,10 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import dtu.android.moroapp.FrontPageFragmentDirections
+
 import dtu.android.moroapp.R
 import dtu.android.moroapp.databinding.EventCardFragmentBinding
 import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.ui.fragments.FrontPageFragmentDirections
 
 class EventAdapter(
         private var events: List<Event>,

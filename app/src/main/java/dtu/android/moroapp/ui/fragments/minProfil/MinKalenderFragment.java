@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.minProfil;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+
+import dtu.android.moroapp.R;
 
 public class MinKalenderFragment extends Fragment implements View.OnClickListener {
 

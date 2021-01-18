@@ -9,14 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import dtu.android.moroapp.Event_Recycler_Fragment;
+import dtu.android.moroapp.ui.cards.Event_Recycler_Fragment;
 import dtu.android.moroapp.adapters.ColorThemeManager;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.ListViewAdapter;
 import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.states.GridViewState;
-import dtu.android.moroapp.states.IListState;
-import dtu.android.moroapp.states.MapViewState;
 
 public class ListViewState implements IListState {
 

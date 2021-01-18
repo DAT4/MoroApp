@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.minProfil;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
+
+import dtu.android.moroapp.R;
+
 public class MinProfilFragment extends Fragment implements View.OnClickListener {
 
     View root;

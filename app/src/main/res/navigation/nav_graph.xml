@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/frontPageFragment"
-        android:name="dtu.android.moroapp.FrontPageFragment"
+        android:name="dtu.android.moroapp.ui.fragments.FrontPageFragment"
         android:label="fragment_front_page"
         tools:layout="@layout/fragment_front_page" >
         <action
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/rightNowFragment"
-        android:name="dtu.android.moroapp.RightNowFragment"
+        android:name="dtu.android.moroapp.ui.fragments.RightNowFragment"
         android:label="right_now_fragment"
         tools:layout="@layout/right_now_fragment" >
         <action
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/findEvent_interface_Fragment"
-        android:name="dtu.android.moroapp.findEvent_interface_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.findEvent.findEvent_interface_Fragment"
         android:label="fragment_find_event_interface"
         tools:layout="@layout/fragment_find_event_interface" >
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/minProfilFragment"
-        android:name="dtu.android.moroapp.MinProfilFragment"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.MinProfilFragment"
         android:label="fragment_min_profil"
         tools:layout="@layout/fragment_min_profil" >
         <action
@@ -59,7 +59,7 @@
     </fragment>
     <fragment
         android:id="@+id/burger_fragment"
-        android:name="dtu.android.moroapp.Burger_fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Burger_fragment"
         android:label="fragment_burger_fragment"
         tools:layout="@layout/fragment_burger_fragment"
         >
@@ -83,20 +83,20 @@
     </fragment>
     <fragment
         android:id="@+id/tip_Os_Fragment"
-        android:name="dtu.android.moroapp.Tip_Os_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Tip_Os_Fragment"
         android:label="Tip_Os_Fragment" />
     <fragment
         android:id="@+id/om_Os_Fragment"
-        android:name="dtu.android.moroapp.Om_Os_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Om_Os_Fragment"
         android:label="Om_Os_Fragment" />
     <fragment
         android:id="@+id/kontakt_Os_Fragment"
-        android:name="dtu.android.moroapp.Kontakt_Os_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Kontakt_Os_Fragment"
         android:label="fragment_kontakt__os_"
         tools:layout="@layout/fragment_kontakt__os_" />
     <fragment
         android:id="@+id/singleEventFragment"
-        android:name="dtu.android.moroapp.SingleEventFragment"
+        android:name="dtu.android.moroapp.ui.fragments.SingleEventFragment"
         android:label="fragment_single_event"
         tools:layout="@layout/fragment_single_event" >
         <argument
@@ -105,17 +105,17 @@
     </fragment>
     <fragment
         android:id="@+id/anbefaledeFragment"
-        android:name="dtu.android.moroapp.AnbefaledeFragment"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.AnbefaledeFragment"
         android:label="fragment_anbefalede"
         tools:layout="@layout/fragment_anbefalede" />
     <fragment
         android:id="@+id/savedEventsFragment"
-        android:name="dtu.android.moroapp.SavedEventsFragment"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.SavedEventsFragment"
         android:label="fragment_saved_events"
         tools:layout="@layout/fragment_saved_events" />
     <fragment
         android:id="@+id/blankFragment"
-        android:name="dtu.android.moroapp.BlankFragment"
+        android:name="dtu.android.moroapp.ui.fragments.BlankFragment"
         android:label="fragment_blank"
         tools:layout="@layout/fragment_blank" >
         <action
@@ -124,7 +124,7 @@
     </fragment>
     <fragment
         android:id="@+id/search_results"
-        android:name="dtu.android.moroapp.Search_results"
+        android:name="dtu.android.moroapp.ui.fragments.Search_results"
         android:label="fragment_search_results"
         tools:layout="@layout/fragment_search_results" >
         <action
@@ -133,7 +133,7 @@
     </fragment>
     <fragment
         android:id="@+id/overViewMyProfile"
-        android:name="dtu.android.moroapp.OverViewMyProfile"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.OverViewMyProfile"
         android:label="fragment_over_view_my_profile"
         tools:layout="@layout/fragment_over_view_my_profile" />
     <action

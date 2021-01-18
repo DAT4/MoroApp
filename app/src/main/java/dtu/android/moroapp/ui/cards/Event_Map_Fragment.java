@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.cards;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

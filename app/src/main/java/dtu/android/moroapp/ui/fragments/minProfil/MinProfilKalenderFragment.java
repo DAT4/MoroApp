@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments.minProfil;
 
 import android.os.Bundle;
 
@@ -23,6 +23,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
+import dtu.android.moroapp.EventDecorator;
+import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
 

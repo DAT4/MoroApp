@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import dtu.android.moroapp.ui.MainActivity;
+import dtu.android.moroapp.R;
+import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.Event;
@@ -111,9 +114,12 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         super.onViewCreated( view, savedInstanceState );
         navController = Navigation.findNavController( view );
 
+        /*
         back.setOnClickListener( view1 -> navController.navigate( RightNowFragmentDirections
                 .Companion.actionRightNowFragmentToFrontPageFragment() )
         );
+
+         */
 
     }
 

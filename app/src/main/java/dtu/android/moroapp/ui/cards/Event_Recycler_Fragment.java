@@ -1,4 +1,4 @@
-package dtu.android.moroapp;
+package dtu.android.moroapp.ui.cards;
 
 
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import dtu.android.moroapp.R;
 
 public class Event_Recycler_Fragment extends Fragment {
 
