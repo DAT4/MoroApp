@@ -14,6 +14,7 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class MinProfilKalenderFragment extends Fragment {
 
 
         for (int i = 0; i < events.size(); i++) {
-            LocalDate temp = events.get(i).getLocalDate();
+            LocalDateTime temp = events.get(i).getLocalDate();
             calendarDay = CalendarDay.from(temp.getYear(),temp.getMonthValue(),temp.getDayOfMonth());
 
             dates.add(calendarDay);

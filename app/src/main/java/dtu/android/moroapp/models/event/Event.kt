@@ -1,15 +1,11 @@
 package dtu.android.moroapp.models.event
 
+import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
-import java.util.*
+
 
 @Parcelize
 @Entity(tableName = "events")
@@ -22,16 +18,12 @@ data class Event(
         val price: Int,
         val text: String,
         val tickets: String,
-        var time: Long,
+        var time: TimeDate,
         @Embedded val location: Location
 ) : Parcelable {
-    fun getDate(): String = SimpleDateFormat("dd/MM/yyyy").format(Date(time * 1000))
-    fun getTimeToString(): String = SimpleDateFormat("HH:mm").format(Date(time * 1000))
-    fun getLocalDate() = this.time.toLocalDate()
-    private fun Long.toLocalDate(): LocalDate {
-        return Instant.ofEpochMilli(this * 1000)
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate()
-    }
+    fun getDate() = time.format("dd/MM/yyyy")
+    fun getTimeToString() = time.format("HH:mm")
+    fun getLocalDate() = this.time.toLocalDateTime()
+
 }
 
