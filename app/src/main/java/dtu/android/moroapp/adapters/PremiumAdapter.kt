@@ -6,7 +6,10 @@ import android.graphics.PorterDuff
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
+import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -18,7 +21,8 @@ import java.lang.Exception
 import java.util.logging.Handler
 
 class PremiumAdapter(
-        val events: List<Event>
+        val events: List<Event>,
+        val click: IViewPagerClickInterface
 ) : RecyclerView.Adapter<PremiumAdapter.EventViewHolder>() {
     private lateinit var binding: CardItemViewPagerBinding
 
@@ -36,21 +40,12 @@ class PremiumAdapter(
             cardItemTitel.text = event.title
             cardItemTime.text = event.getTimeToString()
             Picasso.get().load(event.image).fit().centerCrop().into(bannerID)
-        //    bannerID.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
-    /*        Picasso.get().load(event.image).fit().centerCrop().into(object : Target {
-                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                    TODO("Not yet implemented")
-                    bannerID.background(object : (bitmap))
-                }
 
-                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
-                    TODO("Not yet implemented")
-                }
+            btnLeft.setOnClickListener {
+                click.onItemClick(false)
+            }
 
-                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
-                    TODO("Not yet implemented")
-                }
-            }) */
+            btnRight.setOnClickListener { click.onItemClick(true) }
 
             root.setOnClickListener {
                 val action = FrontPageFragmentDirections
