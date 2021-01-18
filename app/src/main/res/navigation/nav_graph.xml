@@ -5,6 +5,10 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/frontPageFragment">
     <action
+        android:id="@+id/moveToSingleEventFragment"
+        app:destination="@+id/singleEventFragment"
+        />
+    <action
         android:id="@+id/moveToSearchListFragment"
         app:destination="@+id/search_results"
         />
@@ -130,6 +134,9 @@
         <action
             android:id="@+id/action_search_results_to_frontPageFragment"
             app:destination="@id/frontPageFragment" />
+        <action
+            android:id="@+id/action_search_results_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
     </fragment>
     <fragment
         android:id="@+id/overViewMyProfile"

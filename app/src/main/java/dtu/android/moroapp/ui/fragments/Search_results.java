@@ -12,7 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavAction;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,6 +26,7 @@ import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.api.Resource;
+import dtu.android.moroapp.databinding.FragmentSearchResultsBinding;
 import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.EventDatabase;
@@ -46,6 +49,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
     EventRoomViewModel localEventViewModel;
     NavController navController;
     List<Event> events;
+    FragmentSearchResultsBinding binding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +60,8 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_search_results, container, false);
+        binding = FragmentSearchResultsBinding.inflate(inflater, container, false);
+        root = binding.getRoot();
 
         back = root.findViewById(R.id.right_now_back);
 
@@ -93,9 +98,15 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
         viewModel.loadEvents(FindEventModel.Filters.getInstance());
 
         viewModel.getEvents().observe(getViewLifecycleOwner(), listResource -> {
-            if(listResource instanceof Resource.Success)
-                initiateViews(viewModel.getEvents().getValue().getData());
-            else {
+            if (listResource instanceof Resource.Success) {
+                events = viewModel.getEvents().getValue().getData();
+                if ((events != null ? events.size() : 0) == 1) {
+                    System.out.println(events.get(0).getTitle());
+                    Navigation.findNavController(binding.getRoot()).navigate(Search_resultsDirections.Companion.moveToSingleEventFragment(events.get(0)));
+                } else {
+                    initiateViews(events);
+                }
+            } else {
                 System.out.println("fejl med internet");
             }
         });
