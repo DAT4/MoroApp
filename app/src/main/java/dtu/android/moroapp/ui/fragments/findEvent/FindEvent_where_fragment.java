@@ -11,9 +11,11 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.FindEventModel;
+import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.Filter;
 import kotlin.Pair;
 
@@ -21,6 +23,7 @@ public class FindEvent_where_fragment extends Fragment{
 
     private GridLayout grid;
     private View root;
+    private EventViewModel viewModel;
 
     public FindEvent_where_fragment() {
         // Required empty public constructor
@@ -35,6 +38,7 @@ public class FindEvent_where_fragment extends Fragment{
 
         setupGrid();
 
+        viewModel = new ViewModelProvider(requireActivity()).get(EventViewModel.class);
 
         return root;
     }
@@ -45,14 +49,27 @@ public class FindEvent_where_fragment extends Fragment{
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
                     Log.i("FindEvenWhere",button.getTextOff().toString());
-                    FindEventModel.INSTANCE.getFilter().add(new Filter.InclusiveFilter.AreaFilter(button.getTextOff().toString()));
+                    add(button.getTextOff().toString());
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilter().remove(new Filter.InclusiveFilter.AreaFilter(button.getTextOff().toString()));
+                    remove(button.getTextOff().toString());
                 }
             });
 
         }
+    }
+
+    private void add(String area){
+        FindEventModel
+                .Filters
+                .getInstance()
+                .add(new Filter.InclusiveFilter.AreaFilter(area));
+    }
+    private void remove(String area){
+        FindEventModel
+                .Filters
+                .getInstance()
+                .remove(new Filter.InclusiveFilter.AreaFilter(area));
     }
 
     @Override

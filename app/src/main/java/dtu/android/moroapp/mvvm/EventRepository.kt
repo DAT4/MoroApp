@@ -11,11 +11,11 @@ import retrofit2.Response
 
 class EventRepository(private val db: EventDatabase) {
 
-    suspend fun getEvents(filters: List<Filter>): Resource<List<Event>> {
+    suspend fun getEvents(filters: List<Filter> = listOf()): Resource<List<Event>> {
         return if (cacheList.isEmpty()) {
             handleGetEvents(RetrofitInstance.api.getEvents(makeQuery(filters)))
         } else {
-            Resource.Success(cacheList)
+            Resource.Success(cacheList.applyFilters(filters))
         }
     }
 
@@ -54,7 +54,7 @@ class EventRepository(private val db: EventDatabase) {
     private fun handleGetEvents(response: Response<GQLResponse>): Resource<List<Event>> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
-                println("HER ER LISTEN ${resultResponse.data.events}")
+                EventsCache.cacheList = resultResponse.data.events
                 return Resource.Success(resultResponse.data.events)
             }
         }
