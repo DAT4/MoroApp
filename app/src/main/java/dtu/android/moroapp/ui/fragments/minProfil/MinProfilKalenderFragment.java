@@ -17,6 +17,7 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -65,7 +66,7 @@ public class MinProfilKalenderFragment extends Fragment implements IRecyclerView
 
         // setup dates
         for (int i = 0; i < events.size(); i++) {
-            LocalDate temp = events.get(i).getLocalDate();
+            LocalDateTime temp = events.get(i).getLocalDate();
             calendarDay = CalendarDay.from(temp.getYear(),temp.getMonthValue(),temp.getDayOfMonth());
 
             dates.add(calendarDay);
@@ -97,7 +98,7 @@ public class MinProfilKalenderFragment extends Fragment implements IRecyclerView
 
         for (int i = 0; i < events.size(); i++) {
             // check for the selected date
-            LocalDate temp = events.get(i).getLocalDate();
+            LocalDateTime temp = events.get(i).getLocalDate();
             if (date.getYear() == temp.getYear() && date.getMonth() == temp.getMonthValue() && date.getDay() == temp.getDayOfMonth()) {
                 tempList.add(events.get(i));
             }

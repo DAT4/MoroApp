@@ -44,6 +44,7 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
 
         initGoogleMap(savedInstanceState);
 
+
         return root;
     }
 
@@ -73,6 +74,7 @@ public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         ArrayList<String> addresses = getAddressFromList(events);
         map = googleMap;
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(55.6759400,12.5655300),12.0f));
         LatLng address = null;
 
         for (int i = 0; i < addresses.size(); i++) {
