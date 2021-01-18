@@ -130,9 +130,6 @@
         <action
             android:id="@+id/action_search_results_to_frontPageFragment"
             app:destination="@id/frontPageFragment" />
-        <argument
-            android:name="filter"
-            app:argType="dtu.android.moroapp.utils.GraphQL.Filter" />
     </fragment>
     <fragment
         android:id="@+id/overViewMyProfile"

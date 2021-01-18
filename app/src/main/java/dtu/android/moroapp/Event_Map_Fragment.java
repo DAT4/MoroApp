@@ -25,7 +25,6 @@ import java.util.List;
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.Event;
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.utils.EventFilters;
 import kotlin.Pair;
 
 public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {

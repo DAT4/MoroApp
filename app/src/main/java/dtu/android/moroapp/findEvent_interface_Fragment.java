@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.TabAdapter;
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.utils.EventFilters;
-import dtu.android.moroapp.utils.GraphQL.Filter;
 import kotlin.Pair;
 
 import static androidx.navigation.fragment.NavHostFragment.findNavController;
@@ -90,11 +88,10 @@ public class findEvent_interface_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Filter filter = FindEventModel.INSTANCE.getFilter().build();
 
                 //NavDirections action = findEvent_interface_FragmentDirections.Companion.actionFindEventInterfaceFragmentToSearchResults(filter);
 
-                Navigation.findNavController(view).navigate(findEvent_interface_FragmentDirections.Companion.actionFindEventInterfaceFragmentToSearchResults(filter));
+                Navigation.findNavController(view).navigate(findEvent_interface_FragmentDirections.Companion.actionFindEventInterfaceFragmentToSearchResults());
             }
         } );
 

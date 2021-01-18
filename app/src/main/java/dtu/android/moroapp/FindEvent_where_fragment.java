@@ -13,8 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.utils.EventFilters;
-import dtu.android.moroapp.utils.EventFiltersListStuff;
+import dtu.android.moroapp.mvvm.Filter;
 import kotlin.Pair;
 
 public class FindEvent_where_fragment extends Fragment{
@@ -45,10 +44,10 @@ public class FindEvent_where_fragment extends Fragment{
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
                     Log.i("FindEvenWhere",button.getTextOff().toString());
-                    FindEventModel.INSTANCE.getFilter().filters(EventFiltersListStuff.AREA, button.getTextOff().toString());
+                    FindEventModel.INSTANCE.getFilter().add(new Filter.InclusiveFilter.AreaFilter(button.getTextOff().toString()));
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilter().pop(EventFiltersListStuff.AREA, button.getTextOff().toString());
+                    FindEventModel.INSTANCE.getFilter().remove(new Filter.InclusiveFilter.AreaFilter(button.getTextOff().toString()));
                 }
             });
 

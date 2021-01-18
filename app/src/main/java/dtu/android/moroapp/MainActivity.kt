@@ -18,16 +18,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dtu.android.moroapp.databinding.ActivityMainBinding
-import dtu.android.moroapp.mvvm.EventDatabase
-import dtu.android.moroapp.mvvm.EventRepository
-import dtu.android.moroapp.mvvm.EventViewModel
-import dtu.android.moroapp.mvvm.EventViewModelProviderFactory
-import dtu.android.moroapp.observer.ConcreteEvents
-import dtu.android.moroapp.observer.IObserver
-import dtu.android.moroapp.utils.EventFilters
-import dtu.android.moroapp.utils.GraphQL.Filter
+import dtu.android.moroapp.models.FindEventModel
+import dtu.android.moroapp.mvvm.*
 
-class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
+class MainActivity : AppCompatActivity(), LifecycleOwner {
     private lateinit var bottomBar: BottomNavigationView
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
@@ -42,7 +36,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
         setContentView(binding.root)
         initializeUI()
         setupNav()
-        ConcreteEvents.add(this)
         //supportActionBar?.setDisplayUseLogoEnabled(true)
         //supportActionBar?.setDisplayShowHomeEnabled(true)
         //supportActionBar?.setIcon(R.drawable.ic_moro_logo)
@@ -81,10 +74,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
                     val t = System.currentTimeMillis() / 1000
-                    val filter = Filter.Builder()
-                            .filters(EventFilters.TITLE, query)
-                            .build()
-                    ConcreteEvents.load(filter)
+                    FindEventModel.filter = arrayListOf(Filter.ExclusiveFilter.TimeGTFilter(t))
                 }
                 return true
             }
@@ -96,15 +86,5 @@ class MainActivity : AppCompatActivity(), LifecycleOwner, IObserver {
         })
 
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun update() {
-        //this.findNavController(R.navigation.nav_graph).navigate(NavGraphDirections.moveToSeachListFragment())
-        Toast.makeText(this,"Succes",Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ConcreteEvents.remove(this)
     }
 }

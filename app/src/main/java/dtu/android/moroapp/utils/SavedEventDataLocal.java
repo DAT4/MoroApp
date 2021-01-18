@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import java.util.List;
 
+import dtu.android.moroapp.models.Event;
+
 public class SavedEventDataLocal {
     Context context;
 

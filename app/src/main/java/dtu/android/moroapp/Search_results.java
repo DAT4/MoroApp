@@ -29,7 +29,6 @@ import dtu.android.moroapp.mvvm.EventRepository;
 import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
 import dtu.android.moroapp.mvvm.EventViewModelProviderFactory;
-import dtu.android.moroapp.utils.EventFilters;
 import kotlin.Pair;
 
 public class Search_results extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
@@ -45,7 +44,6 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
     EventRoomViewModel localEventViewModel;
     NavController navController;
     List<Event> events;
-    Search_resultsArgs args;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,7 +63,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
 
         back.setOnClickListener(view -> {
                 navController = Navigation.findNavController(view);
-                navController.navigate(Search_resultsDirections.Companion.actionSearchResultsToFrontPageFragment());
+                //navController.navigate(Search_resultsDirections.Companion.actionSearchResultsToFrontPageFragment());
             }
         );
 
@@ -77,8 +75,6 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
 
         btnMap = root.findViewById(R.id.viewMap);
         btnMap.setOnClickListener(this);
-
-        args = Search_resultsArgs.fromBundle(getArguments());
 
         return root;
     }
@@ -100,7 +96,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
         events = viewModel.getFilteredEvents(filter).getValue().getData();
          */
 
-        List<Event> events = viewModel.filterEvents(args.getFilter());
+        List<Event> events = new ArrayList();
 
         viewManager = new EventsViewManager(events,getContext(),Theme.GREEN, this);
 
