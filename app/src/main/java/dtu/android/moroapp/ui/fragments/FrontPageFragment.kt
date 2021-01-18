@@ -11,6 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import dtu.android.moroapp.ui.MainActivity
 import dtu.android.moroapp.R
+import dtu.android.moroapp.adapters.IRecyclerViewClickListener
+import dtu.android.moroapp.adapters.IViewPagerClickInterface
 import dtu.android.moroapp.adapters.PremiumAdapter
 import dtu.android.moroapp.api.Resource
 import dtu.android.moroapp.databinding.FragmentFrontPageBinding
@@ -18,7 +20,7 @@ import dtu.android.moroapp.models.event.Event
 import dtu.android.moroapp.mvvm.EventViewModel
 import sh.mama.hangman.adapters.EventAdapter
 
-class FrontPageFragment : Fragment() {
+class FrontPageFragment : Fragment(), IViewPagerClickInterface {
 
     lateinit var viewModel: EventViewModel
     private lateinit var _binding: FragmentFrontPageBinding
@@ -26,7 +28,7 @@ class FrontPageFragment : Fragment() {
 
     private fun initViewPager(events: List<Event>) {
         try {
-            val adapter = PremiumAdapter(events as ArrayList<Event>)
+            val adapter = PremiumAdapter(events as ArrayList<Event>, this)
             binding.viewPager.adapter = adapter
         } catch (e: java.lang.Exception) {
             println(e)
@@ -108,5 +110,18 @@ class FrontPageFragment : Fragment() {
             }
 
         }
+    }
+
+
+    override fun onItemClick(isRight: Boolean?) {
+        val direction: Int
+
+        if (isRight == true) {
+            direction = 1
+        } else {
+            direction = -1
+        }
+
+        binding.viewPager.setCurrentItem(binding.viewPager.getCurrentItem() + direction, true)
     }
 }

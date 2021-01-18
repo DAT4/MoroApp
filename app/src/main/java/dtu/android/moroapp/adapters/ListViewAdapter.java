@@ -58,9 +58,9 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
-        viewHolder.getEventDistance().setText( "0 km");
-        viewHolder.getEventDate().setText("00-00");
-        viewHolder.getEventTime().setText("00:00");
+        viewHolder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        viewHolder.getEventDate().setText(this.localDataSet.get(position).getDate());
+        viewHolder.getEventTime().setText(this.localDataSet.get(position).getTimeToString());
         viewHolder.setEventLink(this.localDataSet.get(position));
         viewHolder.setEventimage(this.localDataSet.get(position).getImage());
         listView.setBackgroundResource(colorThemeManager.getIcon());

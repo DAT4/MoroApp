@@ -63,9 +63,9 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         String dateStr = date.format(new Date(this.localDataSet.get(position).getTime() * 1000)); */
 
         holder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
-        holder.getEventDistance().setText("00 km");
-        holder.getEventDate().setText("00-00");
-        holder.getEventTime().setText("00:00");
+        holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        holder.getEventDate().setText(this.localDataSet.get(position).getDate());
+        holder.getEventTime().setText(this.localDataSet.get(position).getTimeToString());
         holder.setEventLink(this.localDataSet.get(position));
         holder.setEventimage(this.localDataSet.get(position).getImage());
         holder.getEventToSaveBTN().setOnClickListener( new View.OnClickListener() {

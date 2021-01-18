@@ -6,6 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.minProfil.MinProfilKalenderFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,16 +18,28 @@
         android:background="#FAB96B"
         android:gravity="center">
 
-
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:background="@drawable/ic_calendar_grid"
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:mcv_showOtherDates="all"
-            app:mcv_selectionColor="#00F"
+            app:mcv_selectionColor="@color/colorIconOrange"
+            android:layout_weight="1"
             app:mcv_firstDayOfWeek="monday"
+            app:mcv_dateTextAppearance="@style/CustomTextAppearance"
+            app:mcv_headerTextAppearance="@style/CustomTextAppearance"
+            app:mcv_weekDayTextAppearance="@style/CustomTextAppearance"
             />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:id="@+id/calenderEvents"/>
 
         <!--
         <com.riontech.calendar.CustomCalendar
@@ -69,4 +86,5 @@
             />-->
 
     </LinearLayout>
+    </ScrollView>
 </FrameLayout>

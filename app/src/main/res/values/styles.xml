@@ -26,4 +26,8 @@
         <item name="android:dateTextAppearance">style/TextAppearance.Medium</item>-->
     </style>
 
+    <style name="CustomTextAppearance" parent="TextAppearance.MaterialCalendarWidget.Date">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
 </resources>
