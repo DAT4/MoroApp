@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 typealias TimeDate = Long
 
 fun TimeDate.toLocalDateTime() = Instant
-        .ofEpochMilli(this * 1000)
+        .ofEpochSecond(this)
         .atZone(ZoneId.systemDefault())
         .toLocalDateTime()
 

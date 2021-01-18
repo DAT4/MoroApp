@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         val eventRepository = EventRepository(EventDatabase(this))
         val eventViewModelProviderFactory = EventViewModelProviderFactory(eventRepository)
         viewModel = ViewModelProvider(this, eventViewModelProviderFactory).get(EventViewModel::class.java)
+        viewModel.loadEvents()
     }
 
     private fun setupNav() {
@@ -70,8 +71,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    val t = System.currentTimeMillis() / 1000
-                    FindEventModel.filter = arrayListOf(Filter.ExclusiveFilter.TimeGTFilter(t))
+                    println("hej")
                 }
                 return true
             }

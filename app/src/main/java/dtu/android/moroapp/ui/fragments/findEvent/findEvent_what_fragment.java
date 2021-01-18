@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.List;
+
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.Filter;
@@ -50,14 +52,26 @@ public class findEvent_what_fragment extends Fragment {
 
             button.setOnClickListener(view -> {
                 if(button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilter().add(new Filter.InclusiveFilter.CategoryFilter(button.getTextOff().toString()));
+                    add(button.getTextOff().toString().toLowerCase());
                 }
                 if (!button.isChecked()) {
-                    FindEventModel.INSTANCE.getFilter().remove(new Filter.InclusiveFilter.CategoryFilter(button.getTextOff().toString()));
+                    remove(button.getTextOff().toString().toLowerCase());
                 }
             });
 
         }
+    }
+    private void add(String category){
+        FindEventModel
+                .Filters
+                .getInstance()
+                .add(new Filter.InclusiveFilter.CategoryFilter(category));
+    }
+    private void remove(String category){
+        FindEventModel
+                .Filters
+                .getInstance()
+                .remove(new Filter.InclusiveFilter.CategoryFilter(category));
     }
 
 }

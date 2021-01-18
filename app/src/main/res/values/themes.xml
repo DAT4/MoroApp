@@ -6,14 +6,6 @@
         <item name="displayOptions">useLogo|showHome</item>
     </style>
 
-    <style name="MyActionBar" >
-        <item name="android:background">@color/colorWhite</item>
-        <item name="colorPrimary">@color/colorBlack</item>
-        <item name="android:fontFamily">@font/anton_regular</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
     <style name="CalenderTheme" parent="Theme.AppCompat">
         <item name="android:colorAccent">@color/colorFindEventWhere</item>
         <item name="colorPrimary">@color/colorFindEventWhere</item>

@@ -60,7 +60,7 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface {
         super.onActivityCreated(savedInstanceState)
         viewModel = (activity as MainActivity).viewModel
 
-        viewModel.events.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.events.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Resource.Success -> {
                     response.data?.let {
