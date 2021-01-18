@@ -1,14 +1,10 @@
-package dtu.android.moroapp.models
+package dtu.android.moroapp.models.event
 
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import android.os.Parcelable
-import androidx.room.ForeignKey
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDate
@@ -38,23 +34,4 @@ data class Event(
                 .toLocalDate()
     }
 }
-@Parcelize
-data class Address(
-        val city: String,
-        val street: String,
-        val no: String,
-        val state: String,
-        val zip: Int,
-) : Parcelable
-@Parcelize
-data class Coordinates(
-        val longitude: Float,
-        val latitude: Float,
-) : Parcelable
-@Parcelize
-data class Location(
-        val area: String,
-        val place: String,
-        @Embedded val address: Address,
-        @Embedded val coordinates: Coordinates,
-) : Parcelable
+

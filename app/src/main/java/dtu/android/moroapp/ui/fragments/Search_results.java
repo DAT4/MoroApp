@@ -15,23 +15,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.models.FindEventModel;
-import dtu.android.moroapp.mvvm.EventDatabase;
-import dtu.android.moroapp.mvvm.EventRepository;
 import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
-import dtu.android.moroapp.mvvm.EventViewModelProviderFactory;
-import kotlin.Pair;
 
 public class Search_results extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 

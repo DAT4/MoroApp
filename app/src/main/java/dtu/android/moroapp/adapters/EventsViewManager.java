@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import dtu.android.moroapp.Theme;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.states.IListState;
 import dtu.android.moroapp.states.ListViewState;
 

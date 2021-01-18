@@ -24,7 +24,7 @@ import dtu.android.moroapp.R;
 import dtu.android.moroapp.Theme;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
 

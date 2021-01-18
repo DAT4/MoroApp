@@ -10,8 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
 import dtu.android.moroapp.R
-import dtu.android.moroapp.ui.fragments.SingleEventFragmentArgs
-import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.models.event.Event
 import kotlinx.android.synthetic.main.fragment_single_event.view.*
 import java.text.SimpleDateFormat
 import java.util.*

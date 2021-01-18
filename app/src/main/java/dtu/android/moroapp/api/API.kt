@@ -1,12 +1,9 @@
 package dtu.android.moroapp.api
 
-import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.models.event.Event
 import retrofit2.Response
-import retrofit2.Retrofit
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface API {
     @POST("/moro/api")

@@ -5,7 +5,7 @@ import dtu.android.moroapp.api.GQLQuery
 import dtu.android.moroapp.api.GQLResponse
 import dtu.android.moroapp.api.Resource
 import dtu.android.moroapp.api.RetrofitInstance
-import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.models.event.Event
 import dtu.android.moroapp.mvvm.EventsCache.cacheList
 import retrofit2.Response
 

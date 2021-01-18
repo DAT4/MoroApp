@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
 public interface IListState {
     Fragment viewGrid(Fragment view, Context context);

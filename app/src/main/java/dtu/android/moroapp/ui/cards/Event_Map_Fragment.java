@@ -4,18 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -23,9 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
-import dtu.android.moroapp.models.FindEventModel;
-import kotlin.Pair;
+import dtu.android.moroapp.models.event.Event;
 
 public class Event_Map_Fragment extends Fragment implements OnMapReadyCallback {
 

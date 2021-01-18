@@ -2,7 +2,6 @@ package dtu.android.moroapp.ui.fragments.minProfil;
 
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -10,22 +9,17 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CalendarView;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.riontech.calendar.CustomCalendar;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
 import dtu.android.moroapp.EventDecorator;
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
 
 public class MinProfilKalenderFragment extends Fragment {

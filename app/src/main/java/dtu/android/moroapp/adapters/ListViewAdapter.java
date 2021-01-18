@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 

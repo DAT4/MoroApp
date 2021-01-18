@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dtu.android.moroapp.api.Resource
-import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.models.event.Event
 import kotlinx.coroutines.launch
 
 class EventViewModel(private val eventRepository: EventRepository) : ViewModel() {

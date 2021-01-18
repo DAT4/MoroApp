@@ -14,7 +14,7 @@ import dtu.android.moroapp.R
 import dtu.android.moroapp.adapters.PremiumAdapter
 import dtu.android.moroapp.api.Resource
 import dtu.android.moroapp.databinding.FragmentFrontPageBinding
-import dtu.android.moroapp.models.Event
+import dtu.android.moroapp.models.event.Event
 import dtu.android.moroapp.mvvm.EventViewModel
 import sh.mama.hangman.adapters.EventAdapter
 

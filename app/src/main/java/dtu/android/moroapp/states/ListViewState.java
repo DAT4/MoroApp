@@ -13,7 +13,7 @@ import dtu.android.moroapp.ui.cards.Event_Recycler_Fragment;
 import dtu.android.moroapp.adapters.ColorThemeManager;
 import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.ListViewAdapter;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
 public class ListViewState implements IListState {
 

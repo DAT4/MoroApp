@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import dtu.android.moroapp.NavGraphDirections;
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
 public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final TextView eventTitle;

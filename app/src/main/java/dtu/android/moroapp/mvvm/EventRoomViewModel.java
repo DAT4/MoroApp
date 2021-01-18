@@ -9,9 +9,8 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.models.EventDao;
-import dtu.android.moroapp.mvvm.EventRoomDatabase;
 
 public class EventRoomViewModel extends AndroidViewModel {
 

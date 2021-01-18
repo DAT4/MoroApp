@@ -7,6 +7,8 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import dtu.android.moroapp.models.event.Event;
+
 @Dao
 public interface EventDao {
 

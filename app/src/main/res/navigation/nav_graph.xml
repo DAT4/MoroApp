@@ -101,7 +101,7 @@
         tools:layout="@layout/fragment_single_event" >
         <argument
             android:name="event"
-            app:argType="dtu.android.moroapp.models.Event" />
+            app:argType="dtu.android.moroapp.models.event.Event" />
     </fragment>
     <fragment
         android:id="@+id/anbefaledeFragment"

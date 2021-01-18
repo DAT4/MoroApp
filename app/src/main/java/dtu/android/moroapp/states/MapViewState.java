@@ -12,7 +12,7 @@ import java.util.List;
 
 import dtu.android.moroapp.ui.cards.Event_Map_Fragment;
 import dtu.android.moroapp.adapters.EventsViewManager;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
 public class MapViewState implements IListState {
 
