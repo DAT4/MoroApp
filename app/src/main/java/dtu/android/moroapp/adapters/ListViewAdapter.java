@@ -4,6 +4,7 @@ import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 
@@ -60,6 +61,8 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ListViewAdapter.ViewHolder viewHolder, final int position) {
+
+        viewHolder.eventLink.setAnimation( AnimationUtils.loadAnimation(viewHolder.context,R.anim.fade_transition));
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element

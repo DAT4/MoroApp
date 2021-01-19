@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +31,12 @@ class EventAdapter(
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
+
+
+
         val event = events[position]
         binding.apply {
+            eventCardLong.animation = (AnimationUtils.loadAnimation(root.context,R.anim.fade_transition))
             eventCardTitle.text = event.title
             eventCardLongTime.text = event.getTimeToString()
             eventCardLongDate.text = event.getDate()

@@ -4,6 +4,7 @@ import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,8 +58,6 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
         gridView = view.findViewById(R.id.blockView);
 
-
-
         return new GridViewAdapter.ViewHolder(view);
     }
 
@@ -66,6 +65,8 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     public void onBindViewHolder(@NonNull GridViewAdapter.ViewHolder holder, int position) {
         /*SimpleDateFormat date = new SimpleDateFormat("dd-MM-yy");
         String dateStr = date.format(new Date(this.localDataSet.get(position).getTime() * 1000)); */
+
+        holder.eventLink.setAnimation( AnimationUtils.loadAnimation(holder.context,R.anim.fade_transition));
 
         holder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
         //holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
