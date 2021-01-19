@@ -82,8 +82,7 @@
         <action
             android:id="@+id/action_burger_fragment_pop"
             app:popUpTo="@id/burger_fragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/nav_graph" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/tip_Os_Fragment"
@@ -137,7 +136,8 @@
         <action
             android:id="@+id/action_search_results_to_singleEventFragment"
             app:destination="@id/singleEventFragment"
-            app:popUpTo="@id/search_results" />
+            app:popUpTo="@id/search_results"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/overViewMyProfile"
