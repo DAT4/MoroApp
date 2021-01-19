@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
-class EventViewModel(private val eventRepository: EventRepository) : ViewModel() {
+class EventViewModel(private val eventRepository: IEventRepository) : ViewModel() {
     private val _events: MutableLiveData<Resource<List<Event>>> by lazy {
         MutableLiveData<Resource<List<Event>>>()
     }
@@ -29,5 +29,4 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             FindEventModel.instance.clear()
         }
     }
-
 }
