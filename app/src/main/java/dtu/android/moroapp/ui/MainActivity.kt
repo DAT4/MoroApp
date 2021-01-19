@@ -4,7 +4,6 @@ import android.content.Context
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.NavController
 import android.os.Bundle
-import android.text.Layout
 import android.util.AttributeSet
 import android.view.Menu
 import android.view.View
@@ -12,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dtu.android.moroapp.R
@@ -78,7 +76,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                             .clear()
                     FindEventModel
                             .instance
-                            .add(Filter.ExclusiveFilter.TitleFilter(query))
+                            .add(Filter.Exclusive.Title(query))
                     navController.navigate(R.id.moveToSearchListFragment)
                 }
                 return true
