@@ -56,13 +56,12 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
 
         back.setOnClickListener( new View.OnClickListener() {
-                                     @Override
-                                     public void onClick(View view) {
-                                         Intent intent = new Intent( getActivity(), MainActivity.class );
-                                         startActivity( intent );
-                                     }
-                                 }
-        );
+            @Override
+            public void onClick(View view) {
+                 navController = Navigation.findNavController(view);
+                 navController.popBackStack();
+            }
+        });
 
         // BTN setup
         btnList = root.findViewById( R.id.viewList );

@@ -67,11 +67,13 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
 
         fragmentManager = getActivity().getSupportFragmentManager();
 
-        back.setOnClickListener(view -> {
-                    navController = Navigation.findNavController(view);
-                    //navController.navigate(Search_resultsDirections.Companion.actionSearchResultsToFrontPageFragment());
-                }
-        );
+        back.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController = Navigation.findNavController(v);
+                navController.popBackStack();
+            }
+        });
 
         btnList = root.findViewById(R.id.viewList);
         btnList.setOnClickListener(this);
