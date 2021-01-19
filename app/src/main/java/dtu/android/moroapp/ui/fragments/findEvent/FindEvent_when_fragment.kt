@@ -1,30 +1,42 @@
-package dtu.android.moroapp.ui.fragments.findEvent;
+package dtu.android.moroapp.ui.fragments.findEvent
 
-import android.os.Bundle;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import dtu.android.moroapp.databinding.FragmentFindEventWhenBinding
+import dtu.android.moroapp.models.FindEventModel
+import dtu.android.moroapp.mvvm.Filter
+import java.util.*
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+class FindEvent_when_fragment : Fragment() {
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+    private lateinit var _binding: FragmentFindEventWhenBinding
+    private val binding get() = _binding
 
-import dtu.android.moroapp.R;
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentFindEventWhenBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-
-public class FindEvent_when_fragment extends Fragment{
-
-    private View root;
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        root = inflater.inflate(R.layout.fragment_find_event_when, container, false);
-
-        return root;
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            calendarView.setOnDateChangeListener { _, y, m, d->
+                FindEventModel.instance.apply {
+                    onEach {
+                        if (it is Filter.ExclusiveFilter.TimeGTFilter) {
+                            this.remove(it)
+                        }
+                    }
+                }
+                val c = Calendar.getInstance()
+                c.set(y,m,d)
+                val selected = c.timeInMillis/1000
+                FindEventModel.instance.add(Filter.ExclusiveFilter.TimeGTFilter(selected))
+            }
+        }
     }
 
 }

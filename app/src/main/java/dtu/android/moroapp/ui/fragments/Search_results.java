@@ -102,7 +102,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
                 events = viewModel.getEvents().getValue().getData();
                 if ((events != null ? events.size() : 0) == 1) {
                     System.out.println(events.get(0).getTitle());
-                    Navigation.findNavController(binding.getRoot()).navigate(Search_resultsDirections.Companion.moveToSingleEventFragment(events.get(0)));
+                    Navigation.findNavController(binding.getRoot()).navigate(Search_resultsDirections.Companion.actionSearchResultsToSingleEventFragment(events.get(0)));
                 } else {
                     initiateViews(events);
                 }
