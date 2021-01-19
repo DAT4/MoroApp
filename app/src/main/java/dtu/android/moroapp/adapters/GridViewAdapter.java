@@ -1,5 +1,6 @@
 package dtu.android.moroapp.adapters;
 
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dtu.android.moroapp.R;
@@ -21,11 +23,14 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
     IRecyclerViewClickListener customOnClick;
     ColorThemeManager colorThemeManager;
     View gridView;
+    Location location;
 
-    public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager,  IRecyclerViewClickListener customOnClick) {
+
+    public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager,  IRecyclerViewClickListener customOnClick, Location location) {
         this.localDataSet = localDataSet;
         this.customOnClick = customOnClick;
         this.colorThemeManager = colorThemeManager;
+        this.location = location;
     }
 
     public void setLocalDataSet(List<Event> localDataSet) {
@@ -63,7 +68,22 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
         String dateStr = date.format(new Date(this.localDataSet.get(position).getTime() * 1000)); */
 
         holder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
-        holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        //holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        // location stuff
+        float[] dist = new float[1];
+        if (this.location != null) {
+            Location.distanceBetween(
+                    this.location.getLatitude(),
+                    this.location.getLongitude(),
+                    this.localDataSet.get(position).getLocation().getCoordinates().getLatitude(),
+                    this.localDataSet.get(position).getLocation().getCoordinates().getLongitude(),
+                    dist);
+
+            holder.getEventDistance().setText(new DecimalFormat("#.#").format(dist[0]/1000) + " km");
+        } else {
+            holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        }
+
         holder.getEventDate().setText(this.localDataSet.get(position).getDate());
         holder.getEventTime().setText(this.localDataSet.get(position).getTimeToString());
         holder.setEventLink(this.localDataSet.get(position));

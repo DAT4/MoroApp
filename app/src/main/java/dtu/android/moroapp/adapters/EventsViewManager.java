@@ -55,6 +55,7 @@ public class EventsViewManager {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
+        this.location = this.locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 20, new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
