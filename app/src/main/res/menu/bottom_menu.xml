@@ -21,6 +21,7 @@
         android:id="@+id/burger_fragment"
         android:icon="@drawable/ic_menu_button"
         android:title="burger"
+        android:menuCategory="container"
         android:iconTint="@color/colorWhite"/>
 
 </menu>
