@@ -82,9 +82,9 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         viewModel = new ViewModelProvider( requireActivity() ).get( EventViewModel.class );
 
         // Online events
-        viewModel.getEvents().observe( getViewLifecycleOwner(), listResource -> events = viewModel.getEvents().getValue().getData() );
+        //viewModel.getEvents().observe( getViewLifecycleOwner(), listResource -> events = viewModel.getEvents().getValue().getData() );
         events = new ArrayList<>();
-        events = viewModel.getEvents().getValue().getData();
+
 
         updateEvents();
 
@@ -115,6 +115,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
             @Override
             public void onChanged(List<Event> savedEvents) {
+                events = viewModel.getEvents().getValue().getData();
                 //events = events;
                 // setup if saved
                 for (Event event : events) {
