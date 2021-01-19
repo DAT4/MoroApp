@@ -136,7 +136,8 @@
             app:destination="@id/frontPageFragment" />
         <action
             android:id="@+id/action_search_results_to_singleEventFragment"
-            app:destination="@id/singleEventFragment" />
+            app:destination="@id/singleEventFragment"
+            app:popUpTo="@id/search_results" />
     </fragment>
     <fragment
         android:id="@+id/overViewMyProfile"

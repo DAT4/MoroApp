@@ -1,9 +1,8 @@
-package sh.mama.hangman.adapters
+package dtu.android.moroapp.adapters
 
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.location.Location
-import android.location.LocationManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -20,7 +19,7 @@ import java.text.DecimalFormat
 
 class EventAdapter(
         private var events: List<Event>,
-        private var locaion : Location,
+        private var locaion : Location?,
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     private lateinit var binding: EventCardFragmentBinding
@@ -28,10 +27,8 @@ class EventAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val binding = EventCardFragmentBinding
-                .inflate(LayoutInflater
-                        .from(parent.context), parent, false)
+                .inflate(LayoutInflater.from(parent.context), parent, false)
         this.binding = binding
-
         return EventViewHolder(binding)
     }
 
@@ -43,23 +40,21 @@ class EventAdapter(
             eventCardTitle.text = event.title
             eventCardLongTime.text = event.getTimeToString()
             eventCardLongDate.text = event.getDate()
-            //eventCardLongPlace.text = event.location.place
-            val dist = FloatArray(1)
             eventCardLongPlace.text = event.location.place
+
             locaion?.let {
+                val dist = FloatArray(1)
                 Location.distanceBetween(
-                        locaion.latitude,
-                        locaion.longitude,
+                        locaion!!.latitude,
+                        locaion!!.longitude,
                         (event.location.coordinates.latitude.toDouble()),
                         (event.location.coordinates.longitude.toDouble()),
                         dist)
-
                 eventCardLongPlace.text = DecimalFormat("#.#").format(dist[0]/1000) + " km"
             }
 
             Picasso.get().load(events[position].image).fit().centerCrop().into(image)
             image.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
-
             GridLayout1.setBackgroundColor(ContextCompat.getColor(root.context, R.color.colorFindEventWhere))
 
             root.setOnClickListener {
