@@ -1,10 +1,15 @@
 package dtu.android.moroapp.ui.fragments
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -37,9 +42,18 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface {
 
     private fun initRecyclerView(events: List<Event>) {
         try {
-            val adapter = EventAdapter(
-                    events.sortedByDescending { it.time }.reversed().take(5)
-            )
+            val locationManager = context?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            if (ActivityCompat.checkSelfPermission(requireContext(),
+                            Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                            ActivityCompat.checkSelfPermission(requireContext(),
+                            Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            }
+            val adapter = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)?.let {
+                EventAdapter(
+                        events.sortedByDescending { it.time }.reversed().take(5),
+                        it
+                )
+            }
             binding.frontPageList.adapter = adapter
             binding.frontPageList.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
