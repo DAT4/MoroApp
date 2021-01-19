@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -73,17 +74,20 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         btnMap = root.findViewById( R.id.viewMap );
         btnMap.setOnClickListener( this );
 
-        // Test values
+        // saved events load
         localEventViewModel = new ViewModelProvider( requireActivity() ).get( EventRoomViewModel.class );
-
+        List<Event> savedEvents = localEventViewModel.getEvents().getValue();
 
         // Instantiate viewModel
         viewModel = new ViewModelProvider( requireActivity() ).get( EventViewModel.class );
 
+        // Online events
         viewModel.getEvents().observe( getViewLifecycleOwner(), listResource -> events = viewModel.getEvents().getValue().getData() );
-
         events = new ArrayList<>();
         events = viewModel.getEvents().getValue().getData();
+
+        updateEvents();
+
 
 
         // Manger setup
@@ -105,6 +109,28 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         transaction.commit();*/
 
         return root;
+    }
+
+    private void updateEvents() {
+        localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
+            @Override
+            public void onChanged(List<Event> savedEvents) {
+                //events = events;
+                // setup if saved
+                for (Event event : events) {
+                    for (int i = 0; i < savedEvents.size(); i++) {
+                        Event test = savedEvents.get(i);
+
+                        if (event.getTitle().equals(test.getTitle())) {
+                            event.setSaved(true);
+                        }
+
+                    }
+                }
+
+                viewManager.updateEvents(events);
+            }
+        });
     }
 
 

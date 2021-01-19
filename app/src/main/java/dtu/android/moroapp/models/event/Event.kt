@@ -3,6 +3,7 @@ package dtu.android.moroapp.models.event
 import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
@@ -19,8 +20,11 @@ data class Event(
         val text: String,
         val tickets: String,
         var time: TimeDate,
-        @Embedded val location: Location
+        @Embedded val location: Location,
+
 ) : Parcelable {
+    @Ignore var isSaved : Boolean = false
+
     fun getDate() = time.format("dd/MM/yyyy")
     fun getTimeToString() = time.format("HH:mm")
     fun getLocalDate() = this.time.toLocalDateTime()
