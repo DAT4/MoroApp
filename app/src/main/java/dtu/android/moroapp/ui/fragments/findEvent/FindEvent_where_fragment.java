@@ -17,7 +17,6 @@ import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.Filter;
-import kotlin.Pair;
 
 public class FindEvent_where_fragment extends Fragment{
 
@@ -63,13 +62,13 @@ public class FindEvent_where_fragment extends Fragment{
         FindEventModel
                 .Filters
                 .getInstance()
-                .add(new Filter.InclusiveFilter.AreaFilter(area));
+                .add(new Filter.Inclusive.Area(area));
     }
     private void remove(String area){
         FindEventModel
                 .Filters
                 .getInstance()
-                .remove(new Filter.InclusiveFilter.AreaFilter(area));
+                .remove(new Filter.Inclusive.Area(area));
     }
 
     @Override

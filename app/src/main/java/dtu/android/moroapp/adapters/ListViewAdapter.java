@@ -64,6 +64,10 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
         viewHolder.eventLink.setAnimation( AnimationUtils.loadAnimation(viewHolder.context,R.anim.fade_transition));
 
+        if (this.localDataSet.get(position).isSaved()) {
+            viewHolder.getEventToSaveBTN().setBackgroundResource(R.drawable.ic_minus);
+        }
+
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
@@ -97,6 +101,8 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 customOnClick.onItemClick(localDataSet.get(position));
+                localDataSet.get(position).setSaved(true);
+                viewHolder.getEventToSaveBTN().setBackgroundResource(R.drawable.ic_minus);
                 Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
             }
         });

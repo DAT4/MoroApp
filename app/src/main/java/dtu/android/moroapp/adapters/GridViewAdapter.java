@@ -68,6 +68,11 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
         holder.eventLink.setAnimation( AnimationUtils.loadAnimation(holder.context,R.anim.fade_transition));
 
+        //
+        if (this.localDataSet.get(position).isSaved()) {
+            holder.getEventToSaveBTN().setBackgroundResource(R.drawable.ic_minus);
+        }
+
         holder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
         //holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
         // location stuff
@@ -94,6 +99,8 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 customOnClick.onItemClick(localDataSet.get(position));
+                localDataSet.get(position).setSaved(true);
+                holder.getEventToSaveBTN().setBackgroundResource(R.drawable.ic_minus);
                 Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
             }
         });

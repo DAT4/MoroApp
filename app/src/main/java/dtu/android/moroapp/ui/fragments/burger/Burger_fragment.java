@@ -1,6 +1,5 @@
 package dtu.android.moroapp.ui.fragments.burger;
 
-import android.net.CaptivePortal;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import dtu.android.moroapp.R;
@@ -21,7 +19,6 @@ public class Burger_fragment extends Fragment {
     private Button bTipOs, bOmOs, bKontakt, bClose;
     private View root;
     private NavController navController;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +33,7 @@ public class Burger_fragment extends Fragment {
 
         return root;
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -71,4 +69,5 @@ public class Burger_fragment extends Fragment {
             }
         });
     }
+
 }

@@ -118,6 +118,10 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
             @Override
             public void onChanged(List<Event> events) {
                 //events = events;
+                for (Event event: events) {
+                    event.setSaved(true);
+                }
+
                 eventsViewManager.updateEvents(events);
             }
         });
