@@ -76,7 +76,7 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
 
         // saved events load
         localEventViewModel = new ViewModelProvider( requireActivity() ).get( EventRoomViewModel.class );
-        List<Event> savedEvents = localEventViewModel.getEvents().getValue();
+        //List<Event> savedEvents = localEventViewModel.getEvents().getValue();
 
         // Instantiate viewModel
         viewModel = new ViewModelProvider( requireActivity() ).get( EventViewModel.class );

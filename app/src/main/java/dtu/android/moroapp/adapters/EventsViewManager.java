@@ -53,7 +53,7 @@ public class EventsViewManager {
             @Override
             public void onLocationChanged(@NonNull Location location) {
                 location = location;
-                state.updateEvents(dataToView);
+           //     state.updateEvents(dataToView);
             }
         });
     }
