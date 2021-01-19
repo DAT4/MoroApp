@@ -7,62 +7,66 @@ sealed class Filter {
     abstract val graphQLName: String
     abstract fun isMatching(event: Event): Boolean
 
-    sealed class ExclusiveFilter : Filter() {
-        data class TimeGTFilter(val start: Long) : ExclusiveFilter() {
-            override val graphQLName = "timestampGT"
-            override fun isMatching(event: Event) = this.start <= event.time
-            override fun toString() = "$graphQLName: $start"
+    sealed class Exclusive : Filter() {
+        sealed class Time : Exclusive() {
+            data class GT(val start: Long) : Time() {
+                override val graphQLName = "timestampGT"
+                override fun isMatching(event: Event) = this.start <= event.time
+                override fun toString() = "$graphQLName: $start"
+            }
+
+            data class LT(val end: Long) : Time() {
+                override val graphQLName = "timestampLT"
+                override fun isMatching(event: Event) = this.end >= event.time
+                override fun toString() = "$graphQLName: $end"
+            }
         }
 
-        data class TimeLTFilter(val end: Long) : ExclusiveFilter() {
-            override val graphQLName = "timestampLT"
-            override fun isMatching(event: Event) = this.end >= event.time
-            override fun toString() = "$graphQLName: $end"
+        sealed class Price : Exclusive() {
+            data class GT(val start: Long) : Price() {
+                override val graphQLName = "priceGT"
+                override fun isMatching(event: Event) = this.start <= event.price
+                override fun toString() = "$graphQLName: $start"
+            }
+
+            data class LT(val end: Long) : Price() {
+                override val graphQLName = "priceGT"
+                override fun isMatching(event: Event) = this.end >= event.price
+                override fun toString() = "$graphQLName: $end"
+            }
         }
 
-        data class PriceGTFilter(val start: Long) : ExclusiveFilter() {
-            override val graphQLName = "priceGT"
-            override fun isMatching(event: Event) = this.start <= event.price
-            override fun toString() = "$graphQLName: $start"
-        }
-
-        data class PriceLTFilter(val end: Long) : ExclusiveFilter() {
-            override val graphQLName = "priceGT"
-            override fun isMatching(event: Event) = this.end >= event.price
-            override fun toString() = "$graphQLName: $end"
-        }
-
-        data class TitleFilter(val string: String) : ExclusiveFilter() {
+        data class Title(val string: String) : Exclusive() {
             override val graphQLName = "title"
             override fun isMatching(event: Event) = event.title.contains(this.string, true)
             override fun toString() = "$graphQLName: \"$string\" "
         }
 
     }
-    sealed class InclusiveFilter : Filter() {
+    sealed class Inclusive : Filter() {
         abstract val value: String
-        data class PlaceFilter(val place: String) : InclusiveFilter() {
+        data class Place(val place: String) : Inclusive() {
             override val graphQLName = "place"
             override fun isMatching(event: Event) = event.location.place.contains(place, true)
             override fun toString() = "$graphQLName: \"$place\" "
             override val value = "\"$place\" "
         }
 
-        data class AreaFilter(val area: String) : InclusiveFilter() {
+        data class Area(val area: String) : Inclusive() {
             override val graphQLName = "area"
             override fun isMatching(event: Event) = event.location.area.contains(area, true)
             override fun toString() = "$graphQLName: \"$area\" "
             override val value = "\"$area\" "
         }
 
-        data class CategoryFilter(val category: String) : InclusiveFilter() {
+        data class Category(val category: String) : Inclusive() {
             override val graphQLName = "category"
             override fun isMatching(event: Event) = event.category.contains(category)
             override fun toString() = "$graphQLName: \"$category\" "
             override val value = "\"$category\" "
         }
 
-        data class GenreFilter(val genre: String) : InclusiveFilter() {
+        data class Genre(val genre: String) : Inclusive() {
             override val graphQLName = "genre"
             override fun isMatching(event: Event) = event.genre.contains(genre, true)
             override fun toString() = "$graphQLName: \"$genre\" "
@@ -84,8 +88,8 @@ fun List<Filter>.isMatching(event: Event): Boolean {
 
 fun Map.Entry<KClass<Filter>, List<Filter>>.isMatching(event: Event): Boolean {
     return when (this.value.first()) {
-        is Filter.InclusiveFilter -> this.value.any { it.isMatching(event) }
-        is Filter.ExclusiveFilter -> this.value.first().isMatching(event)
+        is Filter.Inclusive -> this.value.any { it.isMatching(event) }
+        is Filter.Exclusive -> this.value.first().isMatching(event)
     }
 }
 
@@ -99,7 +103,7 @@ fun List<Filter>.stringify(): String {
 
 fun Map.Entry<KClass<Filter>, List<Filter>>.stringify(): String {
     return when (this.value.first()) {
-        is Filter.InclusiveFilter -> "${this.value.first().graphQLName}: ${this.value.map { (it as Filter.InclusiveFilter).value }}"
-        is Filter.ExclusiveFilter -> this.value[0].toString()
+        is Filter.Inclusive -> "${this.value.first().graphQLName}: ${this.value.map { (it as Filter.Inclusive).value }}"
+        is Filter.Exclusive -> this.value[0].toString()
     }
 }

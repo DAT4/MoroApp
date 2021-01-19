@@ -11,12 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import java.util.List;
-
 import dtu.android.moroapp.R;
 import dtu.android.moroapp.models.FindEventModel;
 import dtu.android.moroapp.mvvm.Filter;
-import kotlin.Pair;
 
 public class findEvent_what_fragment extends Fragment {
 
@@ -65,13 +62,13 @@ public class findEvent_what_fragment extends Fragment {
         FindEventModel
                 .Filters
                 .getInstance()
-                .add(new Filter.InclusiveFilter.CategoryFilter(category));
+                .add(new Filter.Inclusive.Category(category));
     }
     private void remove(String category){
         FindEventModel
                 .Filters
                 .getInstance()
-                .remove(new Filter.InclusiveFilter.CategoryFilter(category));
+                .remove(new Filter.Inclusive.Category(category));
     }
 
 }

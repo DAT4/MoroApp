@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dtu.android.moroapp.databinding.FragmentFindEventWhenBinding
 import dtu.android.moroapp.models.FindEventModel
+import dtu.android.moroapp.models.event.TimeDate
 import dtu.android.moroapp.mvvm.Filter
 import java.util.*
 
@@ -23,20 +24,26 @@ class FindEvent_when_fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            calendarView.setOnDateChangeListener { _, y, m, d->
-                FindEventModel.instance.apply {
-                    onEach {
-                        if (it is Filter.ExclusiveFilter.TimeGTFilter) {
-                            this.remove(it)
-                        }
-                    }
-                }
-                val c = Calendar.getInstance()
-                c.set(y,m,d)
-                val selected = c.timeInMillis/1000
-                FindEventModel.instance.add(Filter.ExclusiveFilter.TimeGTFilter(selected))
+            calendarView.setOnDateChangeListener { _, y, m, d ->
+                val (from, to) = getTimeIntervalForOneDay(y,m,d)
+                updateTimeFilter(from,to)
             }
         }
+    }
+
+    private fun updateTimeFilter(from:TimeDate, to:TimeDate){
+        FindEventModel.instance.removeIf { it is Filter.Exclusive.Time }
+        FindEventModel.instance.add(Filter.Exclusive.Time.GT(from))
+        FindEventModel.instance.add(Filter.Exclusive.Time.LT(to))
+    }
+
+    private fun getTimeIntervalForOneDay(year: Int, month: Int, day: Int): Pair<TimeDate,TimeDate> {
+        val c = Calendar.getInstance()
+        c.set(year, month, day)
+        val from = c.timeInMillis / 1000
+        c.add(Calendar.DAY_OF_YEAR, 1)
+        val to = c.timeInMillis / 1000
+        return Pair(from, to)
     }
 
 }
