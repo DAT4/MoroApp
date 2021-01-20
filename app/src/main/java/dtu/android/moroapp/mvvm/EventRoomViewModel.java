@@ -11,6 +11,7 @@ import java.util.List;
 
 import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.models.EventDao;
+import io.sentry.Sentry;
 
 public class EventRoomViewModel extends AndroidViewModel {
 
@@ -48,7 +49,7 @@ public class EventRoomViewModel extends AndroidViewModel {
             try {
                 eventDao.insert(events[0]);
             } catch (Exception e) {
-
+                Sentry.captureException(e);
             }
             return null;
         }

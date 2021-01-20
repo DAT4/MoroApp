@@ -53,6 +53,9 @@ android {
 dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-runtime-ktx:2.3.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter'
     def nav_version = "2.3.2"
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -97,6 +100,10 @@ dependencies {
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
 
+    //Sentry's SDK as a dependency
+    implementation 'io.sentry:sentry-android:3.1.0'
+    implementation 'io.sentry:sentry:3.1.0'
+
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
@@ -137,6 +144,11 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidx_test"
     androidTestImplementation "androidx.test:core:$androidx_test"
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+
+    debugImplementation ("androidx.fragment:fragment-testing:1.2.5", {
+        exclude group: 'androidx.test', module: 'core'
+    })
+
 
 
 }

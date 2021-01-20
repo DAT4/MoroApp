@@ -17,6 +17,9 @@ import dtu.android.moroapp.R
 import dtu.android.moroapp.databinding.ActivityMainBinding
 import dtu.android.moroapp.models.FindEventModel
 import dtu.android.moroapp.mvvm.*
+import io.sentry.Sentry
+import io.sentry.SentryOptions
+import io.sentry.android.core.SentryAndroid
 
 class MainActivity : AppCompatActivity(), LifecycleOwner {
     private lateinit var bottomBar: BottomNavigationView

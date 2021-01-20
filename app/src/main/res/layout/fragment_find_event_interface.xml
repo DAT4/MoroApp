@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="#D2C8E4"
     android:orientation="vertical"
-    tools:context=".ui.fragments.findEvent.findEvent_interface_Fragment">
+    tools:context=".ui.fragments.findEvent.findEvent_interface_Fragment"
+    android:id="@+id/find_event_interface_fragment">
 
 
     <com.google.android.material.tabs.TabLayout
