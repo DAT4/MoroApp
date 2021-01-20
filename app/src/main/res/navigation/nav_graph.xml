@@ -77,9 +77,6 @@
             android:id="@+id/action_burger_fragment_to_kontakt_Os_Fragment"
             app:destination="@id/kontakt_Os_Fragment" />
         <action
-            android:id="@+id/action_burger_fragment_to_frontPageFragment"
-            app:destination="@id/frontPageFragment" />
-        <action
             android:id="@+id/action_burger_fragment_pop"
             app:popUpTo="@id/burger_fragment"
             app:popUpToInclusive="true" />
@@ -116,15 +113,6 @@
         android:name="dtu.android.moroapp.ui.fragments.minProfil.SavedEventsFragment"
         android:label="fragment_saved_events"
         tools:layout="@layout/fragment_saved_events" />
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="dtu.android.moroapp.ui.fragments.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" >
-        <action
-            android:id="@+id/action_blankFragment_to_frontPageFragment"
-            app:destination="@id/frontPageFragment" />
-    </fragment>
     <fragment
         android:id="@+id/search_results"
         android:name="dtu.android.moroapp.ui.fragments.Search_results"

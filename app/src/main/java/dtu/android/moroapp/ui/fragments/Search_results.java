@@ -10,15 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavAction;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dtu.android.moroapp.R;
@@ -34,8 +30,6 @@ import dtu.android.moroapp.mvvm.EventRepository;
 import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
 import dtu.android.moroapp.mvvm.EventViewModelProviderFactory;
-import dtu.android.moroapp.mvvm.Filter;
-import io.sentry.Sentry;
 
 public class Search_results extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
