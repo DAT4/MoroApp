@@ -72,11 +72,12 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface, EasyPermissions.
         viewModel.events.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is Resource.Success -> {
-                    response.data?.let {
+                    response.data?.let { events ->
+                        val events = events.sortedBy { it.time }.take(10)
                         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                            initRecyclerView(it, location)
+                            initRecyclerView(events, location)
                         }
-                        initViewPager(it)
+                        initViewPager(events)
                     }
                 }
                 is Resource.Error -> {
@@ -108,7 +109,7 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface, EasyPermissions.
     private fun initRecyclerView(events: List<Event>, location: Location?) {
         val adapter =
                 EventAdapter(
-                        events.sortedByDescending { it.time }.reversed().take(5),
+                        events,
                         location
                 )
         binding.frontPageList.adapter = adapter
@@ -116,7 +117,7 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface, EasyPermissions.
     }
 
     private fun initViewPager(events: List<Event>) {
-        val adapter = PremiumAdapter(events as ArrayList<Event>, this)
+        val adapter = PremiumAdapter(events, this)
         binding.viewPager.adapter = adapter
     }
 

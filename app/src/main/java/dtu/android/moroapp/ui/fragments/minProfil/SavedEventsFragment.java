@@ -63,18 +63,25 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
         btnMap.setOnClickListener(this);
 
         // load saved events events
-        events = new ArrayList<>();
+
         //saveEvents.add(ConcreteEvents.INSTANCE.getAllEvents().get(2));
         localEventViewModel = new ViewModelProvider(requireActivity()).get(EventRoomViewModel.class);
 
        /* onlineEventViewModel.getEvents().observe(getViewLifecycleOwner(), modelEvents -> {
             events = onlineEventViewModel.getEvents().getValue().getData();
         }); */
-
-        // Manger setup
-        eventsViewManager = new EventsViewManager(events,getContext(), Theme.ORANGE, this);
-
+        events = new ArrayList<>();
         updateEvents();
+        // Manger setup
+        //  eventsViewManager = new EventsViewManager(events,getContext(), Theme.ORANGE, this);
+
+
+        eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE,this);
+        myFragment = eventsViewManager.getFragment();
+        fragmentManager.beginTransaction().replace(R.id.savedEvents_container,myFragment).commit();
+
+
+
 
 
         //Database and saved events;
@@ -97,16 +104,23 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
 
 
         //events.add(ConcreteEvents.INSTANCE.getAllEvents().get(3));
-
+   /*     IRecyclerViewClickListener clickListener = this;
         // Manger setup
+        localEventViewModel.getEvents().observe(getViewLifecycleOwner(), new Observer<List<Event>>() {
+            @Override
+            public void onChanged(List<Event> events) {
+                //events = events;
+                for (Event event: events) {
+                    event.setSaved(true);
+                }
+
+            }
+        }); */
         //eventsViewManager = new EventsViewManager(events,getContext(),Theme.ORANGE);
 
         // recycler view setup
         //recyclerView = view.findViewById(R.id.savedEventsRecyclerView);
 
-        myFragment = eventsViewManager.getFragment();
-
-        fragmentManager.beginTransaction().replace(R.id.savedEvents_container,myFragment).commit();
 
         //updateView();
 
