@@ -22,7 +22,7 @@
             android:value="@string/map_key"/>
 
         <activity android:name=".ui.MainActivity"
-            android:label="MORO"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme"
             >
             <intent-filter>

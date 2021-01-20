@@ -34,4 +34,5 @@
     <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textColor">@color/colorFindEventWhere</item>
     </style>
+
 </resources>
