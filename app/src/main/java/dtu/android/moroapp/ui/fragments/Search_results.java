@@ -35,6 +35,7 @@ import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
 import dtu.android.moroapp.mvvm.EventViewModelProviderFactory;
 import dtu.android.moroapp.mvvm.Filter;
+import io.sentry.Sentry;
 
 public class Search_results extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
@@ -112,6 +113,7 @@ public class Search_results extends Fragment implements View.OnClickListener, IR
                 System.out.println("fejl med internet");
             }
         });
+
     }
 
     private void initiateViews(List<Event> events) {

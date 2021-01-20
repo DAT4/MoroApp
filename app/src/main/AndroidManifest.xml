@@ -15,11 +15,14 @@
         android:supportsRtl="true"
         >
 
+        <meta-data android:name="io.sentry.dsn"
+            android:value="https://03e16ffb2dc84a6db1f3837dddbf4818@o508077.ingest.sentry.io/5600067" />
+
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key"/>
 
         <activity android:name=".ui.MainActivity"
-            android:label="MORO"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme"
             >
             <intent-filter>

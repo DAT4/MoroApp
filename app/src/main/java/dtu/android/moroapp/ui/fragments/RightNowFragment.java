@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import dtu.android.moroapp.ui.MainActivity;
 import dtu.android.moroapp.R;
@@ -28,6 +29,9 @@ import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.mvvm.EventViewModel;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
+import io.sentry.Sentry;
+import io.sentry.SentryOptions;
+import io.sentry.android.core.SentryAndroid;
 
 public class RightNowFragment extends Fragment implements View.OnClickListener, IRecyclerViewClickListener {
 
@@ -85,10 +89,11 @@ public class RightNowFragment extends Fragment implements View.OnClickListener, 
         //viewModel.getEvents().observe( getViewLifecycleOwner(), listResource -> events = viewModel.getEvents().getValue().getData() );
         events = new ArrayList<>();
 
-
-        updateEvents();
-
-
+        try {
+            updateEvents();
+        }catch (Exception e){
+            Sentry.captureException(e);
+        }
 
         // Manger setup
         viewManager = new EventsViewManager( events, getContext(), Theme.BLUE, this );

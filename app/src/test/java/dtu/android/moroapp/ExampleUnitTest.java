@@ -2,7 +2,7 @@ package dtu.android.moroapp;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static com.google.common.truth.Truth.assertThat;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testTest() {
+        assertThat(2+2).isEqualTo(4);
+        assertThat("abc").contains("a");
     }
 }

@@ -86,6 +86,7 @@ public class EventsViewManager {
     public Fragment getFragment(){
         return this.state.getFragment();
     }
+
     public void updateEventsList( List<Event> list) {
         this.dataToView = list;
     }
