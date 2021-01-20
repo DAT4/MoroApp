@@ -1,64 +1,43 @@
 package dtu.android.moroapp.adapters;
 
-import android.content.Context;
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.SingleEventFragment;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
-public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHolder> implements IListState {
+public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHolder>{
+
+
 
     private List<Event> localDataSet;
-    private EventsViewManager manager;
+    IRecyclerViewClickListener customOnClick;
+    ColorThemeManager colorThemeManager;
+    View gridView;
+    Location location;
 
 
-    public GridViewAdapter(EventsViewManager eventsViewManager) {
-        this.manager = eventsViewManager;
-        this.localDataSet = this.manager.dataToView;
+    public GridViewAdapter(List<Event> localDataSet, ColorThemeManager colorThemeManager,  IRecyclerViewClickListener customOnClick, Location location) {
+        this.localDataSet = localDataSet;
+        this.customOnClick = customOnClick;
+        this.colorThemeManager = colorThemeManager;
+        this.location = location;
     }
 
-    @Override
-    public void viewGrid() {
-
+    public void setLocalDataSet(List<Event> localDataSet) {
+        this.localDataSet = localDataSet;
     }
 
-    @Override
-    public void viewList() {
-        this.manager.changeState(new ListViewAdapter(this.manager));
-    }
-
-    @Override
-    public void viewMap() {
-        this.manager.changeState(new MapViewAdapter(this.manager));
-    }
-
-    @Override
-    public RecyclerView.Adapter getAdapter() {
-        return this;
-    }
-
-    @Override
-    public RecyclerView.LayoutManager getLayoutManager(Context context) {
-        return new GridLayoutManager(context, 2);
-    }
-
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends dtu.android.moroapp.adapters.EventItemViewHolder {
 
         public ViewHolder(View view) {
@@ -67,32 +46,69 @@ public class GridViewAdapter extends RecyclerView.Adapter<GridViewAdapter.ViewHo
 
     }
 
-    // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public GridViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.fragment_event_card_block, viewGroup, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate( R.layout.fragment_event_card_block, parent, false);
 
-        return new ViewHolder(view);
+        //ImageView imageListView = view.findViewById(R.id.savedEvents_list_view);
+        //imageListView.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorIconOrange));
+
+        gridView = view.findViewById(R.id.blockView);
+
+        return new GridViewAdapter.ViewHolder(view);
     }
 
-
-    // Replace the contents of a view (invoked by the layout manager)
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-
+    @Override
+    public void onBindViewHolder(@NonNull GridViewAdapter.ViewHolder holder, int position) {
         /*SimpleDateFormat date = new SimpleDateFormat("dd-MM-yy");
         String dateStr = date.format(new Date(this.localDataSet.get(position).getTime() * 1000)); */
 
-        viewHolder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
-        viewHolder.getEventDistance().setText("00 km");
-        viewHolder.getEventDate().setText("00-00");
-        viewHolder.getEventTime().setText("00:00");
-        viewHolder.setEventLink(this.localDataSet.get(position));
-        viewHolder.setEventimage(this.localDataSet.get(position).getImage());
+        holder.eventLink.setAnimation( AnimationUtils.loadAnimation(holder.context,R.anim.fade_transition));
+
+        //
+        if (this.localDataSet.get(position).isSaved()) {
+            holder.getEventToSaveBTN().setBackgroundResource(R.drawable.ic_minus);
+        }
+
+        holder.getEventTitle().setText(this.localDataSet.get(position).getTitle());
+        //holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        // location stuff
+        float[] dist = new float[1];
+        if (this.location != null) {
+            Location.distanceBetween(
+                    this.location.getLatitude(),
+                    this.location.getLongitude(),
+                    this.localDataSet.get(position).getLocation().getCoordinates().getLatitude(),
+                    this.localDataSet.get(position).getLocation().getCoordinates().getLongitude(),
+                    dist);
+
+            holder.getEventDistance().setText(new DecimalFormat("#.#").format(dist[0]/1000) + " km");
+        } else {
+            holder.getEventDistance().setText(this.localDataSet.get(position).getLocation().getPlace());
+        }
+
+        holder.getEventDate().setText(this.localDataSet.get(position).getDate());
+        holder.getEventTime().setText(this.localDataSet.get(position).getTimeToString());
+        holder.setEventLink(this.localDataSet.get(position));
+        holder.setEventimage(this.localDataSet.get(position).getImage());
+        holder.getEventToSaveBTN().setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                customOnClick.onItemClick(localDataSet.get(position));
+                localDataSet.get(position).setSaved(true);
+                holder.getEventToSaveBTN().setBackgroundResource(R.drawable.ic_minus);
+                Toast.makeText(v.getContext(), "Event tilføjet til mine events", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        gridView.setBackgroundResource(colorThemeManager.getIcon());
+
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return this.localDataSet.size();

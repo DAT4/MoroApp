@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#D2C8E4"
     android:orientation="vertical"
-    tools:context=".findEvent_interface_Fragment">
+    tools:context=".ui.fragments.findEvent.findEvent_interface_Fragment">
 
 
     <com.google.android.material.tabs.TabLayout
@@ -56,6 +56,7 @@
         android:backgroundTint="@color/colorFindEventWhat"
         android:layout_centerHorizontal="true"
         android:elevation="6dp"
+        android:id="@+id/search_button_find_event"
 
         />
 

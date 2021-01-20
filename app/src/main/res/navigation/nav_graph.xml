@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/frontPageFragment">
+    <action
+        android:id="@+id/moveToSingleEventFragment"
+        app:destination="@+id/singleEventFragment"
+        />
+    <action
+        android:id="@+id/moveToSearchListFragment"
+        app:destination="@+id/search_results"
+        />
+
+    <fragment
+        android:id="@+id/frontPageFragment"
+        android:name="dtu.android.moroapp.ui.fragments.FrontPageFragment"
+        android:label="fragment_front_page"
+        tools:layout="@layout/fragment_front_page" >
+        <action
+            android:id="@+id/action_frontPageFragment_to_rightNowFragment"
+            app:destination="@id/rightNowFragment" />
+        <action
+            android:id="@+id/action_frontPageFragment_to_findEvent_interface_Fragment"
+            app:destination="@id/findEvent_interface_Fragment" />
+        <action
+            android:id="@+id/action_frontPageFragment_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rightNowFragment"
+        android:name="dtu.android.moroapp.ui.fragments.RightNowFragment"
+        android:label="right_now_fragment"
+        tools:layout="@layout/right_now_fragment" >
+        <action
+            android:id="@+id/action_rightNowFragment_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
+        <action
+            android:id="@+id/action_rightNowFragment_to_singleEventFragment"
+            app:destination="@id/singleEventFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findEvent_interface_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.findEvent.findEvent_interface_Fragment"
+        android:label="fragment_find_event_interface"
+        tools:layout="@layout/fragment_find_event_interface" >
+        <action
+            android:id="@+id/action_findEvent_interface_Fragment_to_search_results"
+            app:destination="@id/search_results" />
+    </fragment>
+    <fragment
+        android:id="@+id/minProfilFragment"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.MinProfilFragment"
+        android:label="fragment_min_profil"
+        tools:layout="@layout/fragment_min_profil" >
+        <action
+            android:id="@+id/action_minProfilFragment_to_savedEventsFragment"
+            app:destination="@id/savedEventsFragment" />
+        <action
+            android:id="@+id/action_minProfilFragment_to_anbefaledeFragment"
+            app:destination="@id/anbefaledeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/burger_fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Burger_fragment"
+        android:label="fragment_burger_fragment"
+        tools:layout="@layout/fragment_burger_fragment"
+        >
+        <action
+            android:id="@+id/action_burger_fragment_to_tip_Os_Fragment"
+            app:destination="@id/tip_Os_Fragment" />
+        <action
+            android:id="@+id/action_burger_fragment_to_om_Os_Fragment"
+            app:destination="@id/om_Os_Fragment" />
+        <action
+            android:id="@+id/action_burger_fragment_to_kontakt_Os_Fragment"
+            app:destination="@id/kontakt_Os_Fragment" />
+        <action
+            android:id="@+id/action_burger_fragment_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
+        <action
+            android:id="@+id/action_burger_fragment_pop"
+            app:popUpTo="@id/burger_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/tip_Os_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Tip_Os_Fragment"
+        android:label="Tip_Os_Fragment" />
+    <fragment
+        android:id="@+id/om_Os_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Om_Os_Fragment"
+        android:label="Om_Os_Fragment" />
+    <fragment
+        android:id="@+id/kontakt_Os_Fragment"
+        android:name="dtu.android.moroapp.ui.fragments.burger.Kontakt_Os_Fragment"
+        android:label="fragment_kontakt__os_"
+        tools:layout="@layout/fragment_kontakt__os_" />
+    <fragment
+        android:id="@+id/singleEventFragment"
+        android:name="dtu.android.moroapp.ui.fragments.SingleEventFragment"
+        android:label="fragment_single_event"
+        tools:layout="@layout/fragment_single_event" >
+        <argument
+            android:name="event"
+            app:argType="dtu.android.moroapp.models.event.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/anbefaledeFragment"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.AnbefaledeFragment"
+        android:label="fragment_anbefalede"
+        tools:layout="@layout/fragment_anbefalede" />
+    <fragment
+        android:id="@+id/savedEventsFragment"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.SavedEventsFragment"
+        android:label="fragment_saved_events"
+        tools:layout="@layout/fragment_saved_events" />
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="dtu.android.moroapp.ui.fragments.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_results"
+        android:name="dtu.android.moroapp.ui.fragments.Search_results"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" >
+        <action
+            android:id="@+id/action_search_results_to_frontPageFragment"
+            app:destination="@id/frontPageFragment" />
+        <action
+            android:id="@+id/action_search_results_to_singleEventFragment"
+            app:destination="@id/singleEventFragment"
+            app:popUpTo="@id/search_results"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/overViewMyProfile"
+        android:name="dtu.android.moroapp.ui.fragments.minProfil.OverViewMyProfile"
+        android:label="fragment_over_view_my_profile"
+        tools:layout="@layout/fragment_over_view_my_profile" />
+    <action
+        android:id="@+id/toSingleEventFragment"
+        app:destination="@id/singleEventFragment" />
+</navigation>

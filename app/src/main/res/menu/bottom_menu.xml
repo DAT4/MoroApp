@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/rightNowFragment"
+        android:icon="@drawable/ic_clock_button"
+        android:title="rightnow"
+        android:iconTint="@color/colorWhite"/>
+    <item
+        android:id="@+id/frontPageFragment"
+        android:icon="@drawable/ic_home_button"
+        android:title="home"
+        android:iconTint="@color/colorWhite"/>
+
+    <item
+        android:id="@+id/overViewMyProfile"
+        android:icon="@drawable/ic_person_button"
+        android:title="profil"
+        android:iconTint="@color/colorWhite"/>
+
+    <item
+        android:id="@+id/burger_fragment"
+        android:icon="@drawable/ic_menu_button"
+        android:title="burger"
+        android:menuCategory="container"
+        android:iconTint="@color/colorWhite"/>
+
+</menu>

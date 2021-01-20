@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorBlack</item>
+        <item name="logo">@drawable/ic_moro_logo</item>
+        <item name="displayOptions">useLogo|showHome</item>
+    </style>
+
+    <style name="CalenderTheme" parent="Theme.AppCompat">
+        <item name="android:colorAccent">@color/colorFindEventWhere</item>
+        <item name="colorPrimary">@color/colorFindEventWhere</item>
+        <item name="yearStyle">@style/calender_theme_week</item>
+    </style>
+
+    <style name="calender_theme_date" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+        <item name="android:weekNumberColor">@color/colorFindEventWhere</item>
+    </style>
+
+    <style name="calender_theme_week" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+    </style>
+
+
+
+    <style name="CustomCalendarMonth" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+    </style>
+
+    <style name="CustomCalendarDay" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+    </style>
+
+    <style name="CustomCalendarWeek" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorFindEventWhere</item>
+    </style>
+
+</resources>

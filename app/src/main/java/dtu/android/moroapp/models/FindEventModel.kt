@@ -1,9 +1,11 @@
 package dtu.android.moroapp.models
 
-import dtu.android.moroapp.utils.FilterType
+import dtu.android.moroapp.mvvm.Filter
 
-object FindEventModel {
-    var filters : ArrayList<Pair<FilterType, String>> = ArrayList()
-
-
+class FindEventModel {
+    companion object Filters{
+        val instance: ArrayList<Filter> by lazy {
+            ArrayList()
+        }
+    }
 }

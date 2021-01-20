@@ -3,7 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MinProfilKalenderFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.minProfil.MinProfilKalenderFragment"
+    android:layout_margin="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,28 +20,72 @@
         android:background="#FAB96B"
         android:gravity="center">
 
-        <LinearLayout
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mcv_showOtherDates="all"
+            app:mcv_selectionColor="@color/colorIconOrange"
+            android:layout_weight="1"
+            app:mcv_firstDayOfWeek="monday"
+            app:mcv_dateTextAppearance="@style/CustomTextAppearance"
+            app:mcv_headerTextAppearance="@style/CustomTextAppearance"
+            app:mcv_weekDayTextAppearance="@style/CustomTextAppearance"
+            />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:id="@+id/calenderEvents"/>
+
+        <!--
+        <com.riontech.calendar.CustomCalendar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/customCalendar"
+            app:endMonth="012"
+            app:endYear="2022"
+            app:startMonth="01"
+            app:startYear="2019"
+
+            />
+
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:id="@+id/ButtomMinProfil1"
-                android:layout_weight="1"
-                android:text="@string/min_profil"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PREV"
+                android:id="@+id/prevButton"
+                android:layout_weight="1"/>
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:id="@+id/ButtomMinProfil2"
-                android:layout_weight="1"
-                android:text="@string/kalender"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEXT"
+                android:id="@+id/nextButton"
+                android:layout_weight="1"/>
+
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="666dp"></FrameLayout>
+
+        <CalendarView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileCalender"
+
+            android:theme="@style/CustomCalendarMonth"
+            android:dateTextAppearance="@style/CustomCalendarDay"
+            android:weekDayTextAppearance="@style/CustomCalendarWeek"
+            />-->
+
     </LinearLayout>
+    </ScrollView>
 </FrameLayout>

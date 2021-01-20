@@ -3,22 +3,21 @@ package dtu.android.moroapp.adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.media.Image;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import dtu.android.moroapp.NavGraphDirections;
 import dtu.android.moroapp.R;
-import dtu.android.moroapp.SingleEventFragment;
-import dtu.android.moroapp.models.Event;
+import dtu.android.moroapp.models.event.Event;
 
 public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final TextView eventTitle;
@@ -28,6 +27,8 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
     protected final Context context;
     protected final View eventLink;
     protected final ImageView eventimage;
+    protected final Button addToSavedBTN;
+    NavController navController;
 
     public EventItemViewHolder(View view) {
         super(view);
@@ -39,6 +40,8 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         eventTime = (TextView) view.findViewById(R.id.event_card_long_time);
         eventLink = (View) view.findViewById(R.id.event_card_long);
         eventimage = (ImageView) view.findViewById(R.id.image);
+        addToSavedBTN = (Button) view.findViewById(R.id.addEventToSaved);
+
 
 
     }
@@ -68,14 +71,14 @@ public class EventItemViewHolder extends RecyclerView.ViewHolder {
         eventLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity) context;
-                FragmentManager manager = activity.getSupportFragmentManager();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("event", event);
-                Fragment singleEventFragment = new SingleEventFragment();
-                singleEventFragment.setArguments(bundle);
-                manager.beginTransaction().replace(R.id.mainFragment, singleEventFragment).addToBackStack(null).commit();
+                NavDirections action = NavGraphDirections.Companion.toSingleEventFragment(event);
+                Navigation.findNavController(itemView).navigate(action);
+
             }
         });
+    }
+
+    public Button getEventToSaveBTN() {
+        return addToSavedBTN;
     }
 }

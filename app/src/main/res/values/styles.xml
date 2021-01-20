@@ -1,15 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@font/anton_regular</item>
-    </style>
-    
-    
-    
+
     <style name="Find_where_tabs_style" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorBlack</item>
@@ -17,19 +8,26 @@
         <item name="android:fontFamily">@font/anton_regular</item>
     </style>
 
-    <style name="CalenderTheme" parent="Theme.AppCompat">
-        <item name="android:colorAccent">@color/colorFindEventWhere</item>
-        <item name="colorPrimary">@color/colorFindEventWhere</item>
-        <item name="yearStyle">@style/calender_theme_week</item>
+    <style name="BottomNavigation">
+        <item name="android:background">@color/colorBlack</item>
+        <item name="itemFillColor">@color/colorIconBlue</item>
+        <item name="itemIconTint">@color/colorWhite</item>
+        <item name="itemTextColor">@color/colorFrontPage</item>
     </style>
 
-    <style name="calender_theme_date" parent="android:TextAppearance.DeviceDefault.Small">
-        <item name="android:textColor">@color/colorFindEventWhere</item>
-        <item name="android:weekNumberColor">@color/colorFindEventWhere</item>
+    <style name="Theme.Custom" parent="android:Theme">
+        <item name="android:calendarViewStyle">@style/Widget.CalendarView.Custom</item>
     </style>
 
-    <style name="calender_theme_week" parent="android:TextAppearance.DeviceDefault.Small">
-        <item name="android:textColor">@color/colorFindEventWhere</item>
+    <style name="Widget.CalendarView.Custom" parent="android:Widget.CalendarView">
+        <item name="android:focusedMonthDateColor">@color/colorBlack</item>
+        <item name="android:weekNumberColor">@color/colorBlack</item>
+        <!--<item name="android:weekDayTextAppearance">style/TextAppearance.Medium</item>
+        <item name="android:dateTextAppearance">style/TextAppearance.Medium</item>-->
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.MaterialCalendarWidget.Date">
+        <item name="android:textColor">@color/colorBlack</item>
     </style>
 
 </resources>

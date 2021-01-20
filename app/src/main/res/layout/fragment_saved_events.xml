@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SavedEventsFragment"
+    tools:context=".ui.fragments.minProfil.SavedEventsFragment"
     android:background="#FAB96B">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ScrollView
+    <!--    <ScrollView
             android:id="@+id/gemte_liste"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"> -->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="250dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="62dp"
                         android:fontFamily="@font/anton_regular"
                         android:text="@string/mine_gemte_events"
@@ -47,11 +47,11 @@
 
                     <Button
                         android:id="@+id/savedEvents_grid_view"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="-10dp"
-                    android:background="@drawable/ic_grid_view"
+                        android:background="@drawable/ic_grid_view"
                         android:backgroundTint="@color/colorIconOrange"
                         android:text=""
                     />
@@ -73,13 +73,15 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical" >
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        />
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/savedEvents_container"/>
+
                 </LinearLayout>
             </LinearLayout>
-        </ScrollView>
+    <!--    </ScrollView> -->
     </LinearLayout>
 
 </FrameLayout>

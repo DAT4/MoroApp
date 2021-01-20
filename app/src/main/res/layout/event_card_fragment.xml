@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginHorizontal="20dp"
     android:layout_marginVertical="10dp"
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:id="@+id/event_card_long"
     android:background="#C4C4C4"
     android:orientation="vertical">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,6 +27,15 @@
                 android:fontFamily="@font/anton_regular"
                 android:textColor="@color/colorWhite"
                 android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/addEventToSaved"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/ic_cross" />
 
         </RelativeLayout>
 
@@ -79,6 +88,5 @@
 
         </LinearLayout>
 
-
-    </LinearLayout>
+</LinearLayout>
 

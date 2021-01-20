@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MinProfilFragment"
+    tools:context=".ui.fragments.minProfil.MinProfilFragment"
     tools:visibility="visible">
 
     <LinearLayout
@@ -11,34 +12,47 @@
         android:layout_height="match_parent"
         android:background="#FAB96B"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
+            android:fontFamily="@font/anton_regular"
             android:gravity="center"
             android:text="@string/min_profil"
-            android:textStyle="bold"
-            android:textSize="30sp"
             android:textColor="@color/colorBlack"
-            android:fontFamily="@font/anton_regular">
-        </TextView>
+            android:textSize="30sp"
+            android:textStyle="bold"/>
 
-        <fragment
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:name="dtu.android.moroapp.SavedEventsFragment"
-            android:id="@+id/fragment1"/>
+            android:layout_height="match_parent">
 
-        <fragment
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:name="dtu.android.moroapp.AnbefaledeFragment"
-            android:id="@+id/fragment2"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <fragment
+                    android:id="@+id/fragment1"
+                    android:name="dtu.android.moroapp.ui.fragments.minProfil.SavedEventsFragment"
+                    android:tag="SavedEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4" />
+
+               <fragment
+                    android:id="@+id/fragment2"
+                    android:name="dtu.android.moroapp.ui.fragments.minProfil.AnbefaledeFragment"
+                    android:tag="@string/anbefalede_events"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4" />
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

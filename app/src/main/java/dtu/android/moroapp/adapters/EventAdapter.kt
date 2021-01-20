@@ -1,61 +1,66 @@
-package sh.mama.hangman.adapters
+package dtu.android.moroapp.adapters
 
 import android.graphics.Color
 import android.graphics.PorterDuff
-import android.os.Bundle
+import android.location.Location
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+
 import dtu.android.moroapp.R
-import dtu.android.moroapp.SingleEventFragment
-import dtu.android.moroapp.findEvent_interface_Fragment
-import dtu.android.moroapp.models.Event
-import kotlinx.android.synthetic.main.event_card_fragment.view.*
-import java.text.SimpleDateFormat
-import java.util.*
+import dtu.android.moroapp.databinding.EventCardFragmentBinding
+import dtu.android.moroapp.models.event.Event
+import dtu.android.moroapp.ui.fragments.FrontPageFragmentDirections
+import java.text.DecimalFormat
 
 class EventAdapter(
         private var events: List<Event>,
+        private var locaion : Location?,
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
-    inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    private lateinit var binding: EventCardFragmentBinding
+    inner class EventViewHolder(itemView: EventCardFragmentBinding) : RecyclerView.ViewHolder(itemView.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.event_card_fragment, parent, false)
-        return EventViewHolder(view)
+        val binding = EventCardFragmentBinding
+                .inflate(LayoutInflater.from(parent.context), parent, false)
+        this.binding = binding
+        return EventViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.itemView.apply {
-            val timeStamp = Date(events[position].time * 1000)
 
-            val timeFormat = SimpleDateFormat("HH:mm")
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val event = events[position]
+        binding.apply {
+            eventCardLong.animation = (AnimationUtils.loadAnimation(root.context,R.anim.fade_transition))
+            eventCardTitle.text = event.title
+            eventCardLongTime.text = event.getTimeToString()
+            eventCardLongDate.text = event.getDate()
+            eventCardLongPlace.text = event.location.place
 
-            val time = timeFormat.format(timeStamp)
-            val date = dateFormat.format(timeStamp)
+            locaion?.let {
+                val dist = FloatArray(1)
+                Location.distanceBetween(
+                        locaion!!.latitude,
+                        locaion!!.longitude,
+                        (event.location.coordinates.latitude.toDouble()),
+                        (event.location.coordinates.longitude.toDouble()),
+                        dist)
+                eventCardLongPlace.text = DecimalFormat("#.#").format(dist[0]/1000) + " km"
+            }
 
-            event_card_title.text = events[position].title
-            event_card_long_time.text = time
-            event_card_long_date.text = date
-            event_card_long_place.text = events[position].location.place
             Picasso.get().load(events[position].image).fit().centerCrop().into(image)
             image.setColorFilter(Color.GRAY, PorterDuff.Mode.DARKEN)
-            GridLayout1.setBackgroundColor(resources.getColor(R.color.colorFindEventWhere))
-            event_card_long.setOnClickListener {
-                val f = SingleEventFragment()
-                val fm = (context as AppCompatActivity).supportFragmentManager
-                val args = Bundle()
-                args.putSerializable("event",events[position])
-                f.arguments = args
-                fm.beginTransaction()
-                        .replace(R.id.mainFragment, f)
-                        .addToBackStack(null)
-                        .commit()
+            GridLayout1.setBackgroundColor(ContextCompat.getColor(root.context, R.color.colorFindEventWhere))
+
+            root.setOnClickListener {
+                val action = FrontPageFragmentDirections
+                        .actionFrontPageFragmentToSingleEventFragment(event)
+                root.findNavController().navigate(action);
             }
         }
     }
