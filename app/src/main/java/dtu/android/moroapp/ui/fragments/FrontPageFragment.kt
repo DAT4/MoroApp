@@ -27,6 +27,7 @@ import dtu.android.moroapp.utils.TrackingUtility
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import dtu.android.moroapp.adapters.EventAdapter
+import kotlinx.android.synthetic.main.fragment_front_page.*
 
 class FrontPageFragment : Fragment(), IViewPagerClickInterface, EasyPermissions.PermissionCallbacks {
 
@@ -78,17 +79,28 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface, EasyPermissions.
                             initRecyclerView(events, location)
                         }
                         initViewPager(events)
+
                     }
+                    hideProgressbar()
+
                 }
                 is Resource.Error -> {
                     response.message?.let {
                         println("Error occured: $it")
                     }
                 }
+                is Resource.Loading -> {
+                    showProgressbar()
+                }
             }
+
+
 
         })
     }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -157,5 +169,19 @@ class FrontPageFragment : Fragment(), IViewPagerClickInterface, EasyPermissions.
             )
         }
     }
+
+    private fun showProgressbar() {
+        (requireActivity() as MainActivity).supportActionBar?.hide()
+        (requireActivity() as MainActivity).bottomBar.visibility = View.INVISIBLE
+        binding.loader.visibility = View.VISIBLE
+        binding.nestedScrollView.visibility = View.INVISIBLE
+    }
+    private fun hideProgressbar() {
+        (requireActivity() as MainActivity).supportActionBar?.show()
+        (requireActivity() as MainActivity).bottomBar.visibility = View.VISIBLE
+        binding.loader.visibility = View.INVISIBLE
+        binding.nestedScrollView.visibility = View.VISIBLE
+    }
+
 
 }

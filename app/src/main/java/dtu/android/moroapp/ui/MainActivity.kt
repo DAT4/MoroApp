@@ -19,7 +19,7 @@ import dtu.android.moroapp.models.FindEventModel
 import dtu.android.moroapp.mvvm.*
 
 class MainActivity : AppCompatActivity(), LifecycleOwner {
-    private lateinit var bottomBar: BottomNavigationView
+    lateinit var bottomBar: BottomNavigationView
     private lateinit var navController: NavController
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel: EventViewModel
@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         setContentView(binding.root)
         initializeUI()
         setupNav()
+        setTheme(R.style.AppTheme)
+
         //supportActionBar?.setDisplayUseLogoEnabled(true)
         //supportActionBar?.setDisplayShowHomeEnabled(true)
         //supportActionBar?.setIcon(R.drawable.ic_moro_logo)
@@ -40,6 +42,8 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(R.layout.top_bar)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+
+
 
 
     }
