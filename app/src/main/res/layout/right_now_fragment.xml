@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.RightNowFragment"
-    android:background="#A8DEF5">
+    android:background="#A8DEF5"
+    android:id="@+id/right_now_fragment">
 
     <LinearLayout
         android:layout_width="match_parent"

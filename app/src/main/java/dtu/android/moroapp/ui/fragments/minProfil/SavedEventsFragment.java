@@ -22,6 +22,7 @@ import dtu.android.moroapp.adapters.EventsViewManager;
 import dtu.android.moroapp.adapters.IRecyclerViewClickListener;
 import dtu.android.moroapp.models.event.Event;
 import dtu.android.moroapp.mvvm.EventRoomViewModel;
+import io.sentry.Sentry;
 //import dtu.android.moroapp.mvvm.EventViewModel;
 
 
@@ -71,7 +72,12 @@ public class SavedEventsFragment extends Fragment implements View.OnClickListene
             events = onlineEventViewModel.getEvents().getValue().getData();
         }); */
         events = new ArrayList<>();
-        updateEvents();
+
+        try {
+            updateEvents();
+        }catch (Exception e){
+            Sentry.captureException(e);
+        }
         // Manger setup
         //  eventsViewManager = new EventsViewManager(events,getContext(), Theme.ORANGE, this);
 
